@@ -39,7 +39,7 @@
     <generatedKey column="id" sqlStatement="MYSQL" identity="true"></generatedKey>
       <!-- 
       	<generatedKey column="EMPNO" 
-      		sqlStatement="select seq_empno.nextval from dual" identity="true" /> 
+      		1sqlStatement="select seq_empno.nextval from dual" identity="true" /> 
       	-->
     </table>
 

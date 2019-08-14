@@ -14,5 +14,5 @@ spring:
 logging:
   level:
     com:
-      example: trace
+      example: trace 
     
