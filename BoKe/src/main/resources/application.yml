@@ -5,14 +5,23 @@ spring:
          suffix: .jsp
          
     datasource:
-      url: jdbc:mysql://localhost:3306/scott
+      url: jdbc:mysql://localhost:3306/blogs
       username: root
       password: a
       driver-class-name: com.mysql.jdbc.Driver
+     
+#发送地址
+mail:
+  fromMail:
+    addr: 1447076355@qq.com
+      
+#修改端口
+server:
+  port: 80
       
 #  日志输出
 logging:
   level:
     com:
-      example: trace 
+      example: debug 
     
