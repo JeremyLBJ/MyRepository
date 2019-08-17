@@ -1,4 +1,4 @@
-package com.lhd.demo;
+package com.lhd;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;

@@ -20,6 +20,10 @@
     <result column="readCnt" jdbcType="INTEGER" property="readcnt" />
     <result column="agreeCnt" jdbcType="INTEGER" property="agreecnt" />
     <result column="commCnt" jdbcType="INTEGER" property="commcnt" />
+    
+    <association property="category" column="categoryId" fetchType="lazy"
+    select="com.lhd.dao.CategoryMapper.selectByPrimaryKey"></association>
+    
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.lhd.bean.Article">
     <!--

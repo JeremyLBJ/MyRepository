@@ -198,4 +198,10 @@ public class Category {
     public void setPid(Integer pid) {
         this.pid = pid;
     }
+
+	@Override
+	public String toString() {
+		return "Category [id=" + id + ", name=" + name + ", url=" + url + ", sort=" + sort + ", introduce=" + introduce
+				+ ", pid=" + pid + "]";
+	}
 }

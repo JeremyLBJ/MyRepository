@@ -23,5 +23,5 @@ server:
 logging:
   level:
     com:
-      example: debug 
+      lhd: trace 
     
