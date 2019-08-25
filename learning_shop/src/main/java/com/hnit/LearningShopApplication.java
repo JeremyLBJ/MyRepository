@@ -8,11 +8,6 @@ public class LearningShopApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(LearningShopApplication.class, args);
-	
-		//  iii
-	
-	//cfdsfdsfsdf
-	
 	}
 
 }
