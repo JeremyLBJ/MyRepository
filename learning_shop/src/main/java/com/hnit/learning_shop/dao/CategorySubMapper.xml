@@ -3,7 +3,7 @@
 <mapper namespace="com.hnit.learning_shop.dao.CategorySubMapper" >
   <resultMap id="BaseResultMap" type="com.hnit.learning_shop.entity.CategorySub" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="cid" property="cid" jdbcType="INTEGER" />
+    <result column="catid" property="catid" jdbcType="INTEGER" />
     <result column="sub_cat_name" property="subCatName" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -65,7 +65,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, cid, sub_cat_name
+    id, catid, sub_cat_name
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.hnit.learning_shop.entity.CategorySubExample" >
     select
@@ -101,8 +101,8 @@
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into category_sub (cid, sub_cat_name)
-    values (#{cid,jdbcType=INTEGER}, #{subCatName,jdbcType=VARCHAR})
+    insert into category_sub (catid, sub_cat_name)
+    values (#{catid,jdbcType=INTEGER}, #{subCatName,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.hnit.learning_shop.entity.CategorySub" >
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
@@ -110,16 +110,16 @@
     </selectKey>
     insert into category_sub
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="cid != null" >
-        cid,
+      <if test="catid != null" >
+        catid,
       </if>
       <if test="subCatName != null" >
         sub_cat_name,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="cid != null" >
-        #{cid,jdbcType=INTEGER},
+      <if test="catid != null" >
+        #{catid,jdbcType=INTEGER},
       </if>
       <if test="subCatName != null" >
         #{subCatName,jdbcType=VARCHAR},
@@ -138,8 +138,8 @@
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.cid != null" >
-        cid = #{record.cid,jdbcType=INTEGER},
+      <if test="record.catid != null" >
+        catid = #{record.catid,jdbcType=INTEGER},
       </if>
       <if test="record.subCatName != null" >
         sub_cat_name = #{record.subCatName,jdbcType=VARCHAR},
@@ -152,7 +152,7 @@
   <update id="updateByExample" parameterType="map" >
     update category_sub
     set id = #{record.id,jdbcType=INTEGER},
-      cid = #{record.cid,jdbcType=INTEGER},
+      catid = #{record.catid,jdbcType=INTEGER},
       sub_cat_name = #{record.subCatName,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -161,8 +161,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.hnit.learning_shop.entity.CategorySub" >
     update category_sub
     <set >
-      <if test="cid != null" >
-        cid = #{cid,jdbcType=INTEGER},
+      <if test="catid != null" >
+        catid = #{catid,jdbcType=INTEGER},
       </if>
       <if test="subCatName != null" >
         sub_cat_name = #{subCatName,jdbcType=VARCHAR},
@@ -172,7 +172,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hnit.learning_shop.entity.CategorySub" >
     update category_sub
-    set cid = #{cid,jdbcType=INTEGER},
+    set catid = #{catid,jdbcType=INTEGER},
       sub_cat_name = #{subCatName,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>

@@ -19,7 +19,7 @@ spring:
 logging:
   level:
     com:
-      jt: error
+      hnit: debug
 server:
   port: 80
 

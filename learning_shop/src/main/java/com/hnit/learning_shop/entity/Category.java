@@ -1,14 +1,26 @@
 package com.hnit.learning_shop.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+@JsonIgnoreProperties(value = { "hibernateLazyInitializer", "handler" })
 public class Category implements Serializable {
     private Integer id;
 
     private String categoryName;
+    
+    private List<CategorySub> subCatList;
+    
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
+    public void setSubCatList(List<CategorySub> subCatList) {
+		this.subCatList = subCatList;
+	}
+    public List<CategorySub> getSubCatList() {
+		return subCatList;
+	}
     public Integer getId() {
         return id;
     }

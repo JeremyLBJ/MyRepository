@@ -5,11 +5,23 @@ import java.io.Serializable;
 public class CategorySub implements Serializable {
     private Integer id;
 
-    private Integer cid;
+    private Integer catid;
 
     private String subCatName;
 
-    private static final long serialVersionUID = 1L;
+    private boolean active;
+    
+    
+
+	public boolean getActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+	private static final long serialVersionUID = 1L;
 
     public Integer getId() {
         return id;
@@ -19,12 +31,12 @@ public class CategorySub implements Serializable {
         this.id = id;
     }
 
-    public Integer getCid() {
-        return cid;
+    public Integer getCatid() {
+        return catid;
     }
 
-    public void setCid(Integer cid) {
-        this.cid = cid;
+    public void setCatid(Integer catid) {
+        this.catid = catid;
     }
 
     public String getSubCatName() {
@@ -42,7 +54,7 @@ public class CategorySub implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", cid=").append(cid);
+        sb.append(", catid=").append(catid);
         sb.append(", subCatName=").append(subCatName);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
