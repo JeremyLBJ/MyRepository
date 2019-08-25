@@ -1,0 +1,32 @@
+#DB Configuration:
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/learning_shop?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: abc
+
+  #Redis
+  redis:
+    host: www.hujiatai.cn
+    port: 6379
+  #mvc
+  mvc:
+    view:
+      prefix: /WEB-INF/jsps/
+      suffix: .jsp
+
+logging:
+  level:
+    com:
+      jt: error
+server:
+  port: 80
+
+# web端登录界面
+my:
+  security:
+    browser:
+      loginPage: /login.jsp
+# 登录成功后的处理方式（跳转，返回json）
+#my.security.browser.loginType = REDIRECT
