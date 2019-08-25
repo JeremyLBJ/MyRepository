@@ -13,6 +13,8 @@ public class CourseController {
 
 	@Autowired
 	private CourseService courseService;
+	
+	//查询所有的课程分类（一级）
 	@RequestMapping("learning-list")
 	public String queryAllCategory(Model model){
 		model.addAttribute("categoryList",courseService.queryAllCategory());

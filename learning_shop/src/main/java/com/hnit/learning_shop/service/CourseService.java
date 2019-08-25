@@ -20,4 +20,7 @@ public class CourseService {
 	public List<Category> queryAllCategory(){
 		return categoryMapper.selectByExample(null);
 	}
+	
+	
+	
 }
