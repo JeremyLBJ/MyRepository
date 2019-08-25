@@ -3,10 +3,10 @@
 <mapper namespace="com.hnit.learning_shop.dao.CourseBaseMapper" >
   <resultMap id="BaseResultMap" type="com.hnit.learning_shop.entity.CourseBase" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="cname" property="cname" jdbcType="INTEGER" />
+    <result column="cname" property="cname" jdbcType="VARCHAR" />
     <result column="catid" property="catid" jdbcType="INTEGER" />
     <result column="tid" property="tid" jdbcType="INTEGER" />
-    <result column="grade" property="grade" jdbcType="INTEGER" />
+    <result column="grade" property="grade" jdbcType="VARCHAR" />
     <result column="c_desc" property="cDesc" jdbcType="VARCHAR" />
     <result column="price" property="price" jdbcType="DOUBLE" />
     <result column="old_pricee" property="oldPricee" jdbcType="DOUBLE" />
@@ -115,8 +115,8 @@
       grade, c_desc, price, 
       old_pricee, start_time, end_time, 
       pic, learncount)
-    values (#{cname,jdbcType=INTEGER}, #{catid,jdbcType=INTEGER}, #{tid,jdbcType=INTEGER}, 
-      #{grade,jdbcType=INTEGER}, #{cDesc,jdbcType=VARCHAR}, #{price,jdbcType=DOUBLE}, 
+    values (#{cname,jdbcType=VARCHAR}, #{catid,jdbcType=INTEGER}, #{tid,jdbcType=INTEGER}, 
+      #{grade,jdbcType=VARCHAR}, #{cDesc,jdbcType=VARCHAR}, #{price,jdbcType=DOUBLE}, 
       #{oldPricee,jdbcType=DOUBLE}, #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, 
       #{pic,jdbcType=VARCHAR}, #{learncount,jdbcType=INTEGER})
   </insert>
@@ -162,7 +162,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="cname != null" >
-        #{cname,jdbcType=INTEGER},
+        #{cname,jdbcType=VARCHAR},
       </if>
       <if test="catid != null" >
         #{catid,jdbcType=INTEGER},
@@ -171,7 +171,7 @@
         #{tid,jdbcType=INTEGER},
       </if>
       <if test="grade != null" >
-        #{grade,jdbcType=INTEGER},
+        #{grade,jdbcType=VARCHAR},
       </if>
       <if test="cDesc != null" >
         #{cDesc,jdbcType=VARCHAR},
@@ -209,7 +209,7 @@
         id = #{record.id,jdbcType=INTEGER},
       </if>
       <if test="record.cname != null" >
-        cname = #{record.cname,jdbcType=INTEGER},
+        cname = #{record.cname,jdbcType=VARCHAR},
       </if>
       <if test="record.catid != null" >
         catid = #{record.catid,jdbcType=INTEGER},
@@ -218,7 +218,7 @@
         tid = #{record.tid,jdbcType=INTEGER},
       </if>
       <if test="record.grade != null" >
-        grade = #{record.grade,jdbcType=INTEGER},
+        grade = #{record.grade,jdbcType=VARCHAR},
       </if>
       <if test="record.cDesc != null" >
         c_desc = #{record.cDesc,jdbcType=VARCHAR},
@@ -249,10 +249,10 @@
   <update id="updateByExample" parameterType="map" >
     update course_base
     set id = #{record.id,jdbcType=INTEGER},
-      cname = #{record.cname,jdbcType=INTEGER},
+      cname = #{record.cname,jdbcType=VARCHAR},
       catid = #{record.catid,jdbcType=INTEGER},
       tid = #{record.tid,jdbcType=INTEGER},
-      grade = #{record.grade,jdbcType=INTEGER},
+      grade = #{record.grade,jdbcType=VARCHAR},
       c_desc = #{record.cDesc,jdbcType=VARCHAR},
       price = #{record.price,jdbcType=DOUBLE},
       old_pricee = #{record.oldPricee,jdbcType=DOUBLE},
@@ -268,7 +268,7 @@
     update course_base
     <set >
       <if test="cname != null" >
-        cname = #{cname,jdbcType=INTEGER},
+        cname = #{cname,jdbcType=VARCHAR},
       </if>
       <if test="catid != null" >
         catid = #{catid,jdbcType=INTEGER},
@@ -277,7 +277,7 @@
         tid = #{tid,jdbcType=INTEGER},
       </if>
       <if test="grade != null" >
-        grade = #{grade,jdbcType=INTEGER},
+        grade = #{grade,jdbcType=VARCHAR},
       </if>
       <if test="cDesc != null" >
         c_desc = #{cDesc,jdbcType=VARCHAR},
@@ -305,10 +305,10 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hnit.learning_shop.entity.CourseBase" >
     update course_base
-    set cname = #{cname,jdbcType=INTEGER},
+    set cname = #{cname,jdbcType=VARCHAR},
       catid = #{catid,jdbcType=INTEGER},
       tid = #{tid,jdbcType=INTEGER},
-      grade = #{grade,jdbcType=INTEGER},
+      grade = #{grade,jdbcType=VARCHAR},
       c_desc = #{cDesc,jdbcType=VARCHAR},
       price = #{price,jdbcType=DOUBLE},
       old_pricee = #{oldPricee,jdbcType=DOUBLE},

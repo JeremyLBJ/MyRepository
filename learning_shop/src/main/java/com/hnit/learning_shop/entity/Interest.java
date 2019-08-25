@@ -2,10 +2,12 @@ package com.hnit.learning_shop.entity;
 
 import java.io.Serializable;
 
-public class Category implements Serializable {
+public class Interest implements Serializable {
     private Integer id;
 
-    private String categoryName;
+    private Integer catid;
+
+    private String name;
 
     private static final long serialVersionUID = 1L;
 
@@ -17,12 +19,20 @@ public class Category implements Serializable {
         this.id = id;
     }
 
-    public String getCategoryName() {
-        return categoryName;
+    public Integer getCatid() {
+        return catid;
     }
 
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName == null ? null : categoryName.trim();
+    public void setCatid(Integer catid) {
+        this.catid = catid;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
     }
 
     @Override
@@ -32,7 +42,8 @@ public class Category implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", categoryName=").append(categoryName);
+        sb.append(", catid=").append(catid);
+        sb.append(", name=").append(name);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

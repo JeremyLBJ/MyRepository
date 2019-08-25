@@ -175,52 +175,62 @@ public class CourseBaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andCnameEqualTo(Integer value) {
+        public Criteria andCnameEqualTo(String value) {
             addCriterion("cname =", value, "cname");
             return (Criteria) this;
         }
 
-        public Criteria andCnameNotEqualTo(Integer value) {
+        public Criteria andCnameNotEqualTo(String value) {
             addCriterion("cname <>", value, "cname");
             return (Criteria) this;
         }
 
-        public Criteria andCnameGreaterThan(Integer value) {
+        public Criteria andCnameGreaterThan(String value) {
             addCriterion("cname >", value, "cname");
             return (Criteria) this;
         }
 
-        public Criteria andCnameGreaterThanOrEqualTo(Integer value) {
+        public Criteria andCnameGreaterThanOrEqualTo(String value) {
             addCriterion("cname >=", value, "cname");
             return (Criteria) this;
         }
 
-        public Criteria andCnameLessThan(Integer value) {
+        public Criteria andCnameLessThan(String value) {
             addCriterion("cname <", value, "cname");
             return (Criteria) this;
         }
 
-        public Criteria andCnameLessThanOrEqualTo(Integer value) {
+        public Criteria andCnameLessThanOrEqualTo(String value) {
             addCriterion("cname <=", value, "cname");
             return (Criteria) this;
         }
 
-        public Criteria andCnameIn(List<Integer> values) {
+        public Criteria andCnameLike(String value) {
+            addCriterion("cname like", value, "cname");
+            return (Criteria) this;
+        }
+
+        public Criteria andCnameNotLike(String value) {
+            addCriterion("cname not like", value, "cname");
+            return (Criteria) this;
+        }
+
+        public Criteria andCnameIn(List<String> values) {
             addCriterion("cname in", values, "cname");
             return (Criteria) this;
         }
 
-        public Criteria andCnameNotIn(List<Integer> values) {
+        public Criteria andCnameNotIn(List<String> values) {
             addCriterion("cname not in", values, "cname");
             return (Criteria) this;
         }
 
-        public Criteria andCnameBetween(Integer value1, Integer value2) {
+        public Criteria andCnameBetween(String value1, String value2) {
             addCriterion("cname between", value1, value2, "cname");
             return (Criteria) this;
         }
 
-        public Criteria andCnameNotBetween(Integer value1, Integer value2) {
+        public Criteria andCnameNotBetween(String value1, String value2) {
             addCriterion("cname not between", value1, value2, "cname");
             return (Criteria) this;
         }
@@ -355,52 +365,62 @@ public class CourseBaseExample {
             return (Criteria) this;
         }
 
-        public Criteria andGradeEqualTo(Integer value) {
+        public Criteria andGradeEqualTo(String value) {
             addCriterion("grade =", value, "grade");
             return (Criteria) this;
         }
 
-        public Criteria andGradeNotEqualTo(Integer value) {
+        public Criteria andGradeNotEqualTo(String value) {
             addCriterion("grade <>", value, "grade");
             return (Criteria) this;
         }
 
-        public Criteria andGradeGreaterThan(Integer value) {
+        public Criteria andGradeGreaterThan(String value) {
             addCriterion("grade >", value, "grade");
             return (Criteria) this;
         }
 
-        public Criteria andGradeGreaterThanOrEqualTo(Integer value) {
+        public Criteria andGradeGreaterThanOrEqualTo(String value) {
             addCriterion("grade >=", value, "grade");
             return (Criteria) this;
         }
 
-        public Criteria andGradeLessThan(Integer value) {
+        public Criteria andGradeLessThan(String value) {
             addCriterion("grade <", value, "grade");
             return (Criteria) this;
         }
 
-        public Criteria andGradeLessThanOrEqualTo(Integer value) {
+        public Criteria andGradeLessThanOrEqualTo(String value) {
             addCriterion("grade <=", value, "grade");
             return (Criteria) this;
         }
 
-        public Criteria andGradeIn(List<Integer> values) {
+        public Criteria andGradeLike(String value) {
+            addCriterion("grade like", value, "grade");
+            return (Criteria) this;
+        }
+
+        public Criteria andGradeNotLike(String value) {
+            addCriterion("grade not like", value, "grade");
+            return (Criteria) this;
+        }
+
+        public Criteria andGradeIn(List<String> values) {
             addCriterion("grade in", values, "grade");
             return (Criteria) this;
         }
 
-        public Criteria andGradeNotIn(List<Integer> values) {
+        public Criteria andGradeNotIn(List<String> values) {
             addCriterion("grade not in", values, "grade");
             return (Criteria) this;
         }
 
-        public Criteria andGradeBetween(Integer value1, Integer value2) {
+        public Criteria andGradeBetween(String value1, String value2) {
             addCriterion("grade between", value1, value2, "grade");
             return (Criteria) this;
         }
 
-        public Criteria andGradeNotBetween(Integer value1, Integer value2) {
+        public Criteria andGradeNotBetween(String value1, String value2) {
             addCriterion("grade not between", value1, value2, "grade");
             return (Criteria) this;
         }

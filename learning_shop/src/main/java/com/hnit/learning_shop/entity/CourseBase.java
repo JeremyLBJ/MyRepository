@@ -6,13 +6,13 @@ import java.util.Date;
 public class CourseBase implements Serializable {
     private Integer id;
 
-    private Integer cname;
+    private String cname;
 
     private Integer catid;
 
     private Integer tid;
 
-    private Integer grade;
+    private String grade;
 
     private String cDesc;
 
@@ -38,12 +38,12 @@ public class CourseBase implements Serializable {
         this.id = id;
     }
 
-    public Integer getCname() {
+    public String getCname() {
         return cname;
     }
 
-    public void setCname(Integer cname) {
-        this.cname = cname;
+    public void setCname(String cname) {
+        this.cname = cname == null ? null : cname.trim();
     }
 
     public Integer getCatid() {
@@ -62,12 +62,12 @@ public class CourseBase implements Serializable {
         this.tid = tid;
     }
 
-    public Integer getGrade() {
+    public String getGrade() {
         return grade;
     }
 
-    public void setGrade(Integer grade) {
-        this.grade = grade;
+    public void setGrade(String grade) {
+        this.grade = grade == null ? null : grade.trim();
     }
 
     public String getcDesc() {

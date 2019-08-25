@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.hnit.learning_shop.dao.CategoryMapper" >
-  <resultMap id="BaseResultMap" type="com.hnit.learning_shop.entity.Category" >
+<mapper namespace="com.hnit.learning_shop.dao.InterestMapper" >
+  <resultMap id="BaseResultMap" type="com.hnit.learning_shop.entity.Interest" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="category_name" property="categoryName" jdbcType="VARCHAR" />
+    <result column="catid" property="catid" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -64,15 +65,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, category_name
+    id, catid, name
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.hnit.learning_shop.entity.CategoryExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.hnit.learning_shop.entity.InterestExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from category
+    from interest
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -83,56 +84,65 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from category
+    from interest
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from category
+    delete from interest
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.hnit.learning_shop.entity.CategoryExample" >
-    delete from category
+  <delete id="deleteByExample" parameterType="com.hnit.learning_shop.entity.InterestExample" >
+    delete from interest
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.hnit.learning_shop.entity.Category" >
+  <insert id="insert" parameterType="com.hnit.learning_shop.entity.Interest" >
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into category (category_name)
-    values (#{categoryName,jdbcType=VARCHAR})
+    insert into interest (catid, name)
+    values (#{catid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.hnit.learning_shop.entity.Category" >
+  <insert id="insertSelective" parameterType="com.hnit.learning_shop.entity.Interest" >
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into category
+    insert into interest
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="categoryName != null" >
-        category_name,
+      <if test="catid != null" >
+        catid,
+      </if>
+      <if test="name != null" >
+        name,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="categoryName != null" >
-        #{categoryName,jdbcType=VARCHAR},
+      <if test="catid != null" >
+        #{catid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.hnit.learning_shop.entity.CategoryExample" resultType="java.lang.Integer" >
-    select count(*) from category
+  <select id="countByExample" parameterType="com.hnit.learning_shop.entity.InterestExample" resultType="java.lang.Integer" >
+    select count(*) from interest
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update category
+    update interest
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.categoryName != null" >
-        category_name = #{record.categoryName,jdbcType=VARCHAR},
+      <if test="record.catid != null" >
+        catid = #{record.catid,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -140,25 +150,30 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update category
+    update interest
     set id = #{record.id,jdbcType=INTEGER},
-      category_name = #{record.categoryName,jdbcType=VARCHAR}
+      catid = #{record.catid,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hnit.learning_shop.entity.Category" >
-    update category
+  <update id="updateByPrimaryKeySelective" parameterType="com.hnit.learning_shop.entity.Interest" >
+    update interest
     <set >
-      <if test="categoryName != null" >
-        category_name = #{categoryName,jdbcType=VARCHAR},
+      <if test="catid != null" >
+        catid = #{catid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.hnit.learning_shop.entity.Category" >
-    update category
-    set category_name = #{categoryName,jdbcType=VARCHAR}
+  <update id="updateByPrimaryKey" parameterType="com.hnit.learning_shop.entity.Interest" >
+    update interest
+    set catid = #{catid,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
