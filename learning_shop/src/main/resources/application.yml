@@ -13,7 +13,7 @@ spring:
   #mvc
   mvc:
     view:
-      prefix: /WEB-INF/jsp/
+      prefix: /WEB-INF/jsps/
       suffix: .jsp
 
 logging:
