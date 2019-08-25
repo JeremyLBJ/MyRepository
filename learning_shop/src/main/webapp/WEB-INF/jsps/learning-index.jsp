@@ -841,6 +841,8 @@
         function updateInterest(){
         	$('.interest-box').show();
         }
+        
+        
     </script>
     <script src="../js/page-learing-index.js"></script>
 </body>
