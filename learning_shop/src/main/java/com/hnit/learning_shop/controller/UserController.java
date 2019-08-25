@@ -48,6 +48,7 @@ public class UserController {
 	@RequestMapping("/logout")
 	   public String logout(HttpSession session,HttpServletRequest request,HttpServletResponse response) {
 		XcUser xcuser = (XcUser) request.getSession().getAttribute("user");
+		//清空缓存
 		if(xcuser!=null) {
 			request.getSession().removeAttribute("user");
 		}
@@ -94,10 +95,13 @@ public class UserController {
 					model.addAttribute("msg","账号或密码错误");
 					return "learning-sign";
 				}else{
-					Cookie cookie=new Cookie("uname",user.getUsername());
-					cookie.setMaxAge(30*60);
-					cookie.setPath("/");
-					response.addCookie(cookie);
+					if("on".equals(request.getParameter("check"))){
+						Cookie cookie=new Cookie("uname",user.getUsername());
+						//七天免登陆，单位为秒
+						cookie.setMaxAge(60 * 60 * 24 * 7);
+						cookie.setPath("/");
+						response.addCookie(cookie);
+					}
 					session.setAttribute("user", user);
 					return "redirect:index";
 				}	
