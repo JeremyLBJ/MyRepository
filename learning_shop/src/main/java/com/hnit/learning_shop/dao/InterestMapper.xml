@@ -3,7 +3,6 @@
 <mapper namespace="com.hnit.learning_shop.dao.InterestMapper" >
   <resultMap id="BaseResultMap" type="com.hnit.learning_shop.entity.Interest" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="cid" property="cid" jdbcType="INTEGER" />
     <result column="catid" property="catid" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
   </resultMap>
@@ -66,7 +65,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, cid, catid, name
+    id, catid, name
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.hnit.learning_shop.entity.InterestExample" >
     select
@@ -102,10 +101,8 @@
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into interest (cid, catid, name
-      )
-    values (#{cid,jdbcType=INTEGER}, #{catid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}
-      )
+    insert into interest (catid, name)
+    values (#{catid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.hnit.learning_shop.entity.Interest" >
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
@@ -113,9 +110,6 @@
     </selectKey>
     insert into interest
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="cid != null" >
-        cid,
-      </if>
       <if test="catid != null" >
         catid,
       </if>
@@ -124,9 +118,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="cid != null" >
-        #{cid,jdbcType=INTEGER},
-      </if>
       <if test="catid != null" >
         #{catid,jdbcType=INTEGER},
       </if>
@@ -147,9 +138,6 @@
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.cid != null" >
-        cid = #{record.cid,jdbcType=INTEGER},
-      </if>
       <if test="record.catid != null" >
         catid = #{record.catid,jdbcType=INTEGER},
       </if>
@@ -164,7 +152,6 @@
   <update id="updateByExample" parameterType="map" >
     update interest
     set id = #{record.id,jdbcType=INTEGER},
-      cid = #{record.cid,jdbcType=INTEGER},
       catid = #{record.catid,jdbcType=INTEGER},
       name = #{record.name,jdbcType=VARCHAR}
     <if test="_parameter != null" >
@@ -174,9 +161,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.hnit.learning_shop.entity.Interest" >
     update interest
     <set >
-      <if test="cid != null" >
-        cid = #{cid,jdbcType=INTEGER},
-      </if>
       <if test="catid != null" >
         catid = #{catid,jdbcType=INTEGER},
       </if>
@@ -188,8 +172,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hnit.learning_shop.entity.Interest" >
     update interest
-    set cid = #{cid,jdbcType=INTEGER},
-      catid = #{catid,jdbcType=INTEGER},
+    set catid = #{catid,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>

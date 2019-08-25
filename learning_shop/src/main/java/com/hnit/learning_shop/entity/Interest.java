@@ -5,8 +5,6 @@ import java.io.Serializable;
 public class Interest implements Serializable {
     private Integer id;
 
-    private Integer cid;
-
     private Integer catid;
 
     private String name;
@@ -19,14 +17,6 @@ public class Interest implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getCid() {
-        return cid;
-    }
-
-    public void setCid(Integer cid) {
-        this.cid = cid;
     }
 
     public Integer getCatid() {
@@ -52,7 +42,6 @@ public class Interest implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", cid=").append(cid);
         sb.append(", catid=").append(catid);
         sb.append(", name=").append(name);
         sb.append(", serialVersionUID=").append(serialVersionUID);
