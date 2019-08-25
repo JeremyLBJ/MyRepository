@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -37,11 +38,18 @@
                     </div>
 
                     <div class="sign-in">
-                        <!-- 未登录 -->
-                        <!--<a href="#">登录 </a> <span> | </span> <a href="#"> 注册</a>-->
-                        <!-- 登录 -->
-
-                        <a href="#" class="personal">个人中心<span class="personalIco"></span></a> <a href="#" class="myInfo"><img src="../img/asset-myImg.jpg" alt=""> 孙老师</a>
+                    	<c:choose>
+                    		<c:when test="${user==null}">
+                    			<!-- 未登录 -->
+                        		<a href="tologin">登录 </a> <span> | </span> <a href="toreg"> 注册</a>
+                    		</c:when>
+                    		<c:otherwise>
+                    			<!-- 登录 -->
+                        		<a href="mypersonal" class="personal">个人中心<span class="personalIco"></span></a> <a href="#" class="myInfo"><img src="../img/asset-myImg.jpg" alt="">${user.name }</a>
+                    		</c:otherwise>
+                    	</c:choose>
+                        
+                        
                     </div>
                     <div class="starch"><input type="text" class="input-search" placeholder="输入查询关键词"><input type="submit" class="search-buttom"></div>
                 </div>
