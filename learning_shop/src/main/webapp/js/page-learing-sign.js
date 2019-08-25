@@ -14,7 +14,17 @@ $(window).resize(function() {
   minHeight();
 });
 // 登录注册切换
-$('.sign,.reg').click(function(){
+$('.sign').click(function(){
+	$(this).addClass('activ').siblings().removeClass('activ')
+	if($(this)[0].className[0] === 's'){
+		$('.signItem').addClass('show')
+    $('.regItem').removeClass('show')
+	}else{
+    $('.signItem').removeClass('show')
+    $('.regItem').addClass('show')
+	}
+})
+$('.reg').click(function(){
 	$(this).addClass('activ').siblings().removeClass('activ')
 	if($(this)[0].className[0] === 's'){
 		$('.signItem').addClass('show')
@@ -25,7 +35,7 @@ $('.sign,.reg').click(function(){
 	}
 })
 /* 登录验证 */
-$('.submitBut').click(function(){
+/*$('.submitBut').click(function(){
 	var username = $('[name=username]');
 	var password = $('[name=password]');
 	if(username.val() == ""){
@@ -38,10 +48,10 @@ $('.submitBut').click(function(){
 	}else{
 		password.siblings('.proof').hide();
 	}
-})
+})*/
 
 /* 注册验证 */
-$('.registerBut').click(function(){
+/*$('.registerBut').click(function(){
   var phone = $('[name=phone]');
   var phoneCode = $('[name=phoneCode]');
   var setPassword = $('[name=setPassword]');
@@ -75,7 +85,7 @@ $('.registerBut').click(function(){
 	}else{
     agreement.parent().siblings('.proof').show().text('请先阅读并勾选《学成网注册协议》');
 	}
-});
+});*/
 // 验证码
 function phoCde(){
   var mis = 10;
