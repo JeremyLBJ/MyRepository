@@ -21,10 +21,11 @@
     <!-- 页面 -->
     <div class="register">
         <!--<img src="../../assets/img/logoico.png" alt="logo" width="200">-->
-        <a href="" class="backIndex">返回首页</a>
+        <a href="index" class="backIndex">返回首页</a>
         <div class="register-body container text-center">
             <div class="signIco"><img src="../img/asset-logoIco.png" alt="logo" width="180"></div>
             <div class="signTit cl"></div>
+            <a href="tologin">已有账号，立即登录→</a>
             <form action="doLogin" method="post" id="logForm">
             
             
@@ -40,21 +41,28 @@
                 <div>
                     <p>短信验证码</p>
                     <p>
-                        <input type="text" name="phoneCode" class="textInput" placeholder="请输入11位手机号码">
+                        <input type="text" name="phoneCode" class="textInput" placeholder="请输入验证码">
+                        <span class="proof cl-orange"></span>
+                    </p>
+                </div>
+                <div>
+                    <p>用户名</p>
+                    <p>
+                        <input type="text" name="setusername" class="textInput" placeholder="请输入用户名">
                         <span class="proof cl-orange"></span>
                     </p>
                 </div>
                 <div>
                     <p>设置密码</p>
                     <p>
-                        <input type="text" name="setPassword" class="textInput" placeholder="请输入11位手机号码">
+                        <input type="text" name="setPassword" class="textInput" placeholder="请设置密码">
                         <span class="proof cl-orange"></span>
                     </p>
                 </div>
                 <div>
                     <p>确认密码</p>
                     <p>
-                        <input type="text" name="conPassword" class="textInput" placeholder="请输入11位手机号码">
+                        <input type="text" name="conPassword" class="textInput" placeholder="请确认密码">
                         <span class="proof cl-orange"></span>
                     </p>
                 </div>

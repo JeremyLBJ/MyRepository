@@ -25,19 +25,28 @@
         <div class="register-body container text-center">
             <div class="signIco"><img src="../img/asset-logoIco.png" alt="logo" width="180"></div>
             <div class="signTit cl"></div>
+            	<a href="toreg">暂无账号，前往注册→</a>
             <form action="doLogin" method="post" id="logForm">
             <div class="signItem show">
                 <div>
                     <p>账户名</p>
                     <p>
-                        <input type="text" name="username" class="textInput" value="<%=(request.getParameter("username")==null?"":request.getParameter("username"))%>">
+                        <input type="text" name="username" class="textInput" placeholder="请输入用户名" value="<%=(request.getParameter("username")==null?"":request.getParameter("username"))%>">
                         <span class="proof cl-orange"></span>
                     </p>
                 </div>
                 <div>
                     <p>登录密码</p>
                     <p>
-                        <input type="password" name="password" class="textInput">
+                        <input type="password" name="password" placeholder="请输入密码" class="textInput">
+                        <span class="proof cl-orange"></span>
+                    </p>
+                </div>
+                <div>
+                    <p>验证码</p>
+                    <p>
+                        <input type="text" name="code" placeholder="请输入验证码" class="textInput" style="width:195px">
+                        <img src="checkCode" width="150" height="33" onclick="this.src=this.src+'?'">
                         <span class="proof cl-orange"></span>
                     </p>
                 </div>
