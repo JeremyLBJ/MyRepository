@@ -21,7 +21,7 @@
     <!-- 页面 -->
     <div class="register">
         <!--<img src="../../assets/img/logoico.png" alt="logo" width="200">-->
-        <a href="" class="backIndex">返回首页</a>
+        <a href="index" class="backIndex">返回首页</a>
         <div class="register-body container text-center">
             <div class="signIco"><img src="../img/asset-logoIco.png" alt="logo" width="180"></div>
             <div class="signTit cl"></div>

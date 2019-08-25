@@ -26,10 +26,17 @@
             <div class="signIco"><img src="../img/asset-logoIco.png" alt="logo" width="180"></div>
             <div class="signTit cl"></div>
             <a href="tologin">已有账号，立即登录→</a>
-            <form action="doLogin" method="post" id="logForm">
+            <form action="doReg" method="post">
             
             
             <div class="regItem show">
+            	<div>
+                    <p>用户名</p>
+                    <p>
+                        <input type="text" name="setusername" class="textInput" placeholder="请输入用户名">
+                        <span class="proof cl-orange"></span>
+                    </p>
+                </div>
                 <div class="phoneBox">
                     <p>手机号码</p>
                     <p>
@@ -42,13 +49,6 @@
                     <p>短信验证码</p>
                     <p>
                         <input type="text" name="phoneCode" class="textInput" placeholder="请输入验证码">
-                        <span class="proof cl-orange"></span>
-                    </p>
-                </div>
-                <div>
-                    <p>用户名</p>
-                    <p>
-                        <input type="text" name="setusername" class="textInput" placeholder="请输入用户名">
                         <span class="proof cl-orange"></span>
                     </p>
                 </div>
@@ -67,10 +67,11 @@
                     </p>
                 </div>
                 <div class="setSing">
-                    <label><input type="checkbox" name="agreement">同意协议并注册 </label><a href="#">《学成网注册协议》</a>
+                    <label><input type="checkbox" name="agreement" onclick="check()" checked>同意协议并注册 </label><a href="#">《学成网注册协议》</a>
                     <span class="proof cl-orange"></span>
                 </div>
-                <div class="registerBut">注册</div>
+                <!-- <div class="registerBut" onclick="document.getElementById('regForm').submit()">注册</div> -->
+                <input type="submit" value="注册 " id="button_change" style="font-size:18px;width:350px;height:40px;background:#00a4ff;color:#f3f5f7;border:#00a4ff 1px;">
             </div>
             </form>
         </div>
@@ -83,6 +84,15 @@
     <script type="text/javascript" src="../plugins/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="../plugins/bootstrap/dist/js/bootstrap.js"></script>
     <script src="../js/page-learing-sign.js"></script>
+    <script type="text/javascript">
+    	function check(){
+   	 		if(!$("input[type='checkbox']").is(':checked')){
+   		 		$("#button_change").attr("disabled",true).css("background-color","#999");
+   	 		}else{
+   		 		$("#button_change").attr("disabled",false).css("background-color","#00a4ff");
+   	 		}
+   		}
+    </script>
 </body>
 <c:if test="${!empty msg}">
 	<script type="text/javascript">
