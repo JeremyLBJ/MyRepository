@@ -99,8 +99,8 @@
     		var email=$('.phone');
     		$.ajax({
     			type:"POST",
-    			url:"SendCode",
-    			data:email,
+    			url:"SendPhoneCode",
+    			data:phone,
     			cache:false,
     			success:function(){
     				alert("验证码已发送，请查收！");

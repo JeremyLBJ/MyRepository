@@ -88,7 +88,7 @@ $('.reg').click(function(){
 });*/
 // 验证码
 function phoCde(){
-  var mis = 10;
+  var mis = 60;
   var _this = $(this);
   _this.unbind('click')
 	_this.attr('disabled','true')
@@ -103,6 +103,6 @@ function phoCde(){
     _this.val(mis +' s')
     mis--
 	}
-  },500)
+  },1000)
 }
 $('.codeSub').bind('click',phoCde)
