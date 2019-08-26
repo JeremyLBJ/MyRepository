@@ -57,5 +57,15 @@ public class UserServiceImpl implements UserService{
 			return list.get(0);
 		return null;
 	}
+
+	@Override
+	public XcUser selectByUsername(String username) {
+		XcUserExample example = new XcUserExample();
+		example.createCriteria().andUsernameEqualTo(username);
+		List<XcUser> list = xcUserMapper.selectByExample(example);
+		if(list.size()>0)
+			return list.get(0);
+		return null;
+	}
 		
 }

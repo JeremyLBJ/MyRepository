@@ -209,14 +209,20 @@ public class UserController {
 		System.out.println(email);
 		if(code.equals(d.code)){
 			if(rpassword.equals(password)){
-				int result=userService.regUser(username, email, password);
-				if(result>0){
-					model.addAttribute("msg","注册成功！");
-					return "learning-sign";
+				XcUser user=userService.selectByUsername(username);
+				if(user==null){
+					int result=userService.regUser(username, email, password);
+					if(result>0){
+						model.addAttribute("msg","注册成功！");
+						return "learning-sign";
+					}else{
+						model.addAttribute("msg","注册失败！");
+						return "learning-reg";
+					}
 				}else{
-					model.addAttribute("msg","注册失败！");
+					model.addAttribute("msg","该用户名已被注册！");
 					return "learning-reg";
-				}
+				}			
 			}else{
 				model.addAttribute("msg","两次密码不匹配！");
 				return "learning-reg";
@@ -231,15 +237,24 @@ public class UserController {
 	 * 邮件发送
 	 * @param model
 	 * @param email
+	 * @return 
 	 */
 	@RequestMapping("/SendCode")
 	@ResponseBody
-	public void sendMail(Model model,String email){
+	public String sendMail(Model model,String email){
 		model.addAttribute("email", email);
 		MyUtils mu=new MyUtils();
-		mu.sendMail(email);			
+		XcUser user=userService.selectByEmail(email);
+		String res;
+		if(user==null){
+			mu.sendMail(email);
+			res="1";
+		}else{
+			res="0";
+		}
 		Data d=new Data();
 		System.out.println(d.code);
+		return res;
 	}
 	
 }
