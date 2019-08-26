@@ -57,6 +57,7 @@ public class IndexController {
 				break;
 			}
 		}
+		
 		for (Category cat : catList) {
 			for (CategorySub categorySub : cat.getCategorySubList()) {
 				for (Interest interest : interestList) {
@@ -73,7 +74,6 @@ public class IndexController {
 		
 		//初始化页面上的 老师
 		model.addAttribute("teacherList", teacherService.queryAllTeacher());
-		
 		
 		CategorySub html = courseService.queryCategorySubById(1);
 		PageHelper.startPage(1,4);
