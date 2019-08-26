@@ -4,7 +4,10 @@ spring:
     driverClassName: com.mysql.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/learning_shop?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
     username: root
-    password: a
+    password: abc
+  http:
+    multipart:
+          enabled: true # 默认支持文件上传
 
   #Redis
   redis:

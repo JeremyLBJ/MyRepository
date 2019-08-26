@@ -14,7 +14,7 @@ import com.hnit.learning_shop.service.UserService;
 public class UserServiceImpl implements UserService{
 
 	@Autowired
-	XcUserMapper xcUserMapper;	
+	private XcUserMapper xcUserMapper;	
 	
 	@Override
 	public XcUser login(String username,String password) {
@@ -27,7 +27,14 @@ public class UserServiceImpl implements UserService{
 		return null;
 	}
 
-	@Override
+	public List<XcUser> findAllUserList() {
+		return xcUserMapper.selectByExample(null);
+	}
+
+	public void saveUser(XcUser user) {
+		xcUserMapper.insertSelective(user);
+	}
+	
 	public void addUser(String username, String email, String password) {
 		XcUser record=new XcUser();
 		record.setUsername(username);
