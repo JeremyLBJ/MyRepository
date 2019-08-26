@@ -26,7 +26,7 @@
                     <div class="logo"><img src="../img/asset-logoIco.png" width="100%" alt=""></div>
                     <div class="nav-list">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="travel.index.html" target="_blank">首页</a></li>
+                            <li class="active"><a href="index" target="_blank">首页</a></li>
                             <li><a href="#">课程</a></li>
                             <li><a href="#">职业规划</a></li>
                             <li></li>
@@ -62,8 +62,8 @@
             <div class="nav nav-stacked text-left">
                 <div class="title">个人中心</div>
                 <div class="my-ico">
-                    <img src="../img/asset-myimg.jpg" alt="">
-                    <p>梦醒时分</p>
+                    <img src="../img/${user.userPic }" alt="">
+                    <p>${user.username }</p>
                 </div>
                 <div class="item">
                     <li class="active"><a href="" class="glyphicon glyphicon-tower"> 我的课程<i class="pull-right">></i></a></li>
