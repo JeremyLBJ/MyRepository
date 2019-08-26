@@ -53,7 +53,7 @@
                     		</c:when>
                     		<c:otherwise>
                     			<!-- 登录 -->
-                        		<a href="mypersonal" class="personal">个人中心<span class="personalIco"></span></a> <a href="#" class="myInfo"><img src="../img/asset-myImg.jpg" alt="">${user.name }</a>
+                        		<a href="mypersonal" class="personal">个人中心<span class="personalIco"></span></a> <a href="#" class="myInfo"><img src="../img/${user.userPic}" alt="">${user.name }</a>
                     		</c:otherwise>
                     	</c:choose>
                         
@@ -542,7 +542,7 @@
     
   
   function clickCheck(id){
-    	window.location.href="index/teacherInfo?id="+id;
+    	window.location.href="teacherInfo?id="+id;
     }
     
     
@@ -550,13 +550,12 @@
    	 $(this).addClass('active');
         $(this).siblings().removeClass('active');
         //根据难度进行查询课程
-      
-       
+
         var grade=$(this).text();
         var id=$(this).text();
         var catid=$(this).attr('id');  //机器学习工程师
         $('.Recommend .content_'+catid).html('');
-        $.get('index/queryBygrade',{grade:grade,catid:catid},function(data){
+        $.get('queryBygrade',{grade:grade,catid:catid},function(data){
        	 console.log(data);
        	 var html='';
        	 for(var i=0;i<data.data.length;i++){
@@ -580,7 +579,7 @@
         
          var catid=$(this).attr('id');
          $('.course-box .content_'+catid+' .cont-right').html('');
-         $.get('index/queryBygrade',{grade:grade,catid:catid},function(data){
+         $.get('queryBygrade',{grade:grade,catid:catid},function(data){
         	 console.log(data);
         	 
         	 var html='<div><img src="${pageContext.request.contextPath}/img/widget-ind-top.png" width="100%" alt=""></div>';

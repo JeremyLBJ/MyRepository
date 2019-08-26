@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hnit.learning_shop.entity.XcUser;
 import com.hnit.learning_shop.service.UserService;
-import com.hnit.learning_shop.util.Picture;
+import com.hnit.learning_shop.utils.Picture;
 
 @Controller
 public class UserController {

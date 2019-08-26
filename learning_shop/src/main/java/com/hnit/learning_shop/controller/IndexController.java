@@ -37,9 +37,7 @@ public class IndexController {
 		return "index-gray";
 	}
 	
-	
-	
-	
+
 	@Autowired
 	private IndexService indexService;
 

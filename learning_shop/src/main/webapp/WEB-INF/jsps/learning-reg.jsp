@@ -27,53 +27,54 @@
             <div class="signTit cl"></div>
             <a href="tologin">已有账号，立即登录→</a>
             <form action="doReg" method="post">
-            
-            
-            <div class="regItem show">
-            	<div>
-                    <p>用户名</p>
-                    <p>
-                        <input type="text" name="setusername" class="textInput" placeholder="请输入用户名">
-                        <span class="proof cl-orange"></span>
-                    </p>
-                </div>
-                <div class="phoneBox">
-                    <p>手机号码</p>
-                    <p>
-                        <input type="text" name="phone" class="textInput" placeholder="请输入11位手机号码">
-                        <input type="submit" class="codeSub" value="发送验证码">
-                        <span class="proof cl-orange"></span>
-                    </p>
-                </div>
-                <div>
-                    <p>短信验证码</p>
-                    <p>
-                        <input type="text" name="phoneCode" class="textInput" placeholder="请输入验证码">
-                        <span class="proof cl-orange"></span>
-                    </p>
-                </div>
-                <div>
-                    <p>设置密码</p>
-                    <p>
-                        <input type="text" name="setPassword" class="textInput" placeholder="请设置密码">
-                        <span class="proof cl-orange"></span>
-                    </p>
-                </div>
-                <div>
-                    <p>确认密码</p>
-                    <p>
-                        <input type="text" name="conPassword" class="textInput" placeholder="请确认密码">
-                        <span class="proof cl-orange"></span>
-                    </p>
-                </div>
-                <div class="setSing">
-                    <label><input type="checkbox" name="agreement" onclick="check()" checked>同意协议并注册 </label><a href="#">《学成网注册协议》</a>
-                    <span class="proof cl-orange"></span>
-                </div>
-                <!-- <div class="registerBut" onclick="document.getElementById('regForm').submit()">注册</div> -->
-                <input type="submit" value="注册 " id="button_change" style="font-size:18px;width:350px;height:40px;background:#00a4ff;color:#f3f5f7;border:#00a4ff 1px;">
-            </div>
-            </form>
+				<div class="regItem show">
+					<div>
+						<p>用户名</p>
+						<p>
+							<input type="text" name="setusername" class="textInput"
+								placeholder="请输入用户名"> <span class="proof cl-orange"></span>
+						</p>
+					</div>
+					<div class="phoneBox">
+						<p>手机号码</p>
+						<p>
+							<input type="text" name="phone" class="textInput"
+								placeholder="请输入11位手机号码"> <input type="submit"
+								class="codeSub" value="发送验证码"> <span
+								class="proof cl-orange"></span>
+						</p>
+					</div>
+					<div>
+						<p>短信验证码</p>
+						<p>
+							<input type="text" name="phoneCode" class="textInput"
+								placeholder="请输入验证码"> <span class="proof cl-orange"></span>
+						</p>
+					</div>
+					<div>
+						<p>设置密码</p>
+						<p>
+							<input type="text" name="setPassword" class="textInput"
+								placeholder="请设置密码"> <span class="proof cl-orange"></span>
+						</p>
+					</div>
+					<div>
+						<p>确认密码</p>
+						<p>
+							<input type="text" name="conPassword" class="textInput"
+								placeholder="请确认密码"> <span class="proof cl-orange"></span>
+						</p>
+					</div>
+					<div class="setSing">
+						<label><input type="checkbox" name="agreement"
+							onclick="check()" checked>同意协议并注册 </label><a href="#">《学成网注册协议》</a>
+						<span class="proof cl-orange"></span>
+					</div>
+					<!-- <div class="registerBut" onclick="document.getElementById('regForm').submit()">注册</div> -->
+					<input type="submit" value="注册 " id="button_change"
+						style="font-size: 18px; width: 350px; height: 40px; background: #00a4ff; color: #f3f5f7; border: #00a4ff 1px;">
+				</div>
+			</form>
         </div>
         <footer>
             <p><a href="#">关于我们</a><a href="#">联系我们</a><a href="#">客户服务</a><a href="#">管理团队</a><a href="#">新手指南</a><a href="#">合作伙伴</a></p>
