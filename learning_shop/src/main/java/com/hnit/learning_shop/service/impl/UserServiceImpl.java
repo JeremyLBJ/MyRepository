@@ -2,6 +2,7 @@ package com.hnit.learning_shop.service.impl;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,10 +18,11 @@ public class UserServiceImpl implements UserService{
 	XcUserMapper XcUserMapper;	
 	
 	@Override
-	public XcUser login(String username, String password) {
+	public XcUser login(String username,String password) {
+		
 		XcUserExample example = new XcUserExample();
 		example.createCriteria().andUsernameEqualTo(username).andPasswordEqualTo(password);
-		List<XcUser> list = XcUserMapper.selectByExample(example);
+		List<XcUser> list = XcUserMapper.selectByExample(null);
 		if(list.size()>0)
 			return list.get(0);
 		return null;

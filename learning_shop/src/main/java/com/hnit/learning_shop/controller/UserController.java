@@ -24,7 +24,7 @@ public class UserController {
 	UserService userService;
 
 	@RequestMapping("/tologin")
-	   public String login() {
+	   public String tologin() {
 	       return "learning-sign";
 	   }
 	
@@ -72,7 +72,7 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping("/doLogin")
-	public String login(Model model,String username,String password,String code
+	public String dologin(Model model,String username,String password,String code
 			,HttpSession session,HttpServletResponse response,HttpServletRequest request
 			){
 		XcUser user=null;
@@ -81,7 +81,7 @@ public class UserController {
 		model.addAttribute("code", code);
 		String ccode=(String) request.getSession().getAttribute("checkcode");
 		System.out.println(code);
-		System.out.println(ccode);
+		System.out.println(username+password);
 		if(username.trim().equals("") || username==null){
 			model.addAttribute("msg","账号不能为空");
 			return "learning-sign";

@@ -6,6 +6,9 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface CategorySubMapper {
+	
+	
+	List<CategorySub> selectByCid(int cid);
     int countByExample(CategorySubExample example);
 
     int deleteByExample(CategorySubExample example);
