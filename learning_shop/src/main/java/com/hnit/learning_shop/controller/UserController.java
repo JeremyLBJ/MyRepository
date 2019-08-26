@@ -1,6 +1,9 @@
 package com.hnit.learning_shop.controller;
 
+
 import java.io.IOException;
+import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
@@ -9,19 +12,30 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.hnit.learning_shop.entity.XcUser;
 import com.hnit.learning_shop.service.UserService;
+import com.hnit.learning_shop.utils.FtpUtils;
 import com.hnit.learning_shop.utils.Picture;
 
 @Controller
+@PropertySource("ftp.properties")
 public class UserController {
+	@Value("${filePathPre}")
+	private String filePathPre;
 	
 	@Autowired
-	UserService userService;
+	private UserService userService;
 
 	@RequestMapping("/tologin")
 	   public String login() {
@@ -137,4 +151,31 @@ public class UserController {
 		}
 	}
 	
+	/**
+	 * 查询所有的用户 未分页
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("findAllUserList")
+	@ResponseBody
+	public List<XcUser> findAllUserList(Model model){
+		return userService.findAllUserList();
+	}
+	/**
+	 * 去后台首页
+	 * @return
+	 */
+	@GetMapping("toAdmin")
+	public String toAdmin(){
+		return "redirect:/admin/index.html";
+	}
+	
+	@PostMapping("saveUser")
+	public String saveUser(XcUser user,@RequestParam("file")MultipartFile file) throws Exception{
+		String fileName = UUID.randomUUID() + file.getOriginalFilename();
+		user.setUserPic(filePathPre + fileName);
+		FtpUtils.sshSftp(file.getBytes(), fileName);
+		userService.saveUser(user);
+		return "redirect:/admin/user-list.html";
+	}
 }

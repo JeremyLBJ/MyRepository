@@ -25,5 +25,15 @@ public class UserServiceImpl implements UserService{
 			return list.get(0);
 		return null;
 	}
+
+	@Override
+	public List<XcUser> findAllUserList() {
+		return XcUserMapper.selectByExample(null);
+	}
+
+	@Override
+	public void saveUser(XcUser user) {
+		XcUserMapper.insertSelective(user);
+	}
 	
 }
