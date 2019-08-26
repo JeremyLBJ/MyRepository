@@ -156,7 +156,6 @@ public class UserController {
 	@RequestMapping("/doReg")
 	public String register(Model model,String username,String password,String rpassword,String code,String email
 			,HttpSession session,HttpServletResponse response,HttpServletRequest request){
-		XcUser user=null;
 		model.addAttribute("username", username);
 		model.addAttribute("email", email);
 		model.addAttribute("code", code);
