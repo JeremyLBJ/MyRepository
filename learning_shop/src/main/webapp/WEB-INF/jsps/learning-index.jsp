@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -37,11 +39,25 @@
                     </div>
 
                     <div class="sign-in">
+
                         <!-- 未登录 -->
                         <!--<a href="#">登录 </a> <span> | </span> <a href="#"> 注册</a>-->
                         <!-- 登录 -->
 
                         <a href="#" class="personal">个人中心<span class="personalIco"></span></a> <a href="#" class="myInfo"><img src="${pageContext.request.contextPath}/img/asset-myImg.jpg" alt=""> 孙老师</a>
+
+                    	<c:choose>
+                    		<c:when test="${user==null}">
+                    			<!-- 未登录 -->
+                        		<a href="tologin">登录 </a> <span> | </span> <a href="toreg"> 注册</a>
+                    		</c:when>
+                    		<c:otherwise>
+                    			<!-- 登录 -->
+                        		<a href="mypersonal" class="personal">个人中心<span class="personalIco"></span></a> <a href="#" class="myInfo"><img src="../img/asset-myImg.jpg" alt="">${user.name }</a>
+                    		</c:otherwise>
+                    	</c:choose>
+                        
+                        
                     </div>
                     <div class="starch"><input type="text" class="input-search" placeholder="输入查询关键词"><input type="submit" class="search-buttom"></div>
                 </div>
@@ -84,70 +100,21 @@
         <!--左侧列表导航-->
         <div class="travel-index-nav">
             <div class="citylistbox">
-                <div class="listbox hover">
-                    <div class="list">
-                        <dl><dt>编程入门</dt></dl>
-                    </div>
-                    <div class="box">
-
-                    </div>
-                </div>
-                <div class="listbox">
-                    <div class="list">
-                        <dl><dt>数据分析师</dt></dl>
-                    </div>
-                    <div class="box">机器学习工程师</div>
-                </div>
-                <div class="listbox">
-                    <div class="list">
-                        <dl>
-                            <dt>机器学习工程师</dt>
-                        </dl>
-                    </div>
-                    <div class="box">机器学习工程师</div>
-                </div>
-                <div class="listbox">
-                    <div class="list">
-                        <dl><dt>人工智能工程师</dt></dl>
-                    </div>
-                    <div class="box">人工智能工程师</div>
-                </div>
-                <div class="listbox">
-                    <div class="list">
-                        <dl><dt>全栈工程师</dt></dl>
-                    </div>
-                    <div class="box">全栈工程师</div>
-                </div>
-                <div class="listbox">
-                    <div class="list">
-                        <dl><dt> iOS工程师</dt></dl>
-                    </div>
-                    <div class="box">iOS工程师</div>
-                </div>
-                <div class="listbox">
-                    <div class="list">
-                        <dl><dt> VR 开发者</dt></dl>
-                    </div>
-                    <div class="box"> VR 开发者</div>
-                </div>
-                <div class="listbox">
-                    <div class="list">
-                        <dl><dt>商业预测分析师</dt></dl>
-                    </div>
-                    <div class="box">商业预测分析师</div>
-                </div>
-                <div class="listbox">
-                    <div class="list">
-                        <dl><dt> Java 工程师</dt></dl>
-                    </div>
-                    <div class="box"> Java 工程师</div>
-                </div>
-                <div class="listbox">
-                    <div class="list">
-                        <dl><dt> 前端开发工程师</dt></dl>
-                    </div>
-                    <div class="box">前端开发工程师</div>
-                </div>
+	            <c:forEach items="${catList }" var="cat" varStatus="vs">
+	                <div class="listbox">
+	                    <div class="list">
+	                        <dl><dt>${cat.categoryName }</dt></dl>
+	                    </div>
+	                    
+	                    <div class="box">
+	                   		<c:forEach items="${cat.categorySubList }" var="subCat">
+								<a href="/index/findBySubId/${subCat.id }" style="font-size: 14px">${subCat.subCatName }</a>
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							</c:forEach>
+	                    </div>
+	                    
+	                </div>
+	             </c:forEach>
             </div>
         </div>
         <div class="my-class-box">
@@ -171,13 +138,10 @@
         <div class="recommend-list">
             <div class="btn-group btn-group-justified">
                 <li class="btn btn-primary title"><a href="#">精品推荐</a></li>
-                <li class="btn btn-primary"><a href="#"> JQuery</a></li>
-                <li class="btn btn-primary"><a href="#">Spark</a></li>
-                <li class="btn btn-primary"><a href="#">MySQL</a></li>
-                <li class="btn btn-primary"><a href="#">JavaWeb</a></li>
-                <li class="btn btn-primary"><a href="#">MySQL</a></li>
-                <li class="btn btn-primary"><a href="#">JavaWeb</a></li>
-                <li class="btn btn-primary"><a href="javascript:void(0)" onclick="updateInterest()">修改兴趣</a></li>
+                <c:forEach items="${subCatList }" var="sub">
+	                <li class="btn btn-primary"><a href="#">${sub.subCatName }</a></li>
+                </c:forEach>
+                <li class="btn btn-primary"><a href="javascript:updateInterest()">修改兴趣</a></li>
             </div>
         </div>
         <div class="conten-list">
@@ -510,95 +474,62 @@
         <div class="interest-cont">
             <div class="top-tit">设置学习兴趣 <span>打造属于你自己的在线学习平台</span></div>
             <div class="item-box">
-                <div class="modal-open">
-                    <div class="item item-A">
-                        <div class="title">
-                            前端工程师
-                        </div>
-                        <div>
-                            <li>js</li>
-                            <li>Node.js</li>
-                            <li>Ajax</li>
-                            <li>React</li>
-                            <li>js</li>
-                            <li>js</li>
-                            <li>js</li>
-                            <li>Node.js</li>
-                            <li>Ajax</li>
-                            <li>React</li>
-                        </div>
-                    </div>
-                    <div class="item item-B">
-                        <div class="title">
-                            Java开发工程师
-                        </div>
-                        <div>
-                            <li>js</li>
-                            <li>js</li>
-                            <li>js</li>
-                            <li>js</li>
-                            <li>js</li>
-                            <li>js</li>
-                        </div>
-                    </div>
-                    <div class="item item-C">
-                        <div class="title">
-                            大数据研发
-                        </div>
-                        <div>
-                            <li>js</li>
-                            <li>js</li>
-                            <li>js</li>
-                            <li>js</li>
-                            <li>js</li>
-                            <li>js</li>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-open">
-                    <div class="item item-D">
-                        <div class="title">
-                            安卓开发工程师
-                        </div>
-                        <div>
-                            <li>js</li>
-                            <li>js</li>
-                            <li>js</li>
-                            <li>js</li>
-                            <li>js</li>
-                            <li>js</li>
-                        </div>
-                    </div>
-                    <div class="item item-E">
-                        <div class="title">
-                            IOS研发工程师
-                        </div>
-                        <div>
-                            <li>js</li>
-                            <li>js</li>
-                            <li>js</li>
-                            <li>js</li>
-                            <li>js</li>
-                            <li>js</li>
-                        </div>
-                    </div>
-                    <div class="item item-F">
-                        <div class="title">
-                            PHP研发工程师
-                        </div>
-                        <div>
-                            <li>js</li>
-                            <li>js</li>
-                            <li>js</li>
-                            <li>js</li>
-                            <li>js</li>
-                            <li>js</li>
-                        </div>
-                    </div>
-                </div>
+            <div class="modal-open" >
+	            <c:forEach items="${catList }" var="cat" varStatus="vs">
+		            <c:if test="${vs.index<3 }">
+		  				
+		                    <div class="item item-A">
+		                        <div class="title">
+		                       		     ${cat.categoryName }
+		                        </div>
+		                        <div>
+		                        	<c:forEach items="${cat.categorySubList }" var="subCat">
+		                          	  <li lang="${subCat.id }" class="${subCat.active?'active':'' }">${subCat.subCatName }</li>
+		                            </c:forEach>
+		                        </div>
+		                    </div>
+		             </c:if>
+	            </c:forEach>
+            </div>
+            <div class="modal-open" >
+	            <c:forEach items="${catList }" var="cat" varStatus="vs">
+		            <c:if test="${vs.index>=3 && vs.index <6 }">
+		  				
+		                    <div class="item item-B">
+		                        <div class="title">
+		                       		     ${cat.categoryName }
+		                        </div>
+		                        <div>
+		                        	<c:forEach items="${cat.categorySubList }" var="subCat">
+		                          	  <li lang="${subCat.id }">${subCat.subCatName }</li>
+		                            </c:forEach>
+		                        </div>
+		                    </div>
+		             </c:if>
+	            </c:forEach>
+            </div>
+            <div class="modal-open" >
+	            <c:forEach items="${catList }" var="cat" varStatus="vs">
+		            <c:if test="${vs.index>=6 && vs.index <9 }">
+		  				
+		                    <div class="item item-C">
+		                        <div class="title">
+		                       		     ${cat.categoryName }
+		                        </div>
+		                        <div>
+		                        	<c:forEach items="${cat.categorySubList }" var="subCat">
+		                          	  <li lang="${subCat.id }">${subCat.subCatName }</li>
+		                            </c:forEach>
+		                        </div>
+		                    </div>
+		             </c:if>
+	            </c:forEach>
+            </div>
+             
                 <div class="button">
                     <span class="pres">保存</span><span class="skip">下次再选</span>
                 </div>
+           
             </div>
         </div>
     </div>
@@ -611,7 +542,7 @@
     
   
   function clickCheck(id){
-    	window.location.href="teacherInfo?id="+id;
+    	window.location.href="index/teacherInfo?id="+id;
     }
     
     
@@ -625,7 +556,7 @@
         var id=$(this).text();
         var catid=$(this).attr('id');  //机器学习工程师
         $('.Recommend .content_'+catid).html('');
-        $.get('queryBygrade',{grade:grade,catid:catid},function(data){
+        $.get('index/queryBygrade',{grade:grade,catid:catid},function(data){
        	 console.log(data);
        	 var html='';
        	 for(var i=0;i<data.data.length;i++){
@@ -649,7 +580,7 @@
         
          var catid=$(this).attr('id');
          $('.course-box .content_'+catid+' .cont-right').html('');
-         $.get('queryBygrade',{grade:grade,catid:catid},function(data){
+         $.get('index/queryBygrade',{grade:grade,catid:catid},function(data){
         	 console.log(data);
         	 
         	 var html='<div><img src="${pageContext.request.contextPath}/img/widget-ind-top.png" width="100%" alt=""></div>';
@@ -723,7 +654,7 @@
             $(this).find('span').addClass('hide')
         })
 
-
+		
         $(function() {
             $('.interest-box .interest-cont li').click(function() {
                 if ($(this).hasClass('active')) {
@@ -736,19 +667,22 @@
                 $('.interest-box').hide();
             })
             $('.button .pres').click(function() {
+            	var ids = new Array();
+                $(".interest-box .interest-cont li.active").each(function(index,item) {
+                    ids[index] = $(this).attr("lang");
+                });
                 $('.interest-box').hide();
+                window.location.href = "index/saveInterest?ids="+ids;
             })
             $('.button .skip').click(function() {
                 $('.interest-box').hide();
             })
         })
         
-        //修改兴趣
-        function updateInterest(){
+       	//修改兴趣
+       	function updateInterest(uid){
         	$('.interest-box').show();
         }
-        
-        
     </script>
     <script src="${pageContext.request.contextPath}/js/page-learing-index.js"></script>
 </body>

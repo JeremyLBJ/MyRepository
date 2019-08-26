@@ -4,13 +4,17 @@ import java.io.Serializable;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-@JsonIgnoreProperties(value = {"handler"})
+
+
+
+@JsonIgnoreProperties(value = { "hibernateLazyInitializer", "handler" })
 public class Category implements Serializable {
     
 	private Integer id;
 
     private String categoryName;
     
+
    private List<CategorySub> categorySubList;
    
     private static final long serialVersionUID = 1L;
@@ -23,7 +27,11 @@ public class Category implements Serializable {
 		this.categorySubList = categorySubList;
 	}
 
-	public Integer getId() {
+	
+
+   
+    public Integer getId() {
+
         return id;
     }
 

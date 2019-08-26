@@ -5,15 +5,17 @@
     
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="category_name" property="categoryName" jdbcType="VARCHAR" />
-  	
+
   	<!-- 
   	根据一级课程关联查询二级课程  在Category实体类中加入 categorySubList字段
-  	在CategorySubMapper.xml 第10行  加入selectByCid sql语句  -->
+  	在CategorySubMapper.xml 第17行  加入selectByCid sql语句  -->
   	<collection property="categorySubList"  column="id" fetchType="lazy"
-  		select="com.hnit.learning_shop.dao.CategorySubMapper.selectByCid">
+  		select="com.hnit.learning_shop.dao.CategorySubMapper.selectByCatid">
   	</collection>
-  
+
   </resultMap>
+ 
+  
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >

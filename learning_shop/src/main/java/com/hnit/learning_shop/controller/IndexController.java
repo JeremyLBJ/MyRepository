@@ -1,5 +1,9 @@
 package com.hnit.learning_shop.controller;
 
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,10 +15,17 @@ import com.hnit.learning_shop.common.Result;
 import com.hnit.learning_shop.entity.CategorySub;
 import com.hnit.learning_shop.service.CourseService;
 import com.hnit.learning_shop.service.TeacherService;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.hnit.learning_shop.entity.Category;
+import com.hnit.learning_shop.entity.CategorySub;
+import com.hnit.learning_shop.entity.Interest;
+import com.hnit.learning_shop.service.IndexService;
 
 @Controller
 @RequestMapping("index")
 public class IndexController {
+
 	
 	@Autowired
 	private CourseService courseService;
@@ -28,8 +39,37 @@ public class IndexController {
 	
 	
 	
-	@RequestMapping("index")
-	public String toIndex(Model model){
+	
+	@Autowired
+	private IndexService indexService;
+
+
+	@RequestMapping
+	public String toIndex(Model model, @RequestParam(defaultValue = "1") String uid) {
+		
+		//初始页面
+		List<Category> catList = indexService.findAllCategory();
+		List<Interest> interestList = indexService.findAllInterestByUid(uid);
+		List<CategorySub> subCatList = new ArrayList<>();
+		for (Interest interest : interestList) {
+			subCatList.add(indexService.findSubById(interest.getSubCatId()));
+			if(subCatList.size() > 6){
+				break;
+			}
+		}
+		for (Category cat : catList) {
+			for (CategorySub categorySub : cat.getCategorySubList()) {
+				for (Interest interest : interestList) {
+					if (interest.getSubCatId() == categorySub.getId()) {
+						categorySub.setActive(true);
+						break;
+					}
+				}
+			}
+		}
+		model.addAttribute("catList", catList);
+		model.addAttribute("subCatList", subCatList);
+		
 		
 		//初始化页面上的 老师
 		model.addAttribute("teacherList", teacherService.queryAllTeacher());
@@ -47,9 +87,10 @@ public class IndexController {
 		model.addAttribute("mechan", courseService.queryCategorySubById(17));
 		//前端开发工程师 
 		model.addAttribute("UI", courseService.queryCategorySubById(18));
+		
 		return "learning-index";
 	}
-	
+
 	
 	
 	
@@ -64,6 +105,10 @@ public class IndexController {
 	}
 	
 	
-	
-	
+
+	@RequestMapping("/saveInterest")
+	public String saveInterest(String[] ids) {
+		indexService.saveInterest(ids);
+		return "redirect:index";
+	}
 }

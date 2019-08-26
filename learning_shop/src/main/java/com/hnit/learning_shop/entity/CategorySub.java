@@ -8,15 +8,13 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class CategorySub implements Serializable {
     private Integer id;
 
-    private Integer cid;
+    private Integer catid;
 
     private String subCatName;
 
+    //二级分类对应多个courselist   categorySubMapper.xml 中第10行
     private List<CourseBase> courseList;
-    
-    
-    
-   
+
 
 	public List<CourseBase> getCourseList() {
 		return courseList;
@@ -26,10 +24,18 @@ public class CategorySub implements Serializable {
 		this.courseList = courseList;
 	}
 
-	@Override
-	public String toString() {
-		return "CategorySub [id=" + id + ", cid=" + cid + ", subCatName=" + subCatName + ", courseList=" + courseList
-				+ "]";
+	
+
+    private boolean active;
+    
+    
+
+	public boolean getActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 	private static final long serialVersionUID = 1L;
@@ -42,12 +48,12 @@ public class CategorySub implements Serializable {
         this.id = id;
     }
 
-    public Integer getCid() {
-        return cid;
+    public Integer getCatid() {
+        return catid;
     }
 
-    public void setCid(Integer cid) {
-        this.cid = cid;
+    public void setCatid(Integer catid) {
+        this.catid = catid;
     }
 
     public String getSubCatName() {
@@ -58,5 +64,17 @@ public class CategorySub implements Serializable {
         this.subCatName = subCatName == null ? null : subCatName.trim();
     }
 
-   
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", id=").append(id);
+        sb.append(", catid=").append(catid);
+        sb.append(", subCatName=").append(subCatName);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
+        return sb.toString();
+    }
 }

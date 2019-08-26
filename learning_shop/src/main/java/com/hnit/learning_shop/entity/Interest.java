@@ -5,9 +5,9 @@ import java.io.Serializable;
 public class Interest implements Serializable {
     private Integer id;
 
-    private Integer catid;
+    private Integer subCatId;
 
-    private String name;
+    private Integer uid;
 
     private static final long serialVersionUID = 1L;
 
@@ -19,20 +19,20 @@ public class Interest implements Serializable {
         this.id = id;
     }
 
-    public Integer getCatid() {
-        return catid;
+    public Integer getSubCatId() {
+        return subCatId;
     }
 
-    public void setCatid(Integer catid) {
-        this.catid = catid;
+    public void setSubCatId(Integer subCatId) {
+        this.subCatId = subCatId;
     }
 
-    public String getName() {
-        return name;
+    public Integer getUid() {
+        return uid;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setUid(Integer uid) {
+        this.uid = uid;
     }
 
     @Override
@@ -42,8 +42,8 @@ public class Interest implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", catid=").append(catid);
-        sb.append(", name=").append(name);
+        sb.append(", subCatId=").append(subCatId);
+        sb.append(", uid=").append(uid);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
