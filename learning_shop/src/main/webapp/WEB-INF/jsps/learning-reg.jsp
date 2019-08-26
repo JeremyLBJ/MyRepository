@@ -93,6 +93,20 @@
    		 		$("#button_change").attr("disabled",false).css("background-color","#00a4ff");
    	 		}
    		}
+    	
+    	//点击获取验证码
+    	function getCode(){
+    		var email=$('.phone');
+    		$.ajax({
+    			type:"POST",
+    			url:"SendCode",
+    			data:email,
+    			cache:false,
+    			success:function(){
+    				alert("验证码已发送，请查收！");
+    			}
+    		});	
+    	}
     </script>
 </body>
 <c:if test="${!empty msg}">
