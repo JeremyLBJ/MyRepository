@@ -4,10 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.hnit.learning_shop.common.Result;
 import com.hnit.learning_shop.service.CourseService;
@@ -37,7 +35,6 @@ public class CourseController {
 	@GetMapping("queryByid")
 	@ResponseBody
 	public Result queryCategorySubById(int id,Model model){
-		
 		return new Result(1, "成功", courseService.queryCategory(id).getCategorySubList());
 	}
 	

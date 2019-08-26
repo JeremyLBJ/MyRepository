@@ -154,7 +154,6 @@ public class UserController {
 	}
 	
 	/**
-<<<<<<< HEAD
 	 * 查询所有的用户 未分页
 	 * @param model
 	 * @return
