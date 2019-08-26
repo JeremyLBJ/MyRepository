@@ -12,10 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hnit.learning_shop.entity.XcUser;
 import com.hnit.learning_shop.service.UserService;
 import com.hnit.learning_shop.utils.Picture;
+import com.hnit.learning_shop.utils.Data;
+import com.hnit.learning_shop.utils.MyUtils;
 
 @Controller
 public class UserController {
@@ -137,6 +140,66 @@ public class UserController {
 		}
 	}
 	
+	/**
+	 * 注册
+	 * @param model
+	 * @param username
+	 * @param password
+	 * @param rpassword
+	 * @param code
+	 * @param email
+	 * @param session
+	 * @param response
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("/doReg")
+	public String register(Model model,String username,String password,String rpassword,String code,String email
+			,HttpSession session,HttpServletResponse response,HttpServletRequest request){
+		XcUser user=null;
+		model.addAttribute("username", username);
+		model.addAttribute("email", email);
+		model.addAttribute("code", code);
+		model.addAttribute("password", password);
+		model.addAttribute("rpassword", rpassword);
+		Data d=new Data();
+		System.out.println(d.code);
+		System.out.println(username);
+		System.out.println(password);
+		System.out.println(email);
+		if(code.equals(d.code)){
+			if(rpassword.equals(password)){
+				int result=userService.regUser(username, email, password);
+				if(result>0){
+					model.addAttribute("msg","注册成功！");
+					return "learning-sign";
+				}else{
+					model.addAttribute("msg","注册失败！");
+					return "learning-reg";
+				}
+			}else{
+				model.addAttribute("msg","两次密码不匹配！");
+				return "learning-reg";
+			}		
+		}else{
+			model.addAttribute("msg","验证码错误！");
+			return "learning-reg";
+		}	
+	}
 	
+	/**
+	 * 邮件发送
+	 * @param model
+	 * @param email
+	 */
+	@RequestMapping("/SendCode")
+	@ResponseBody
+	public void sendMail(Model model,String email){
+		model.addAttribute("email", email);
+		MyUtils mu=new MyUtils();
+		mu.sendMail(email);			
+		Data d=new Data();
+		System.out.println(d.code);
+	}
 	
 }

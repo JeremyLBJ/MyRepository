@@ -285,4 +285,7 @@
       phone = #{phone,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <insert id="register" parameterType="com.hnit.learning_shop.entity.XcUser">
+  	insert into xc_user(username,email,password) values(#{username},#{email},#{password})
+  </insert>
 </mapper>

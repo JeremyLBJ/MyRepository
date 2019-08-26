@@ -31,37 +31,37 @@
 					<div>
 						<p>用户名</p>
 						<p>
-							<input type="text" name="setusername" class="textInput"
+							<input type="text" name="username" class="textInput"
 								placeholder="请输入用户名"> <span class="proof cl-orange"></span>
 						</p>
 					</div>
 					<div class="phoneBox">
-						<p>手机号码</p>
+						<p>邮箱</p>
 						<p>
-							<input type="text" name="phone" class="textInput"
-								placeholder="请输入11位手机号码"> <input type="submit"
-								class="codeSub" value="发送验证码"> <span
+							<input type="text" name="email" class="textInput"
+								placeholder="请输入邮箱" id="email"> <input type="submit"
+								class="codeSub" value="发送验证码" onclick="getCode()"> <span
 								class="proof cl-orange"></span>
 						</p>
 					</div>
 					<div>
-						<p>短信验证码</p>
+						<p>邮箱验证码</p>
 						<p>
-							<input type="text" name="phoneCode" class="textInput"
+							<input type="text" name="code" class="textInput"
 								placeholder="请输入验证码"> <span class="proof cl-orange"></span>
 						</p>
 					</div>
 					<div>
 						<p>设置密码</p>
 						<p>
-							<input type="text" name="setPassword" class="textInput"
+							<input type="password" name="password" class="textInput"
 								placeholder="请设置密码"> <span class="proof cl-orange"></span>
 						</p>
 					</div>
 					<div>
 						<p>确认密码</p>
 						<p>
-							<input type="text" name="conPassword" class="textInput"
+							<input type="password" name="rpassword" class="textInput"
 								placeholder="请确认密码"> <span class="proof cl-orange"></span>
 						</p>
 					</div>
@@ -96,13 +96,13 @@
     	
     	//点击获取验证码
     	function getCode(){
-    		var email=$('.phone');
+    		var email=$('#email');
     		$.ajax({
     			type:"POST",
-    			url:"SendPhoneCode",
-    			data:phone,
+    			url:"SendCode",
+    			data:email,
     			cache:false,
-    			success:function(){
+    			success:function(data){
     				alert("验证码已发送，请查收！");
     			}
     		});	
