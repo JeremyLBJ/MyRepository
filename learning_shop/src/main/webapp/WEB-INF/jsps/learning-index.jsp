@@ -24,46 +24,8 @@
 
     <!-- 页面头部 -->
     <!--头部导航-->
-    <header>
-        <div class="learingHeader">
-            <nav class="navbar">
-                <div class="">
-                    <div class="logo"><img src="${pageContext.request.contextPath}/img/asset-logoIco.png" width="100%" alt=""></div>
-                    <div class="nav-list">
-                        <ul class="nav navbar-nav">
-                            <li class="active"><a href="travel.index.html" target="_blank">首页</a></li>
-                            <li><a href="#">课程</a></li>
-                            <li><a href="#">职业规划</a></li>
-                            <li></li>
-                        </ul>
-                    </div>
+   	<jsp:include page="public/header.jsp"></jsp:include>
 
-                    <div class="sign-in">
-
-                        <!-- 未登录 -->
-                        <!--<a href="#">登录 </a> <span> | </span> <a href="#"> 注册</a>-->
-                        <!-- 登录 -->
-
-                        <a href="#" class="personal">个人中心<span class="personalIco"></span></a> <a href="#" class="myInfo"><img src="${pageContext.request.contextPath}/img/asset-myImg.jpg" alt=""> 孙老师</a>
-
-                    	<c:choose>
-                    		<c:when test="${user==null}">
-                    			<!-- 未登录 -->
-                        		<a href="tologin">登录 </a> <span> | </span> <a href="toreg"> 注册</a>
-                    		</c:when>
-                    		<c:otherwise>
-                    			<!-- 登录 -->
-                        		<a href="mypersonal" class="personal">个人中心<span class="personalIco"></span></a> <a href="#" class="myInfo"><img src="../img/${user.userPic}" alt="">${user.name }</a>
-                    		</c:otherwise>
-                    	</c:choose>
-                        
-                        
-                    </div>
-                    <div class="starch"><input type="text" class="input-search" placeholder="输入查询关键词"><input type="submit" class="search-buttom"></div>
-                </div>
-            </nav>
-        </div>
-    </header>
     <!--banner区-->
     <!--<div class="travel-index-imgroll">-->
     <!--<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">-->
@@ -542,7 +504,7 @@
     
   
   function clickCheck(id){
-    	window.location.href="teacherInfo?id="+id;
+    	window.location.href="index/teacherInfo?id="+id;
     }
     
     

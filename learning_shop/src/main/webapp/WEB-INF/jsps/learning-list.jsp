@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/plugins/normalize-css/normalize.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/plugins/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/page-learing-list.css" />
+
+
+
 </head>
 
 <body>

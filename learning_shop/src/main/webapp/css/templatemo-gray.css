@@ -138,21 +138,20 @@ h2 {
             transform: rotate(360deg); } }
 
 /* header section */
-header {
+.own{
   text-align: center;
-  min-height: 400px;
+  min-height: 300px;
   overflow: hidden;
   position: relative;
-  padding-top: 160px;
-  padding-bottom: 140px;
+  
 }
-header img {
+.own img {
   display: inline-block !important;
 }
-header h2 {
+.own h2 {
   padding-top: 40px;
 }
-header hr {
+.own hr {
   border-color: #666666;
   width: 100px;
 }

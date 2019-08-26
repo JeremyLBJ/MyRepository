@@ -13,20 +13,33 @@
 	<!-- stylesheet css -->
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/font-awesome.min.css">
+	
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/templatemo-gray.css">
-</head>
-<body data-spy="scroll" data-target=".navbar-collapse">
 
+	
+	
+	
+	
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/plugins/normalize-css/normalize.css" />
+     <link rel="stylesheet" href="${pageContext.request.contextPath}/plugins/bootstrap/dist/css/bootstrap.css" />
+     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/page-learing-list.css" />
+ 
+
+</head>
+<body data-spy="scroll" data-target="#myNavbar" data-offset="150">
+<jsp:include page="public/header.jsp"></jsp:include>
 <!-- preloader section -->
-<div class="preloader">
+
+<!-- <div class="preloader">
 	<div class="sk-spinner sk-spinner-wordpress">
        <span class="sk-inner-circle"></span>
      </div>
 </div>
-
+ -->
 <!-- header section -->
-<header>
-	<div class="container">
+
+
+	<div class="container own">
 		<div class="row">
 			<div class="col-md-12 col-sm-12">
 				<img src="${pageContext.request.contextPath}/img/tm-easy-profile.jpg" class="img-responsive img-circle tm-border" alt="templatemo easy profile">
@@ -36,7 +49,6 @@
 			</div>
 		</div>
 	</div>
-</header>
 
 <!-- about and skills section -->
 <section class="container">
