@@ -15,10 +15,9 @@ public class LearningShopApplicationTests {
 	@Test
 	public void contextLoads() throws Exception {
 		FileInputStream fileInputStream = new FileInputStream("D:/代理.png");
-		
 		byte[] bytes =new byte[fileInputStream.available()];
 		fileInputStream.read(bytes);
-		FtpUtils.sshSftp(bytes, "D:/代理.jpg");
+		FtpUtils.sshSftp(bytes, "代理.jpg");
 		fileInputStream.close();
 	}
 

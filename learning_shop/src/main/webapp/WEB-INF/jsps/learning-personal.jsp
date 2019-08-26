@@ -19,32 +19,7 @@
 <body>
     <!-- 页面头部 -->
     <!--头部导航-->
-    <header>
-        <div class="learingHeader">
-            <nav class="navbar">
-                <div class="">
-                    <div class="logo"><img src="../img/asset-logoIco.png" width="100%" alt=""></div>
-                    <div class="nav-list">
-                        <ul class="nav navbar-nav">
-                            <li class="active"><a href="index" target="_blank">首页</a></li>
-                            <li><a href="#">课程</a></li>
-                            <li><a href="#">职业规划</a></li>
-                            <li></li>
-                        </ul>
-                    </div>
-
-                    <div class="sign-in">
-                        <!-- 未登录 -->
-                        <!--<a href="#">登录 </a> <span> | </span> <a href="#"> 注册</a>-->
-                        <!-- 登录 -->
-
-                        <a href="#" class="personal">个人中心<span class="personalIco"></span></a> <a href="#" class="myInfo"><img src="../img/asset-myImg.jpg" alt=""> 孙老师</a>
-                    </div>
-                    <div class="starch"><input type="text" class="input-search" placeholder="输入查询关键词"><input type="submit" class="search-buttom"></div>
-                </div>
-            </nav>
-        </div>
-    </header>
+    <jsp:include page="public/header.jsp"></jsp:include>
     <div class="personal-header" style="background-image: url(../img/asset-banner.png);">
         <!--<div class="personal-info">-->
         <!--<p><h1>吴雪</h1></p>-->
