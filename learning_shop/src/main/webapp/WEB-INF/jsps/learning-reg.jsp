@@ -43,7 +43,7 @@
 							<input type="email" name="email" class="textInput"
 								placeholder="请输入邮箱" id="email" onclick="checkEmail()"
 								value="<%=(request.getParameter("email")==null?"":request.getParameter("email"))%>"> <input type="submit"
-								class="codeSub" value="发送验证码" onclick="getCode()" id="email_check" style="border:#ddd 1px;">
+								class="codeSub" value="发送验证码" onclick="getCode()" id="email_check" style="border:#ddd 1px;" disabled="true">
 								<span id="cemail"></span> 
 						</p>
 					</div>
@@ -135,7 +135,7 @@
     		var useremail=document.getElementById("email").value;
     		var userEmail=document.getElementById("cemail");
     		var reg=/^[a-z0-9]+([._\\-]*[a-z0-9]*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$)/;
-    		if(document.getElementById("email").value==""||reg.test(document.getElementById("email"))==false){
+    		if(document.getElementById("email").value==""||reg.test(document.getElementById("email"))==true){
     			$("#email_check").attr("disabled",true).css("background-color","#999");
     		}else{
     			$("#email_check").attr("disabled",false).css("background-color","#ddd");
