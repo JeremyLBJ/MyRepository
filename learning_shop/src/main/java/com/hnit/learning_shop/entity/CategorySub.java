@@ -1,7 +1,10 @@
 package com.hnit.learning_shop.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+@JsonIgnoreProperties(value = {"handler"})
 public class CategorySub implements Serializable {
     private Integer id;
 
@@ -9,7 +12,27 @@ public class CategorySub implements Serializable {
 
     private String subCatName;
 
-    private static final long serialVersionUID = 1L;
+    private List<CourseBase> courseList;
+    
+    
+    
+   
+
+	public List<CourseBase> getCourseList() {
+		return courseList;
+	}
+
+	public void setCourseList(List<CourseBase> courseList) {
+		this.courseList = courseList;
+	}
+
+	@Override
+	public String toString() {
+		return "CategorySub [id=" + id + ", cid=" + cid + ", subCatName=" + subCatName + ", courseList=" + courseList
+				+ "]";
+	}
+
+	private static final long serialVersionUID = 1L;
 
     public Integer getId() {
         return id;
@@ -35,17 +58,5 @@ public class CategorySub implements Serializable {
         this.subCatName = subCatName == null ? null : subCatName.trim();
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", cid=").append(cid);
-        sb.append(", subCatName=").append(subCatName);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
-    }
+   
 }

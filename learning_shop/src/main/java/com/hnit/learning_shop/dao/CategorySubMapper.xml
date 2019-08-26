@@ -5,7 +5,20 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="cid" property="cid" jdbcType="INTEGER" />
     <result column="sub_cat_name" property="subCatName" jdbcType="VARCHAR" />
+  	
+  	<!--根据主键查询课程  -->
+  	<collection property="courseList"  column="id" fetchType="lazy"
+  		select="com.hnit.learning_shop.dao.CourseBaseMapper.selectByCatid">
+  	</collection>
+  	
+  	
   </resultMap>
+ 
+	<select id="selectByCid" resultMap="BaseResultMap" parameterType="com.hnit.learning_shop.entity.CategorySubExample">
+		select * from category_sub where cid=#{cid}
+	</select>
+ 
+ 
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >

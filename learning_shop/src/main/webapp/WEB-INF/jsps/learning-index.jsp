@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -9,12 +10,12 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../img/asset-favicon.ico">
+    <link rel="icon" href="${pageContext.request.contextPath}/img/asset-favicon.ico">
     <title>在线教育网</title>
 
-    <link rel="stylesheet" href="../plugins/normalize-css/normalize.css" />
-    <link rel="stylesheet" href="../plugins/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="../css/page-learing-index.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/plugins/normalize-css/normalize.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/plugins/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/page-learing-index.css" />
 </head>
 
 <body data-spy="scroll" data-target="#myNavbar" data-offset="150">
@@ -25,7 +26,7 @@
         <div class="learingHeader">
             <nav class="navbar">
                 <div class="">
-                    <div class="logo"><img src="../img/asset-logoIco.png" width="100%" alt=""></div>
+                    <div class="logo"><img src="${pageContext.request.contextPath}/img/asset-logoIco.png" width="100%" alt=""></div>
                     <div class="nav-list">
                         <ul class="nav navbar-nav">
                             <li class="active"><a href="travel.index.html" target="_blank">首页</a></li>
@@ -40,7 +41,7 @@
                         <!--<a href="#">登录 </a> <span> | </span> <a href="#"> 注册</a>-->
                         <!-- 登录 -->
 
-                        <a href="#" class="personal">个人中心<span class="personalIco"></span></a> <a href="#" class="myInfo"><img src="../img/asset-myImg.jpg" alt=""> 孙老师</a>
+                        <a href="#" class="personal">个人中心<span class="personalIco"></span></a> <a href="#" class="myInfo"><img src="${pageContext.request.contextPath}/img/asset-myImg.jpg" alt=""> 孙老师</a>
                     </div>
                     <div class="starch"><input type="text" class="input-search" placeholder="输入查询关键词"><input type="submit" class="search-buttom"></div>
                 </div>
@@ -70,12 +71,12 @@
     <!--</div>-->
     <div class="banner-roll">
         <div class="banner-item">
-            <div class="item" style="background-image: url(../img/widget-bannerB.jpg);"></div>
-            <div class="item" style="background-image: url(../img/widget-bannerA.jpg);"></div>
-            <div class="item" style="background-image: url(../img/widget-banner3.png);"></div>
-            <div class="item" style="background-image: url(../img/widget-bannerB.jpg);"></div>
-            <div class="item" style="background-image: url(../img/widget-bannerA.jpg);"></div>
-            <div class="item" style="background-image: url(../img/widget-banner3.png);"></div>
+            <div class="item" style="background-image: url(${pageContext.request.contextPath}/img/widget-bannerB.jpg);"></div>
+            <div class="item" style="background-image: url(${pageContext.request.contextPath}/img/widget-bannerA.jpg);"></div>
+            <div class="item" style="background-image: url(${pageContext.request.contextPath}/img/widget-banner3.png);"></div>
+            <div class="item" style="background-image: url(${pageContext.request.contextPath}/img/widget-bannerB.jpg);"></div>
+            <div class="item" style="background-image: url(${pageContext.request.contextPath}/img/widget-bannerA.jpg);"></div>
+            <div class="item" style="background-image: url(${pageContext.request.contextPath}/img/widget-banner3.png);"></div>
         </div>
         <div class="indicators"></div>
     </div>
@@ -185,7 +186,7 @@
                 <div class="content">
                     <div class="recom-item">
                         <a href="#">
-                            <p><img src="../img/widget-demo1.png" width="100%" alt=""><span class="lab">HOT</span></p>
+                            <p><img src="${pageContext.request.contextPath}/img/widget-demo1.png" width="100%" alt=""><span class="lab">HOT</span></p>
                             <ul>
                                 <li>Think PHP 5.0 博客系统实战项目演练 </li>
                                 <li><span>高级</span> <em> · </em> 1125人在学习</li>
@@ -194,7 +195,7 @@
                     </div>
                     <div class="recom-item">
                         <a href="#">
-                            <p><img src="../img/widget-demo2.png" width="100%" alt=""><span class="lab">HOT</span></p>
+                            <p><img src="${pageContext.request.contextPath}/img/widget-demo2.png" width="100%" alt=""><span class="lab">HOT</span></p>
                             <ul>
                                 <li>Think PHP 5.0 博客系统实战项目演练 </li>
                                 <li><span>高级</span> <em> · </em> 1125人在学习</li>
@@ -203,7 +204,7 @@
                     </div>
                     <div class="recom-item">
                         <a href="#">
-                            <p><img src="../img/widget-demo3.png" width="100%" alt=""><span class="lab">HOT</span></p>
+                            <p><img src="${pageContext.request.contextPath}/img/widget-demo3.png" width="100%" alt=""><span class="lab">HOT</span></p>
                             <ul>
                                 <li>Think PHP 5.0 博客系统实战项目演练 </li>
                                 <li><span>高级</span> <em> · </em> 1125人在学习</li>
@@ -212,7 +213,7 @@
                     </div>
                     <div class="recom-item">
                         <a href="#">
-                            <p><img src="../img/widget-demo4.png" width="100%" alt=""><span class="lab">HOT</span></p>
+                            <p><img src="${pageContext.request.contextPath}/img/widget-demo4.png" width="100%" alt=""><span class="lab">HOT</span></p>
                             <ul>
                                 <li>Think PHP 5.0 博客系统实战项目演练 </li>
                                 <li><span>高级</span> <em> · </em> 1125人在学习</li>
@@ -221,7 +222,7 @@
                     </div>
                     <div class="recom-item">
                         <a href="#">
-                            <p><img src="../img/widget-demo1.png" width="100%" alt=""></p>
+                            <p><img src="${pageContext.request.contextPath}/img/widget-demo1.png" width="100%" alt=""></p>
                             <ul>
                                 <li>Think PHP 5.0 博客系统实战项目演练 </li>
                                 <li><span>高级</span> <em> · </em> 1125人在学习</li>
@@ -230,7 +231,7 @@
                     </div>
                     <div class="recom-item">
                         <a href="#">
-                            <p><img src="../img/widget-demo3.png" width="100%" alt=""></p>
+                            <p><img src="${pageContext.request.contextPath}/img/widget-demo3.png" width="100%" alt=""></p>
                             <ul>
                                 <li>Think PHP 5.0 博客系统实战项目演练 </li>
                                 <li><span>高级</span> <em> · </em> 1125人在学习</li>
@@ -239,7 +240,7 @@
                     </div>
                     <div class="recom-item">
                         <a href="#">
-                            <p><img src="../img/widget-demo2.png" width="100%" alt=""></p>
+                            <p><img src="${pageContext.request.contextPath}/img/widget-demo2.png" width="100%" alt=""></p>
                             <ul>
                                 <li>Think PHP 5.0 博客系统实战项目演练 </li>
                                 <li><span>高级</span> <em> · </em> 1125人在学习</li>
@@ -248,7 +249,7 @@
                     </div>
                     <div class="recom-item">
                         <a href="#">
-                            <p><img src="../img/widget-demo1.png" width="100%" alt=""></p>
+                            <p><img src="${pageContext.request.contextPath}/img/widget-demo1.png" width="100%" alt=""></p>
                             <ul>
                                 <li>Think PHP 5.0 博客系统实战项目演练 </li>
                                 <li><span>高级</span> <em> · </em> 1125人在学习</li>
@@ -257,7 +258,7 @@
                     </div>
                     <div class="recom-item">
                         <a href="#">
-                            <p><img src="../img/widget-demo2.png" width="100%" alt=""></p>
+                            <p><img src="${pageContext.request.contextPath}/img/widget-demo2.png" width="100%" alt=""></p>
                             <ul>
                                 <li>Think PHP 5.0 博客系统实战项目演练 </li>
                                 <li><span>高级</span> <em> · </em> 1125人在学习</li>
@@ -266,7 +267,7 @@
                     </div>
                     <div class="recom-item">
                         <a href="#">
-                            <p><img src="../img/widget-demo4.png" width="100%" alt=""></p>
+                            <p><img src="${pageContext.request.contextPath}/img/widget-demo4.png" width="100%" alt=""></p>
                             <ul>
                                 <li>Think PHP 5.0 博客系统实战项目演练 </li>
                                 <li><span>高级</span> <em> · </em> 1125人在学习</li>
@@ -278,169 +279,80 @@
 
             <div class="course-box">
                 <div class="title">
-                    编程入门
+                    	${html.subCatName}
                     <div class="course-nav">
-                        <span class="active">热门</span>
-                        <span>初中</span>
-                        <span>中级</span>
-                        <span>高级</span>
+                        <span class="active" style="cursor:pointer" id="${html.id }">热门</span>
+                        <span style="cursor:pointer" id="${html.id }">初中</span>
+                        <span style="cursor:pointer" id="${html.id }">中级</span>
+                        <span style="cursor:pointer" id="${html.id }">高级</span>
                     </div>
-                    <a href="#">查看全部</a>
+                    <a href="list">查看全部</a>
                 </div>
-                <div class="content">
+                <div class="content content_${html.id}">
                     <div class="cont-left">
-                        <img src="../img/widget-ind-left.png" width="100%" alt="">
+                        <img src="${pageContext.request.contextPath}/img/widget-ind-left.png" width="100%" alt="">
                     </div>
                     <div class="cont-right">
-                        <div><img src="../img/widget-ind-top.png" width="100%" alt=""></div>
-                        <div class="recom-item">
-                            <a href="#">
-                                <p><img src="../img/widget-demo4.png" width="100%" alt=""></p>
-                                <ul>
-                                    <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                    <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                                </ul>
-                            </a>
-                        </div>
-                        <div class="recom-item">
-                            <a href="#">
-                                <p><img src="../img/widget-demo4.png" width="100%" alt=""></p>
-                                <ul>
-                                    <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                    <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                                </ul>
-                            </a>
-                        </div>
-                        <div class="recom-item">
-                            <a href="#">
-                                <p><img src="../img/widget-demo4.png" width="100%" alt=""></p>
-                                <ul>
-                                    <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                    <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                                </ul>
-                            </a>
-                        </div>
-                        <div class="recom-item">
-                            <a href="#">
-                                <p><img src="../img/widget-demo4.png" width="100%" alt=""></p>
-                                <ul>
-                                    <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                    <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                                </ul>
-                            </a>
-                        </div>
+         				<div><img src="${pageContext.request.contextPath}/img/widget-ind-top.png" width="100%" alt=""></div>
+         				<c:forEach items="${html.courseList}" var="h">
+							<div class="recom-item">
+								<a href="#">
+									<p>
+										<img src="${pageContext.request.contextPath}/img/widget-demo4.png" width="100%" alt=""><span
+											class="lab">HOT</span>
+									</p>
+									<ul>
+										<li>${h.cname }</li>
+										<li><span>${h.grade }</span> <em> · </em> 1125人在学习</li>
+									</ul>
+								</a>
+							</div>
+						</c:forEach>
+                       
                     </div>
                 </div>
             </div>
 
             <div class="course-box">
                 <div class="title">
-                    编程入门
+                    Javascript工程师
                     <div class="course-nav">
-                        <span class="active">热门</span>
-                        <span>初中</span>
-                        <span>中级</span>
-                        <span>高级</span>
+                        <span class="active" style="cursor:pointer" id="3">热门</span>
+                        <span style="cursor:pointer" id="3">初中</span>
+                        <span style="cursor:pointer" id="3">中级</span>
+                        <span style="cursor:pointer" id="3">高级</span>
                     </div>
-                    <a href="#">查看全部</a>
+                    <a href="list">查看全部</a>
                 </div>
-                <div class="content">
+                <div class="content content_3">
                     <div class="cont-left">
-                        <img src="../img/widget-ind-left1.png" width="100%" alt="">
+                        <img src="${pageContext.request.contextPath}/img/widget-ind-left1.png" width="100%" alt="">
                     </div>
                     <div class="cont-right">
-                        <div><img src="../img/widget-ind-top1.png" width="100%" alt=""></div>
-                        <div class="recom-item">
-                            <a href="#">
-                                <p><img src="../img/widget-demo4.png" width="100%" alt=""></p>
-                                <ul>
-                                    <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                    <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                                </ul>
-                            </a>
-                        </div>
-                        <div class="recom-item">
-                            <a href="#">
-                                <p><img src="../img/widget-demo4.png" width="100%" alt=""></p>
-                                <ul>
-                                    <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                    <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                                </ul>
-                            </a>
-                        </div>
-                        <div class="recom-item">
-                            <a href="#">
-                                <p><img src="../img/widget-demo4.png" width="100%" alt=""></p>
-                                <ul>
-                                    <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                    <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                                </ul>
-                            </a>
-                        </div>
-                        <div class="recom-item">
-                            <a href="#">
-                                <p><img src="../img/widget-demo4.png" width="100%" alt=""></p>
-                                <ul>
-                                    <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                    <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                                </ul>
-                            </a>
-                        </div>
+                        <div><img src="${pageContext.request.contextPath}/img/widget-ind-top1.png" width="100%" alt=""></div>
+                        
+                    
+                        
                     </div>
                 </div>
             </div>
 
             <div class="Recommend">
-                <div class="title-class">
+                <div class="title-class" >
                     机器学习工程师
                     <div class="course-nav">
-                        <span class="active">热门</span>
-                        <span>初中</span>
-                        <span>中级</span>
-                        <span>高级</span>
+                        <span class="active" style="cursor:pointer" id="17">热门</span>
+                        <span style="cursor:pointer" id="17">初中</span>
+                        <span style="cursor:pointer" id="17">中级</span>
+                        <span style="cursor:pointer" id="17">高级</span>
                     </div>
-                    <a href="#">查看全部</a>
+                    <a href="list">查看全部</a>
                 </div>
-                <div class="content">
+                <div class="content content_17" >
+                    
                     <div class="recom-item">
                         <a href="#">
-                            <p><img src="../img/widget-demo1.png" width="100%" alt=""></p>
-                            <ul>
-                                <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                            </ul>
-                        </a>
-                    </div>
-                    <div class="recom-item">
-                        <a href="#">
-                            <p><img src="../img/widget-demo2.png" width="100%" alt=""></p>
-                            <ul>
-                                <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                            </ul>
-                        </a>
-                    </div>
-                    <div class="recom-item">
-                        <a href="#">
-                            <p><img src="../img/widget-demo3.png" width="100%" alt=""></p>
-                            <ul>
-                                <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                            </ul>
-                        </a>
-                    </div>
-                    <div class="recom-item">
-                        <a href="#">
-                            <p><img src="../img/widget-demo4.png" width="100%" alt=""></p>
-                            <ul>
-                                <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                            </ul>
-                        </a>
-                    </div>
-                    <div class="recom-item">
-                        <a href="#">
-                            <p><img src="../img/widget-demo1.png" width="100%" alt=""></p>
+                            <p><img src="${pageContext.request.contextPath}/img/widget-demo1.png" width="100%" alt=""></p>
                             <ul>
                                 <li>Think PHP 5.0 博客系统实战项目演练 </li>
                                 <li><span>高级</span> <em> · </em> 1125人在学习</li>
@@ -455,59 +367,16 @@
                 <div class="title-class">
                     前端开发工程师
                     <div class="course-nav">
-                        <span class="active">热门</span>
-                        <span>初中</span>
-                        <span>中级</span>
-                        <span>高级</span>
+                        <span class="active" style="cursor:pointer" id="18">热门</span>
+                        <span style="cursor:pointer" id="18">初中</span>
+                        <span style="cursor:pointer" id="18">中级</span>
+                        <span style="cursor:pointer" id="18">高级</span>
                     </div>
-                    <a href="#">查看全部</a>
+                    <a href="${pageContext.request.contextPath}/course/course">查看全部</a>
                 </div>
-                <div class="content">
-                    <div class="recom-item">
-                        <a href="#">
-                            <p><img src="../img/widget-demo1.png" width="100%" alt=""></p>
-                            <ul>
-                                <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                            </ul>
-                        </a>
-                    </div>
-                    <div class="recom-item">
-                        <a href="#">
-                            <p><img src="../img/widget-demo2.png" width="100%" alt=""></p>
-                            <ul>
-                                <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                            </ul>
-                        </a>
-                    </div>
-                    <div class="recom-item">
-                        <a href="#">
-                            <p><img src="../img/widget-demo3.png" width="100%" alt=""></p>
-                            <ul>
-                                <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                            </ul>
-                        </a>
-                    </div>
-                    <div class="recom-item">
-                        <a href="#">
-                            <p><img src="../img/widget-demo4.png" width="100%" alt=""></p>
-                            <ul>
-                                <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                            </ul>
-                        </a>
-                    </div>
-                    <div class="recom-item">
-                        <a href="#">
-                            <p><img src="../img/widget-demo1.png" width="100%" alt=""></p>
-                            <ul>
-                                <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                            </ul>
-                        </a>
-                    </div>
+                <div class="content content_18">
+                   
+                    
                 </div>
             </div>
 
@@ -520,7 +389,7 @@
         <div class="index-cont-nav">
             <div id="myNavbar" class="collapse navbar-collapse ">
                 <div id="myCollapse" class="collapse navbar-collapse">
-                    <div class="logo-ico"><img src="../img/asset-logoIco.png" alt=""></div>
+                    <div class="logo-ico"><img src="${pageContext.request.contextPath}/img/asset-logoIco.png" alt=""></div>
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="#a">编程入门</a></li>
                         <li><a href="#b">数据分析师</a></li>
@@ -543,54 +412,28 @@
         <div class="teacher-list text-center">
             <div class="title"> 牛人推荐 </div>
             <div class="first-box">
-                <div class="teach-item">
-                    <img src="../img/widget-teach1.png" width="100%" alt="">
+                <c:forEach items="${teacherList}" var="t" >
+                
+                
+                <div class="teach-item" style="cursor:pointer" onclick="clickCheck(${t.id})">
+                    <img src="${pageContext.request.contextPath}/img/widget-teach1.png" width="100%" alt="">
                     <span class="lab">28555学习过</span>
                     <ul class="teach-info">
-                        <li>崔老师 <span>Java EE</span></li>
-                        <li>从事多年Java软件开发及相关教育工作，熟悉JavaSE、JavaEE、Struts1,2、Spring……</li>
+                        <li>${t.tname} <span>Java EE</span></li>
+                        <li>${t.intro}从事多年Java软件开发及相关教育工作，熟悉JavaSE、JavaEE、Struts1,2、Spring……</li>
                     </ul>
                 </div>
-                <div class="teach-item">
-                    <img src="../img/widget-teach2.png" width="100%" alt="">
-                    <span class="lab">28555学习过</span>
-                    <ul class="teach-info">
-                        <li>崔老师 <span>Java EE</span></li>
-                        <li>从事多年Java软件开发及相关教育工作，熟悉JavaSE、JavaEE、Struts1,2、Spring……</li>
-                    </ul>
-                </div>
-                <div class="teach-item">
-                    <img src="../img/widget-teach3.png" width="100%" alt="">
-                    <span class="lab">28555学习过</span>
-                    <ul class="teach-info">
-                        <li>崔老师 <span>Java EE</span></li>
-                        <li>从事多年Java软件开发及相关教育工作，熟悉JavaSE、JavaEE、Struts1,2、Spring……</li>
-                    </ul>
-                </div>
-                <div class="teach-item">
-                    <img src="../img/widget-teach4.png" width="100%" alt="">
-                    <span class="lab">28555学习过</span>
-                    <ul class="teach-info">
-                        <li>崔老师 <span>Java EE</span></li>
-                        <li>从事多年Java软件开发及相关教育工作，熟悉JavaSE、JavaEE、Struts1,2、Spring……</li>
-                    </ul>
-                </div>
-                <div class="teach-item">
-                    <img src="../img/widget-teach2.png" width="100%" alt="">
-                    <span class="lab">28555学习过</span>
-                    <ul class="teach-info">
-                        <li>崔老师 <span>Java EE</span></li>
-                        <li>从事多年Java软件开发及相关教育工作，熟悉JavaSE、JavaEE、Struts1,2、Spring……</li>
-                    </ul>
-                </div>
+                </c:forEach>
+                
+                
                 <div class="clearfix"></div>
             </div>
             <div class="two-box">
                 <div class="teach-item-adv">
-                    <img src="../img/widget-teach-adv.png" width="100%" alt="">
+                    <img src="${pageContext.request.contextPath}/img/widget-teach-adv.png" width="100%" alt="">
                 </div>
                 <div class="teach-item">
-                    <img src="../img/widget-teach2.png" width="100%" alt="">
+                    <img src="${pageContext.request.contextPath}/img/widget-teach2.png" width="100%" alt="">
                     <span class="lab">28555学习过</span>
                     <ul class="teach-info">
                         <li>崔老师 <span>Java EE</span></li>
@@ -598,7 +441,7 @@
                     </ul>
                 </div>
                 <div class="teach-item">
-                    <img src="../img/widget-teach3.png" width="100%" alt="">
+                    <img src="${pageContext.request.contextPath}/img/widget-teach3.png" width="100%" alt="">
                     <span class="lab">28555学习过</span>
                     <ul class="teach-info">
                         <li>崔老师 <span>Java EE</span></li>
@@ -606,7 +449,7 @@
                     </ul>
                 </div>
                 <div class="teach-item">
-                    <img src="../img/widget-teach4.png" width="100%" alt="">
+                    <img src="${pageContext.request.contextPath}/img/widget-teach4.png" width="100%" alt="">
                     <span class="lab">28555学习过</span>
                     <ul class="teach-info">
                         <li>崔老师 <span>Java EE</span></li>
@@ -628,7 +471,7 @@
             <div class="row">
                 <div class="col-md-7">
                     <div>
-                        <!--<h1 style="display: inline-block">学成网</h1>--><img src="../img/asset-logoIco.png" alt=""></div>
+                        <!--<h1 style="display: inline-block">学成网</h1>--><img src="${pageContext.request.contextPath}/img/asset-logoIco.png" alt=""></div>
                     <div>学成网致力于普及中国最好的教育它与中国一流大学和机构合作提供在线课程。</div>
                     <div>© 2017年XTCG Inc.保留所有权利。-沪ICP备15025210号</div>
                     <input type="button" class="btn btn-primary" value="下 载" />
@@ -760,10 +603,73 @@
         </div>
     </div>
     <!-- 页面 css js -->
-
-    <script type="text/javascript" src="../plugins/jquery/dist/jquery.js"></script>
-    <script type="text/javascript" src="../plugins/bootstrap/dist/js/bootstrap.js"></script>
+	
+    <script type="text/javascript" src="${pageContext.request.contextPath}/plugins/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/plugins/bootstrap/dist/js/bootstrap.js"></script>
     <script type="text/javascript">
+ 
+    
+  
+  function clickCheck(id){
+    	window.location.href="teacherInfo?id="+id;
+    }
+    
+    
+    $('.Recommend .course-nav span').on('click', function(){
+   	 $(this).addClass('active');
+        $(this).siblings().removeClass('active');
+        //根据难度进行查询课程
+      
+       
+        var grade=$(this).text();
+        var id=$(this).text();
+        var catid=$(this).attr('id');  //机器学习工程师
+        $('.Recommend .content_'+catid).html('');
+        $.get('queryBygrade',{grade:grade,catid:catid},function(data){
+       	 console.log(data);
+       	 var html='';
+       	 for(var i=0;i<data.data.length;i++){
+       		 html+='<div class="recom-item"><a href="#"><p><img src="${pageContext.request.contextPath}/img/widget-demo4.png" width="100%" alt="">'
+       		 +'</p><ul><li>Think '+data.data[i].cname+' </li>'
+       		 +'<li><span>'+data.data[i].grade+'</span> <em> · </em> 1125人在学习</li></ul></a></div>'
+       	 }
+       	 console.log($('.Recommend .content_'+catid));
+       	 $('.Recommend .content_'+catid).html(html);
+       	
+        })
+   })
+   
+   
+   
+    $('.course-box .title .course-nav span').on('click', function(){
+    	 $(this).addClass('active');
+         $(this).siblings().removeClass('active');
+         //根据难度进行查询课程
+         var grade=$(this).text();
+        
+         var catid=$(this).attr('id');
+         $('.course-box .content_'+catid+' .cont-right').html('');
+         $.get('queryBygrade',{grade:grade,catid:catid},function(data){
+        	 console.log(data);
+        	 
+        	 var html='<div><img src="${pageContext.request.contextPath}/img/widget-ind-top.png" width="100%" alt=""></div>';
+        	 for(var i=0;i<data.data.length;i++){
+        		 html+='<div class="recom-item"><a href="#"><p><img src="${pageContext.request.contextPath}/img/widget-demo4.png" width="100%" alt="">'
+        		 +'</p><ul><li>Think '+data.data[i].cname+' </li>'
+        		 +'<li><span>'+data.data[i].grade+'</span> <em> · </em> 1125人在学习</li></ul></a></div>'
+        	 }
+        	 $('.course-box .content_'+catid+' .cont-right').html(html);
+        	
+         })
+    })
+    
+    
+    
+    
+    
+    
+    
+    
         var tg = $('.banner-item .item');
         var num = 0;
         for (i = 0; i < tg.length; i++) {
@@ -798,7 +704,7 @@
             timer = setInterval(roll, 3000)
         });
     </script>
-    <script type="text/javascript" src="../js/widget-travel-index-nav.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/widget-travel-index-nav.js"></script>
     <script>
         $('.teach-item').hover(function() {
             $(this).find('.teach-info').animate({
@@ -844,5 +750,5 @@
         
         
     </script>
-    <script src="../js/page-learing-index.js"></script>
+    <script src="${pageContext.request.contextPath}/js/page-learing-index.js"></script>
 </body>
