@@ -135,7 +135,7 @@
     		var useremail=document.getElementById("email").value;
     		var userEmail=document.getElementById("cemail");
     		var reg=/^[a-z0-9]+([._\\-]*[a-z0-9]*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$)/;
-    		if(document.getElementById("email").value==""){
+    		if(document.getElementById("email").value==""||reg.test(document.getElementById("email"))==false){
     			$("#email_check").attr("disabled",true).css("background-color","#999");
     		}else{
     			$("#email_check").attr("disabled",false).css("background-color","#ddd");
