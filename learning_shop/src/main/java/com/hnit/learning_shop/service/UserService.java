@@ -14,4 +14,6 @@ public interface UserService {
 	void addUser(String username,String email,String password);
 	int regUser(String username,String email,String password);
 	XcUser selectByEmail(String email);
+	
+	XcUser selectByUsername(String username);
 }
