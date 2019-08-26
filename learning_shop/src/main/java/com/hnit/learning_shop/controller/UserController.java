@@ -27,6 +27,8 @@ import com.hnit.learning_shop.entity.XcUser;
 import com.hnit.learning_shop.service.UserService;
 import com.hnit.learning_shop.utils.FtpUtils;
 import com.hnit.learning_shop.utils.Picture;
+import com.hnit.learning_shop.utils.Data;
+import com.hnit.learning_shop.utils.MyUtils;
 
 @Controller
 @PropertySource("ftp.properties")
@@ -38,7 +40,7 @@ public class UserController {
 	private UserService userService;
 
 	@RequestMapping("/tologin")
-	   public String login() {
+	   public String tologin() {
 	       return "learning-sign";
 	   }
 	
@@ -86,7 +88,7 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping("/doLogin")
-	public String login(Model model,String username,String password,String code
+	public String dologin(Model model,String username,String password,String code
 			,HttpSession session,HttpServletResponse response,HttpServletRequest request
 			){
 		XcUser user=null;
@@ -95,7 +97,7 @@ public class UserController {
 		model.addAttribute("code", code);
 		String ccode=(String) request.getSession().getAttribute("checkcode");
 		System.out.println(code);
-		System.out.println(ccode);
+		System.out.println(username+password);
 		if(username.trim().equals("") || username==null){
 			model.addAttribute("msg","账号不能为空");
 			return "learning-sign";
@@ -152,6 +154,7 @@ public class UserController {
 	}
 	
 	/**
+<<<<<<< HEAD
 	 * 查询所有的用户 未分页
 	 * @param model
 	 * @return
@@ -178,4 +181,66 @@ public class UserController {
 		userService.saveUser(user);
 		return "redirect:/admin/user-list.html";
 	}
+	/**
+	 * 注册
+	 * @param model
+	 * @param username
+	 * @param password
+	 * @param rpassword
+	 * @param code
+	 * @param email
+	 * @param session
+	 * @param response
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("/doReg")
+	public String register(Model model,String username,String password,String rpassword,String code,String email
+			,HttpSession session,HttpServletResponse response,HttpServletRequest request){
+		XcUser user=null;
+		model.addAttribute("username", username);
+		model.addAttribute("email", email);
+		model.addAttribute("code", code);
+		model.addAttribute("password", password);
+		model.addAttribute("rpassword", rpassword);
+		Data d=new Data();
+		System.out.println(d.code);
+		System.out.println(username);
+		System.out.println(password);
+		System.out.println(email);
+		if(code.equals(d.code)){
+			if(rpassword.equals(password)){
+				int result=userService.regUser(username, email, password);
+				if(result>0){
+					model.addAttribute("msg","注册成功！");
+					return "learning-sign";
+				}else{
+					model.addAttribute("msg","注册失败！");
+					return "learning-reg";
+				}
+			}else{
+				model.addAttribute("msg","两次密码不匹配！");
+				return "learning-reg";
+			}		
+		}else{
+			model.addAttribute("msg","验证码错误！");
+			return "learning-reg";
+		}	
+	}
+	
+	/**
+	 * 邮件发送
+	 * @param model
+	 * @param email
+	 */
+	@RequestMapping("/SendCode")
+	@ResponseBody
+	public void sendMail(Model model,String email){
+		model.addAttribute("email", email);
+		MyUtils mu=new MyUtils();
+		mu.sendMail(email);			
+		Data d=new Data();
+		System.out.println(d.code);
+	}
+	
 }

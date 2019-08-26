@@ -1,13 +1,30 @@
 package com.hnit.learning_shop.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+@JsonIgnoreProperties(value = {"handler"})
 public class CategorySub implements Serializable {
     private Integer id;
 
     private Integer catid;
 
     private String subCatName;
+
+    //二级分类对应多个courselist   categorySubMapper.xml 中第10行
+    private List<CourseBase> courseList;
+
+
+	public List<CourseBase> getCourseList() {
+		return courseList;
+	}
+
+	public void setCourseList(List<CourseBase> courseList) {
+		this.courseList = courseList;
+	}
+
+	
 
     private boolean active;
     

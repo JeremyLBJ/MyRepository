@@ -73,6 +73,25 @@
 			<artifactId>javax.servlet-api</artifactId>
 		</dependency>
 
+
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <!--<scope>provided</scope> -->
+        </dependency>
+        
+        <!-- 分页插件 -->
+		<dependency>
+		    <groupId>com.github.pagehelper</groupId>
+		    <artifactId>pagehelper-spring-boot-starter</artifactId>
+		    <version>1.2.5</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.alibaba</groupId>
+		    <artifactId>fastjson</artifactId>
+		    <version>1.2.51</version>
+		</dependency>
+
 		<!-- tomcat 依赖包 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -99,7 +118,12 @@
 			<version>1.2.17</version>
 		</dependency>
 		
-		
+
+		<!-- 发送邮件 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
 
 	</dependencies>
 

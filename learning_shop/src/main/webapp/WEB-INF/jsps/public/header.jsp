@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
  <header>
         <div class="learingHeader">
             <nav class="navbar">
@@ -7,7 +8,7 @@
                     <div class="logo"><img src="../img/asset-logoIco.png" width="100%" alt=""></div>
                     <div class="nav-list">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="travel.index.html" target="_blank">首页</a></li>
+                            <li class="active"><a href="index">首页</a></li>
                             <li><a href="#">课程</a></li>
                             <li><a href="#">职业规划</a></li>
                             <li></li>
@@ -22,7 +23,7 @@
                     		</c:when>
                     		<c:otherwise>
                     			<!-- 登录 -->
-                        		<a href="mypersonal" class="personal">个人中心<span class="personalIco"></span></a> <a href="#" class="myInfo"><img src="${user.userPic}" alt="">${user.name }</a>
+                        		<a href="mypersonal" class="personal">个人中心<span class="personalIco"></span></a> <a href="#" class="myInfo"><img src="./img/${user.userPic}" alt="">${user.name }</a>
                     		</c:otherwise>
                     	</c:choose>
                         

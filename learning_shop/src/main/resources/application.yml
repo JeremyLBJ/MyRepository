@@ -8,6 +8,7 @@ spring:
   http:
     multipart:
           enabled: true # 默认支持文件上传
+
   #Redis
   redis:
     host: www.hujiatai.cn
@@ -17,6 +18,13 @@ spring:
     view:
       prefix: /WEB-INF/jsps/
       suffix: .jsp
+      
+# mail发送
+  mail:
+    host:smtp.qq.com
+    username:879798231@qq.com
+    password:rdxungqedajpbeba
+    default-encoding:UTF-8
 
 logging:
   level:
@@ -34,3 +42,5 @@ my:
       loginPage: /login.jsp
 # 登录成功后的处理方式（跳转，返回json）
 #my.security.browser.loginType = REDIRECT
+
+

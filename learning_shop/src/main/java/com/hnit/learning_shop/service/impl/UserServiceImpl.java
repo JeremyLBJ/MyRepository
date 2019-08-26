@@ -14,26 +14,48 @@ import com.hnit.learning_shop.service.UserService;
 public class UserServiceImpl implements UserService{
 
 	@Autowired
-	XcUserMapper XcUserMapper;	
+	private XcUserMapper xcUserMapper;	
 	
 	@Override
-	public XcUser login(String username, String password) {
+	public XcUser login(String username,String password) {
+		
 		XcUserExample example = new XcUserExample();
 		example.createCriteria().andUsernameEqualTo(username).andPasswordEqualTo(password);
-		List<XcUser> list = XcUserMapper.selectByExample(example);
+		List<XcUser> list = xcUserMapper.selectByExample(example);
 		if(list.size()>0)
 			return list.get(0);
 		return null;
 	}
 
-	@Override
 	public List<XcUser> findAllUserList() {
-		return XcUserMapper.selectByExample(null);
+		return xcUserMapper.selectByExample(null);
+	}
+
+	public void saveUser(XcUser user) {
+		xcUserMapper.insertSelective(user);
+	}
+	
+	public void addUser(String username, String email, String password) {
+		XcUser record=new XcUser();
+		record.setUsername(username);
+		record.setEmail(email);
+		record.setPassword(password);
+		xcUserMapper.insert(record);
 	}
 
 	@Override
-	public void saveUser(XcUser user) {
-		XcUserMapper.insertSelective(user);
+	public int regUser(String username, String email, String password) {
+		return xcUserMapper.register(username, email, password);
 	}
-	
+
+	@Override
+	public XcUser selectByEmail(String email) {
+		XcUserExample example = new XcUserExample();
+		example.createCriteria().andEmailEqualTo(email);
+		List<XcUser> list = xcUserMapper.selectByExample(example);
+		if(list.size()>0)
+			return list.get(0);
+		return null;
+	}
+		
 }
