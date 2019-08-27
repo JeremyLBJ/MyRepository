@@ -12,6 +12,7 @@ import com.hnit.learning_shop.common.Result;
 @RestController
 public class SendMailAction {
 	@Resource
+	
 	private MailServiceImpl mailServiceImpl;
 	
 	@GetMapping("sendMail")

@@ -29,6 +29,7 @@ public class LearningShopApplicationTests {
 	
 	@Test
 	public void testMail() {
+		
 		mailserviceimpl.sendSimpleEmail("1447076355@qq.com", "12313", "116546");
 	}
 

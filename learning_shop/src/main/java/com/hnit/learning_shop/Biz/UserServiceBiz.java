@@ -15,6 +15,7 @@ public class UserServiceBiz {
 	@Autowired
 	private XcUserMapper xcUserMapper;
 
+	
 	@Transactional
 	//通过用户名查询 用户相关信息 在获取最的密码 在修改
 	public int newPassword(XcUser user) {

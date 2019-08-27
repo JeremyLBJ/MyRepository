@@ -15,6 +15,7 @@ import com.hnit.learning_shop.entity.XcUser;
 public class UserAction {
 	
 	@Resource
+	
 	private UserServiceBiz userServiceBiz;
 	
 	@GetMapping("findUserName")

@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -103,6 +104,7 @@
                             <div>© 2017年XTCG Inc.保留所有权利。-沪ICP备15025210号</div>
                             <input type="button" class="btn btn-primary" value="下 载" />
                         </div>
+                        
                         <div class="col-md-5 row">
                             <dl class="col-md-4">
                                 <dt>关于学成网</dt>

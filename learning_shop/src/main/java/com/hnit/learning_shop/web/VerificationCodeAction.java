@@ -10,7 +10,9 @@ import com.hnit.learning_shop.Biz.VerificationCode;
 @Controller
 public class VerificationCodeAction {
 	@Resource
+	
 	private VerificationCode verificationCode;
+	
 	
 	@GetMapping("learingOne")
 	public String verifiationCode (HttpServletRequest request,
