@@ -99,7 +99,7 @@ public class IndexController {
 		System.out.println(catid+grade);
 		PageHelper.startPage(1,5);
 		
-		return new Result(1,"成功",courseService.queryAllByGrade(grade,catid));
+		return new Result(1,"成功",courseService.queryCourseByCatidAndGrade(grade,catid));
 	}
 	
 	
