@@ -8,7 +8,7 @@
                     <div class="logo"><img src="../img/asset-logoIco.png" width="100%" alt=""></div>
                     <div class="nav-list">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="travel.index.html" target="_blank">首页</a></li>
+                            <li class="active"><a href="index">首页</a></li>
                             <li><a href="#">课程</a></li>
                             <li><a href="#">职业规划</a></li>
                             <li></li>

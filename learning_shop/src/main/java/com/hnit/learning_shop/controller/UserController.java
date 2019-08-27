@@ -1,6 +1,9 @@
 package com.hnit.learning_shop.controller;
 
+
 import java.io.IOException;
+import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
@@ -9,19 +12,32 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.hnit.learning_shop.entity.XcUser;
 import com.hnit.learning_shop.service.UserService;
+import com.hnit.learning_shop.utils.FtpUtils;
 import com.hnit.learning_shop.utils.Picture;
+import com.hnit.learning_shop.utils.Data;
+import com.hnit.learning_shop.utils.MyUtils;
 
 @Controller
+@PropertySource("ftp.properties")
 public class UserController {
+	@Value("${filePathPre}")
+	private String filePathPre;
 	
 	@Autowired
-	UserService userService;
+	private UserService userService;
 
 	@RequestMapping("/tologin")
 	   public String tologin() {
@@ -135,6 +151,110 @@ public class UserController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	/**
+<<<<<<< HEAD
+	 * 查询所有的用户 未分页
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("findAllUserList")
+	@ResponseBody
+	public List<XcUser> findAllUserList(Model model){
+		return userService.findAllUserList();
+	}
+	/**
+	 * 去后台首页
+	 * @return
+	 */
+	@GetMapping("toAdmin")
+	public String toAdmin(){
+		return "redirect:/admin/index.html";
+	}
+	
+	@PostMapping("saveUser")
+	public String saveUser(XcUser user,@RequestParam("file")MultipartFile file) throws Exception{
+		String fileName = UUID.randomUUID() + file.getOriginalFilename();
+		user.setUserPic(filePathPre + fileName);
+		FtpUtils.sshSftp(file.getBytes(), fileName);
+		userService.saveUser(user);
+		return "redirect:/admin/user-list.html";
+	}
+	/**
+	 * 注册
+	 * @param model
+	 * @param username
+	 * @param password
+	 * @param rpassword
+	 * @param code
+	 * @param email
+	 * @param session
+	 * @param response
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("/doReg")
+	public String register(Model model,String username,String password,String rpassword,String code,String email
+			,HttpSession session,HttpServletResponse response,HttpServletRequest request){
+		model.addAttribute("username", username);
+		model.addAttribute("email", email);
+		model.addAttribute("code", code);
+		model.addAttribute("password", password);
+		model.addAttribute("rpassword", rpassword);
+		Data d=new Data();
+		System.out.println(d.code);
+		System.out.println(username);
+		System.out.println(password);
+		System.out.println(email);
+		if(code.equals(d.code)){
+			if(rpassword.equals(password)){
+				XcUser user=userService.selectByUsername(username);
+				if(user==null){
+					int result=userService.regUser(username, email, password);
+					if(result>0){
+						model.addAttribute("msg","注册成功！");
+						return "learning-sign";
+					}else{
+						model.addAttribute("msg","注册失败！");
+						return "learning-reg";
+					}
+				}else{
+					model.addAttribute("msg","该用户名已被注册！");
+					return "learning-reg";
+				}			
+			}else{
+				model.addAttribute("msg","两次密码不匹配！");
+				return "learning-reg";
+			}		
+		}else{
+			model.addAttribute("msg","验证码错误！");
+			return "learning-reg";
+		}	
+	}
+	
+	/**
+	 * 邮件发送
+	 * @param model
+	 * @param email
+	 * @return 
+	 */
+	@RequestMapping("/SendCode")
+	@ResponseBody
+	public String sendMail(Model model,String email){
+		model.addAttribute("email", email);
+		MyUtils mu=new MyUtils();
+		XcUser user=userService.selectByEmail(email);
+		String res;
+		if(user==null){
+			mu.sendMail(email);
+			res="1";
+		}else{
+			res="0";
+		}
+		Data d=new Data();
+		System.out.println(d.code);
+		return res;
 	}
 	
 }
