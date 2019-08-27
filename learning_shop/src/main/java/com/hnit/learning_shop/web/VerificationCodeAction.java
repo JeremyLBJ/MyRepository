@@ -1,4 +1,4 @@
-package com.hnit.learning_shop.web;
+		package com.hnit.learning_shop.web;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,15 +12,30 @@ public class VerificationCodeAction {
 	@Resource
 	private VerificationCode verificationCode;
 	
-	@GetMapping("forgetPassword")
+	@GetMapping("learingOne")
 	public String verifiationCode (HttpServletRequest request,
 			HttpServletResponse response , Model model) throws Exception {
 		 verificationCode.service(request, response);
 		 return "learning-forget-password-one";
 	}
 	
-	@GetMapping("email")
+	@GetMapping("learingTwo")
 	public String email (Model model)  {
 		 return "learning-forget-password-two";
+	}
+	
+	@GetMapping("learingThree")
+	public String emails ()  {
+		 return "learning-forget-password-three";
+	}
+	
+	@GetMapping("OK")
+	public String OK () {
+		return "learning-forget-password-ok";
+	}
+	
+	@GetMapping("index")
+	public String index () {
+		return "learning-index";
 	}
 }

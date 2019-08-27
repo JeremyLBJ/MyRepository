@@ -4,7 +4,16 @@
   <resultMap id="BaseResultMap" type="com.hnit.learning_shop.entity.Category" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="category_name" property="categoryName" jdbcType="VARCHAR" />
+  
+  <!-- 关联子分类表 根据id -->
+  <association property="subCatList" column="id" fetchType="lazy"
+   select="findCategorySubById"></association>
   </resultMap>
+  <!-- 通过分类id查找子分类 -->
+  <select id="findCategorySubById" resultMap="com.hnit.learning_shop.dao.CategorySubMapper.BaseResultMap">
+  		select * from category_sub where catid = #{catid }
+  </select>
+  
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >

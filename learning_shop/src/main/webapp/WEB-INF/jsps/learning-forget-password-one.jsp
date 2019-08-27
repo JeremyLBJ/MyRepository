@@ -66,7 +66,7 @@
                                     <input type="text" class="form-control" name="phone" id="phone" placeholder="请输入验证码">
                                     <a href="javascript:;"><img src="" alt="${rand}" width="66" height="34"></a>
                                     <input type="hidden" value="${rand}" id="rands">
-                                    <span class="verif-span">请输入5-25个字符</span>
+                                    <span class="verif-span" style="color: red"></span>
                                 </div>
                             </div>
                         </li>
@@ -123,11 +123,11 @@
     <script type="text/javascript" src="../plugins/bootstrap/dist/js/bootstrap.js"></script>
     <script src="../js/page-learing-forget-password.js"></script>
     <script type="text/javascript">
-    $('.btn').click(function check(){
+    $('.regStuBtn').click(function check(){
     	if($('#phone').val() == $('#rands').val()){
-    		alert(1);
+    		window.location.href = "learingTwo";
     	}else{
-    		alert(2);
+    		$('.verif-span').html('验证码输入有误');
     	}
     });
     </script>

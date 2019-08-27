@@ -2,9 +2,9 @@
 spring:
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/learning_shop?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+    url: jdbc:mysql://127.0.0.1:3306/learning_shop
     username: root
-    password: abc
+    password: a
 
   #Redis
   redis:
@@ -16,16 +16,11 @@ spring:
       prefix: /WEB-INF/jsps/
       suffix: .jsp
       
-      #邮件服务配置
   mail:
-   #邮箱服务器地址
-   host: smtp.qq.com
-   #用户
-   username: 1447076355@qq.com
-   #发送密码  注意该密码不是邮箱密码，是邮箱开通权限后的授权密码
-   password: aaa
-   #默认字符集编码
-   default-encoding: UTF-8
+    host: smtp.qq.com
+    username: 1447076355@qq.com # 这里填写个人的qq邮箱
+    password: aghmefjkwysdihfg # 注：这里不是qq邮箱的密码，而是授权码
+    default-encoding: UTF-8
 #发送地址
 mail:
  fromMail:
@@ -34,9 +29,11 @@ mail:
 logging:
   level:
     com:
-      jt: error
+      hnit: debug
 server:
   port: 80
+  tomcat:
+    uri-encoding: UTF-8
 
 # web端登录界面
 my:

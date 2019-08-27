@@ -102,4 +102,9 @@
     <script type="text/javascript" src="../plugins/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="../plugins/bootstrap/dist/js/bootstrap.js"></script>
     <script src="../js/page-learing-forget-password.js"></script>
+    <script type="text/javascript">
+    	$('.btn-link').click(function(){
+    		window.location.href = "index";
+    	});
+    </script>
 </body>

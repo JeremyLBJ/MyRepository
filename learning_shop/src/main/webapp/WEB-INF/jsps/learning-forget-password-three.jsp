@@ -55,22 +55,37 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">账户名</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="phone" placeholder="请输入账户名">
+                                    <input type="text" class="form-control" name="username" id="username" placeholder="请输入账户名">
+                                    <br><span style="color: red" class="message"></span>
                                     <span class="verif-span">请输入5-25个字符</span>
                                 </div>
                             </div>
                         </li>
                         <li>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">验证码</label>
+                                <label class="col-sm-3 control-label">新密码</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="phone" placeholder="请输入账户名">
+                                    <input type="text" class="form-control" id="password1" name="phone" placeholder="请输入用户密码">
+                                   	<br><span style="color: red" class="p1message"></span>
                                     <span class="verif-span">请输入5-25个字符</span>
                                 </div>
                             </div>
+                            
+                        </li>
+                          <li>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">确认密码</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="password2" name="phone" placeholder="请输入用户密码">
+                                    <br><span style="color: red" class="p2message"></span>
+                                    <span class="verif-span">请输入5-25个字符</span>
+                                </div>
+                            </div>
+                            
                         </li>
                         <li class="mag-left">
                             <button type="button" class="btn btn-primary regStuBtn">下一步</button>
+                             <br><span style="color: red" class="bmessage"></span>
                         </li>
                     </ul>
                 </form>
@@ -121,4 +136,53 @@
     <script type="text/javascript" src="../plugins/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="../plugins/bootstrap/dist/js/bootstrap.js"></script>
     <script src="../js/page-learing-forget-password.js"></script>
+    <script type="text/javascript">
+    //判断用户是否存在
+    $('#username').click(function (){
+    	var username = $('#username').val();
+    	if(username == null || username == ''){
+    		$('#username').val('');
+    	}else{
+    	$.get("findUserName",{username:username},
+    			function(data){
+    		console.log(data);
+    		if(data.code==1){
+    			$('.message').html('');
+    		}else{
+    			$('.message').html('该用户不存在');
+    		}
+    	})
+    	}
+    });
+    //判断密码是否一致
+    $('#password2').click(function(){
+    	var password1 = $('#password1').val();
+    	var password2 = $('#password2').val();
+    	if(password1 == password2){
+    		$('.psmessage').html('');
+    	}else{
+    		if(password2 == null || password2 == ''){
+    			$('#password2').val('');
+    		}else{
+    		$('.psmessage').html('密码输入有误请重新输入');
+    		}
+    	}
+    });
+    //下一步
+    $('.regStuBtn').click(function(){
+    	var username = $('#username').val();
+    	var password1 = $('#password1').val();
+    	var password2 = $('#password2').val();
+    	if(username=='' || password1=='' || password2==''){
+    		$('.bmessage').html('请正确填写相关信息');
+    	}else{
+    	$.get("updatePassword",{username:username,password:password2},function(data){
+    		console.log(data);
+    		if(data.code==1){
+    		 window.location.href = "OK";
+    		}
+    	})
+    		}
+    });
+    </script>
 </body>

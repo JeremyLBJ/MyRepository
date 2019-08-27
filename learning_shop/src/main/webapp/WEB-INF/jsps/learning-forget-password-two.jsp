@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html lang="zh-CN">
 
@@ -53,9 +56,11 @@
 
                         <li>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">已验证邮箱</label>
+                                <label class="col-sm-3 control-label">验证邮箱</label>
                                 <div class="col-sm-9">
-                                <input type="text" class="form-control-static" value="" id="email">
+                                <input type="text" class="form-control" value="" id="email"><br>
+                                <span style="color: red" class="message"></span>
+                               <span style="color: red" class="message"></span>
                                    <!--  <p class="form-control-static">email@example.com</p> -->
                                 </div>
                             </div>
@@ -66,7 +71,7 @@
                                 <div class="col-sm-9 verifphone">
                                     <input type="text" class="form-control" id="verif" name="verif" placeholder="请输入验证码">
                                     <button class="btn btn-default send" type="button">发送验证码</button>
-                                    <input type="hidden" value="${mail}" id="mails">
+                                    <input type="hidden" value="" id="mails">
                                     <span class="verif-span"></span>
                                 </div>
                             </div>
@@ -124,25 +129,36 @@
     <script type="text/javascript" src="../plugins/bootstrap/dist/js/bootstrap.js"></script>
     <script src="../js/page-learing-forget-password.js"></script>
     <script type="text/javascript">
+    //邮箱格式匹配
     $('#email').click(function email(){
     	var email = $('#email').val();
-    	var	reg = "[a-zA-Z_0-9]+@[a-zA-Z0-9]+(\\.[a-zA-Z]+)+";
+    	var	reg = /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+    	if(email == ''){
+    		 $('.message').html('');
+    	}else{
     	if(reg.test(email)){
-            alert('ok');
+            
           }else{
-            alert('wrong');
+            $('.message').html('邮箱格式不正确');
           }
-    	alert(email);
+    	}
     });
-    
-      $('.btn').click(function send(){
-    	$.get("sendMail")});  
-    
+    //点击发送验证码
+      $('.send').click(function send(){
+    	$.get("sendMail",function(data){
+    		$('#mails').val(data.data)
+    	});
+    	
+    });  
+    //验证码匹配
     $('.regStuBtn').click(function next(){
     	var verif = $('#verif').val();
-    	alert(verif);
-    	var a =  $('#mails').val();
-    	alert(a); 
+    	var email = $('#mails').val();
+    	if(verif == email){
+    		window.location.href = "learingThree";
+    	}else{
+    		$('.message').html('验证码有误请重新输入');
+    	}
     });
     </script>
 </body>
