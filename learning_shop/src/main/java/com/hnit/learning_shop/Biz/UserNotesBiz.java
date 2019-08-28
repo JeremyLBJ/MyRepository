@@ -15,6 +15,7 @@ import com.hnit.learning_shop.entity.XcUserExample;
 public class UserNotesBiz {
 	@Autowired
 	private UserNotesMapper userNotesMapper;
+	
 	@Autowired
 	private XcUserMapper xcUserMapper;
 	
