@@ -3,13 +3,25 @@ package com.hnit.learning_shop.entity;
 import java.io.Serializable;
 
 public class ShopCart implements Serializable {
-    private Integer id;
+    
+	//一个cid对应一个课程
+	private CourseBase courseBase;
+	
+	private Integer id;
 
     private Integer cid;
 
     private Integer uid;
 
-    private static final long serialVersionUID = 1L;
+    public CourseBase getCourseBase() {
+		return courseBase;
+	}
+
+	public void setCourseBase(CourseBase courseBase) {
+		this.courseBase = courseBase;
+	}
+
+	private static final long serialVersionUID = 1L;
 
     public Integer getId() {
         return id;

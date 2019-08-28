@@ -590,12 +590,13 @@ em, i {
 }
 
 .learing-shopping-order .topTit {
+	
   padding: 5px 15px;
   margin: 10px 0;
   background: #fff;
 }
 
-.learing-shopping-order .topTit h2 {
+.learing-shopping-order .topTit h2,h5{
   display: inline-block;
 }
 
@@ -644,7 +645,7 @@ em, i {
 
 .learing-shopping-order .cartCont .cont .item .csAbout .contInfo {
   float: left;
-  width: 80%;
+  width: 60%;
   height: 90px;
   overflow: hidden;
 }
@@ -665,7 +666,8 @@ em, i {
 .learing-shopping-order .cartCont .cont .item .sumMon {
   position: relative;
   top: -30px;
-  width: 15%;
+  margin-left:15px;
+  width: 10%;
   text-align: right;
 }
 
@@ -705,9 +707,9 @@ em, i {
 }
 
 .learing-shopping-order .cartCont .csAbout {
-  width: 80%;
+  width: 60%;
 }
 
 .learing-shopping-order .cartCont .sumMon {
-  width: 15%;
+  width: 10%;
 }

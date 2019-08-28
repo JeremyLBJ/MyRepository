@@ -3,7 +3,17 @@ package com.hnit.learning_shop.entity;
 import java.io.Serializable;
 
 public class Orderitem implements Serializable {
-    private Integer id;
+    
+	private CourseBase courseBase;
+	public CourseBase getCourseBase() {
+		return courseBase;
+	}
+
+	public void setCourseBase(CourseBase courseBase) {
+		this.courseBase = courseBase;
+	}
+
+	private Integer id;
 
     private Integer cid;
 

@@ -6,6 +6,11 @@
     <result column="cid" property="cid" jdbcType="INTEGER" />
     <result column="oid" property="oid" jdbcType="INTEGER" />
     <result column="submoney" property="submoney" jdbcType="DOUBLE" />
+    
+    <collection property="courseBase" column="cid"
+    select="com.hnit.learning_shop.dao.CourseBaseMapper.selectByPrimaryKey"></collection>
+    
+    
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >

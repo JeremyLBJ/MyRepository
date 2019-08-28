@@ -104,9 +104,9 @@
     <selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into orders (uid, paymoney, ordertime, 
+    insert into orders (id,uid, paymoney, ordertime, 
       status, paytype)
-    values (#{uid,jdbcType=INTEGER}, #{paymoney,jdbcType=DOUBLE}, #{ordertime,jdbcType=TIMESTAMP}, 
+    values (#{id,jdbcType=INTEGER},#{uid,jdbcType=INTEGER}, #{paymoney,jdbcType=DOUBLE}, #{ordertime,jdbcType=TIMESTAMP}, 
       #{status,jdbcType=INTEGER}, #{paytype,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.hnit.learning_shop.entity.Orders" >

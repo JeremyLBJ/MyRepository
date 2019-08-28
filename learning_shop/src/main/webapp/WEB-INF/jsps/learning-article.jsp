@@ -50,11 +50,12 @@
         <div class="banner-bg"></div>
         <div class="banner-info">
             <div class="banner-left">
-                <p>课程 <span>\ 编程入门</span></p>
-                <p class="tit">程序语言设计</p>
-                <p class="pic"><span class="new-pic">特惠价格￥999</span> <span class="old-pic">原价￥1999</span></p>
+                <p>课程 <span>\ ${course.cname }</span></p>
+                <p class="tit">${course.cname }</p>
+                <p class="pic"><span class="new-pic">特惠价格￥${course.price }</span> <span class="old-pic">原价￥1999</span></p>
                 <p class="info">
-                    <a href="#">马上学习</a>
+                    <a href="#">马上支付</a>
+                    <a href="javascript:addCart(${course.id})">加入购物车</a>
                     <span><em>难度等级</em>中级</span>
                     <span><em>课程时长</em>2小时27分</span>
                     <span><em>评分</em>4.7分</span>
@@ -1100,7 +1101,20 @@
     <script type="text/javascript" src="../plugins/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="../plugins/bootstrap/dist/js/bootstrap.js"></script>
     <script>
-        $('.vid-act').click(function() {
+        
+    //添加购物车
+    function addCart(id){
+    	$.get('../addCart',{id:id},function(data){
+    		if(data.code==1){
+    			alert('添加成功');
+    		}
+    	})
+    }
+    
+    
+    
+    
+    $('.vid-act').click(function() {
             $(this).find('.i-heart').css('background-position', '4px -55px')
         })
 
