@@ -2,9 +2,13 @@
 spring:
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/learning_shop?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+    url: jdbc:mysql://127.0.0.1:3306/learning_shop
     username: root
     password: a
+<<<<<<< HEAD
+=======
+    
+>>>>>>> branch 'master' of https://github.com/jthnit/learning_shop.git
   http:
     multipart:
           enabled: true # 默认支持文件上传
@@ -19,12 +23,15 @@ spring:
       prefix: /WEB-INF/jsps/
       suffix: .jsp
       
-# mail发送
   mail:
-    host:smtp.qq.com
-    username:879798231@qq.com
-    password:rdxungqedajpbeba
-    default-encoding:UTF-8
+    host: smtp.qq.com
+    username: 1447076355@qq.com # 这里填写个人的qq邮箱
+    password: aghmefjkwysdihfg # 注：这里不是qq邮箱的密码，而是授权码
+    default-encoding: UTF-8
+#发送地址
+mail:
+ fromMail:
+      addr: 1447076355@qq.com
 
 logging:
   level:
@@ -40,6 +47,8 @@ my:
   security:
     browser:
       loginPage: /login.jsp
+      
+
 # 登录成功后的处理方式（跳转，返回json）
 #my.security.browser.loginType = REDIRECT
 

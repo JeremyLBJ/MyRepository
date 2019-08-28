@@ -12,7 +12,15 @@
     <result column="sex" property="sex" jdbcType="VARCHAR" />
     <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="phone" property="phone" jdbcType="VARCHAR" />
+    	<!-- 用户表和笔记表关联查询 -->
+    <association property="userNotes" column="id" fetchType="lazy"
+    select="selectCommentsByRid"></association>
+    
   </resultMap>
+  
+   <select id="selectCommentsByRid" resultMap="com.hnit.learning_shop.dao.UserNotesMapper.BaseResultMap">
+  		select * from user_notes where uid = #{rid}
+  </select>
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >

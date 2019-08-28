@@ -6,11 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.github.pagehelper.PageHelper;
 import com.hnit.learning_shop.common.Result;
@@ -46,8 +44,8 @@ public class CourseController {
 	//通过一级分类查询相关的二级分类
 	@GetMapping("queryByCid")
 	@ResponseBody
-	public Result queryCategorySubByCid(int cid){
-		return new Result(1, "成功", courseService.queryCategory(cid).getCategorySubList());
+	public Result queryCategorySubById(int id,Model model){
+		return new Result(1, "成功", courseService.queryCategory(id).getCategorySubList());
 	}
 	
 	
