@@ -25,21 +25,12 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 
 	<dependencies>
 	
-				<!-- 邮件发送 -->
+			<!-- 邮件发送 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mail</artifactId>
-		</dependency>
-		<!-- <dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-mail</artifactId>
-<exclusions>
-	<exclusion>
-		<groupId>com.sun.mail</groupId>
-		<artifactId>javax.mail</artifactId>
-	</exclusion>
-</exclusions>
-		</dependency> -->
+		</dependency> 
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-redis</artifactId>
@@ -92,6 +83,25 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 			<artifactId>javax.servlet-api</artifactId>
 		</dependency>
 
+
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <!--<scope>provided</scope> -->
+        </dependency>
+        
+        <!-- 分页插件 -->
+		<dependency>
+		    <groupId>com.github.pagehelper</groupId>
+		    <artifactId>pagehelper-spring-boot-starter</artifactId>
+		    <version>1.2.5</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.alibaba</groupId>
+		    <artifactId>fastjson</artifactId>
+		    <version>1.2.51</version>
+		</dependency>
+
 		<!-- tomcat 依赖包 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -116,6 +126,13 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
+		</dependency>
+		
+
+		<!-- 发送邮件 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
 
 	</dependencies>

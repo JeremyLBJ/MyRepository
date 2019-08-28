@@ -10,7 +10,6 @@ public class MailServiceImpl {
 	@Autowired
 	private JavaMailSender javaMailSender;
 	
-	
 	//邮箱发送
 	@Value("${mail.fromMail.addr}")
 	private String from;

@@ -31,37 +31,41 @@
 					<div>
 						<p>用户名</p>
 						<p>
-							<input type="text" name="setusername" class="textInput"
-								placeholder="请输入用户名"> <span class="proof cl-orange"></span>
+							<input type="text" name="username" class="textInput"
+								placeholder="请输入用户名" onclick="checkUser()" id="username"
+								value="<%=(request.getParameter("username")==null?"":request.getParameter("username"))%>"> 
+							<span id="user"></span>
 						</p>
 					</div>
 					<div class="phoneBox">
-						<p>手机号码</p>
+						<p>邮箱</p>
 						<p>
-							<input type="text" name="phone" class="textInput"
-								placeholder="请输入11位手机号码"> <input type="submit"
-								class="codeSub" value="发送验证码"> <span
-								class="proof cl-orange"></span>
+							<input type="email" name="email" class="textInput"
+								placeholder="请输入邮箱" id="email" onclick="checkEmail()"
+								value="<%=(request.getParameter("email")==null?"":request.getParameter("email"))%>"> <input type="submit"
+								class="codeSub" value="发送验证码" onclick="getCode()" id="email_check" style="border:#ddd 1px;" disabled="true">
+								<span id="cemail"></span> 
 						</p>
 					</div>
 					<div>
-						<p>短信验证码</p>
+						<p>邮箱验证码</p>
 						<p>
-							<input type="text" name="phoneCode" class="textInput"
+							<input type="text" name="code" class="textInput"
 								placeholder="请输入验证码"> <span class="proof cl-orange"></span>
 						</p>
 					</div>
 					<div>
 						<p>设置密码</p>
 						<p>
-							<input type="text" name="setPassword" class="textInput"
-								placeholder="请设置密码"> <span class="proof cl-orange"></span>
+							<input type="password" name="password" class="textInput"
+								placeholder="请设置密码" onclick="checkPwd()" id="demo_input">
+								 <span id="pwd"></span>
 						</p>
 					</div>
 					<div>
 						<p>确认密码</p>
 						<p>
-							<input type="text" name="conPassword" class="textInput"
+							<input type="password" name="rpassword" class="textInput"
 								placeholder="请确认密码"> <span class="proof cl-orange"></span>
 						</p>
 					</div>
@@ -96,18 +100,68 @@
     	
     	//点击获取验证码
     	function getCode(){
-    		var email=$('.phone');
+    		var email=$('#email');
     		$.ajax({
     			type:"POST",
     			url:"SendCode",
     			data:email,
     			cache:false,
-    			success:function(){
-    				alert("验证码已发送，请查收！");
+    			success:function(res){
+    				if(res=="1"){
+    					alert("验证码已发送，请查收！");
+    					}else{
+    					alert("该邮箱已经被注册！");
+    				}
     			}
     		});	
     	}
-    </script>
+    	
+    	//检查用户名格式
+    	function checkUser(){
+    		var username=document.getElementById("username").value;
+    		var userSpan=document.getElementById("user");
+    		var reg=/^[a-zA-Z]{1}([a-zA-Z0-9]|[._]){4,19}$/;
+    		if(reg.test(username)==false){
+    			userSpan.innerHTML="输入的用户名格式不正确(以字母开头)".fontcolor("red");
+    			return false;
+    			}else{
+    			userSpan.innerHTML="";
+    			return true;
+    		}
+    	}
+    	
+    	//检查邮箱格式
+    	function checkEmail(){
+    		var useremail=document.getElementById("email").value;
+    		var userEmail=document.getElementById("cemail");
+    		var reg=/^[a-z0-9]+([._\\-]*[a-z0-9]*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$)/;
+    		if(document.getElementById("email").value==""||reg.test(document.getElementById("email"))==true){
+    			$("#email_check").attr("disabled",true).css("background-color","#999");
+    		}else{
+    			$("#email_check").attr("disabled",false).css("background-color","#ddd");
+    		}
+    		if(reg.test(useremail)==false){
+    			userEmail.innerHTML="输入的邮箱格式不正确，请重新输入".fontcolor("red");
+    			return false;
+    			}else{
+    			userEmail.innerHTML="";
+    			return true;
+    		}
+    	}
+    	
+    	//检查密码
+    	function checkPwd(){
+    		 var p = document.getElementById("demo_input");
+    	     var rePwd = document.getElementById("pwd");
+    	     var reg = /^\w{6,18}$/;
+    	     if(!reg.test(p.value)){
+    	         p.focus();
+    	         rePwd.innerHTML = "密码由6-18位的数字、字母、下划线组成".fontcolor("red");
+    	     }else {
+    	         rePwd.innerHTML = "";
+    	     }
+    	}
+</script>
 </body>
 <c:if test="${!empty msg}">
 	<script type="text/javascript">

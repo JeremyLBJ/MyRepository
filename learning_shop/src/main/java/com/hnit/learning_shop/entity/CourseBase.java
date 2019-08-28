@@ -3,6 +3,8 @@ package com.hnit.learning_shop.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+@JsonIgnoreProperties(value = {"handler"})
 public class CourseBase implements Serializable {
     private Integer id;
 

@@ -6,7 +6,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -71,8 +70,10 @@
                                 <label class="col-sm-3 control-label">验证码</label>
                                 <div class="col-sm-9 verifphone">
                                     <input type="text" class="form-control" id="verif" name="verif" placeholder="请输入验证码">
+                                    
                                     <button class="btn btn-default send" type="button">发送验证码</button>
                                     <input type="hidden" value="" id="mails">
+                                    <span style="color: red" class="messages"></span>
                                     <span class="verif-span"></span>
                                 </div>
                             </div>
@@ -159,7 +160,7 @@
     	if(verif == email){
     		window.location.href = "learingThree";
     	}else{
-    		$('.message').html('验证码有误请重新输入');
+    		$('.messages').html('验证码有误请重新输入');
     	}
     });
     </script>

@@ -40,4 +40,9 @@ public class VerificationCodeAction {
 	public String index () {
 		return "learning-index";
 	}
+	
+	@GetMapping("video")
+	public String video() {
+		return "learning-course-video";
+	}
 }

@@ -4,24 +4,34 @@ import java.io.Serializable;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+
+
 @JsonIgnoreProperties(value = { "hibernateLazyInitializer", "handler" })
 public class Category implements Serializable {
-    private Integer id;
+    
+	private Integer id;
 
     private String categoryName;
     
-    private List<CategorySub> subCatList;
-    
 
-	private static final long serialVersionUID = 1L;
+   private List<CategorySub> categorySubList;
+   
+    private static final long serialVersionUID = 1L;
 
-    public void setSubCatList(List<CategorySub> subCatList) {
-		this.subCatList = subCatList;
+    public List<CategorySub> getCategorySubList() {
+		return categorySubList;
 	}
-    public List<CategorySub> getSubCatList() {
-		return subCatList;
+
+	public void setCategorySubList(List<CategorySub> categorySubList) {
+		this.categorySubList = categorySubList;
 	}
+
+	
+
+   
     public Integer getId() {
+
         return id;
     }
 
@@ -37,16 +47,10 @@ public class Category implements Serializable {
         this.categoryName = categoryName == null ? null : categoryName.trim();
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", categoryName=").append(categoryName);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
-    }
+	@Override
+	public String toString() {
+		return "Category [id=" + id + ", categoryName=" + categoryName + ", categorySubList=" + categorySubList + "]";
+	}
+
+   
 }

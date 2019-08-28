@@ -27,4 +27,7 @@ public interface XcUserMapper {
     int updateByPrimaryKeySelective(XcUser record);
 
     int updateByPrimaryKey(XcUser record);
+    
+    //注册
+    int register(@Param("username")String username,@Param("email") String email,@Param("password") String password);
 }
