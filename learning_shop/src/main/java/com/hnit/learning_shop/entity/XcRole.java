@@ -1,16 +1,28 @@
 package com.hnit.learning_shop.entity;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+@JsonIgnoreProperties(value = {"handler"})
 public class XcRole implements Serializable {
     private Integer id;
 
     private String roleName;
 
     private String roleDesc;
+    
+    private Set<Permission> permissions = new HashSet<>();
 
     private static final long serialVersionUID = 1L;
 
+    public void setPermissions(Set<Permission> permissions) {
+		this.permissions = permissions;
+	}
+    public Set<Permission> getPermissions() {
+		return permissions;
+	}
     public Integer getId() {
         return id;
     }

@@ -14,16 +14,24 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.hnit.learning_shop.entity.SysLog;
+import com.hnit.learning_shop.entity.XcRole;
 import com.hnit.learning_shop.entity.XcUser;
+import com.hnit.learning_shop.service.SysLogService;
 import com.hnit.learning_shop.service.UserService;
 import com.hnit.learning_shop.utils.FtpUtils;
 import com.hnit.learning_shop.utils.Picture;
@@ -32,10 +40,12 @@ import com.hnit.learning_shop.utils.MyUtils;
 
 @Controller
 @PropertySource("ftp.properties")
+@SessionAttributes("user")
 public class UserController {
 	@Value("${filePathPre}")
 	private String filePathPre;
-	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 	@Autowired
 	private UserService userService;
 
@@ -62,11 +72,12 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping("/logout")
-	   public String logout(HttpSession session,HttpServletRequest request,HttpServletResponse response) {
+	   public String logout(HttpSession session,HttpServletRequest request,HttpServletResponse response,SessionStatus sessionStatus) {
 		XcUser xcuser = (XcUser) request.getSession().getAttribute("user");
 		//清空缓存
 		if(xcuser!=null) {
 			request.getSession().removeAttribute("user");
+			sessionStatus.setComplete(); 
 		}
 		Cookie[] cookies=request.getCookies();
 		for(Cookie cookie:cookies){
@@ -107,6 +118,7 @@ public class UserController {
 		}else{
 			if(code.equalsIgnoreCase(ccode)){
 				user=userService.login(username, password);
+				model.addAttribute("user", user);//存入session
 				if(user==null) {
 					model.addAttribute("msg","账号或密码错误");
 					return "learning-sign";
@@ -169,7 +181,7 @@ public class UserController {
 	 */
 	@GetMapping("toAdmin")
 	public String toAdmin(){
-		return "redirect:/admin/index.html";
+		return "redirect:/admin/index.jsp";
 	}
 	
 	@PostMapping("saveUser")
@@ -177,6 +189,7 @@ public class UserController {
 		String fileName = UUID.randomUUID() + file.getOriginalFilename();
 		user.setUserPic(filePathPre + fileName);
 		FtpUtils.sshSftp(file.getBytes(), fileName);
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		userService.saveUser(user);
 		return "redirect:/admin/user-list.html";
 	}
@@ -199,18 +212,18 @@ public class UserController {
 		model.addAttribute("username", username);
 		model.addAttribute("email", email);
 		model.addAttribute("code", code);
-		model.addAttribute("password", password);
-		model.addAttribute("rpassword", rpassword);
+		model.addAttribute("password", passwordEncoder.encode(password));
+		model.addAttribute("rpassword", passwordEncoder.encode(password));
 		Data d=new Data();
 		System.out.println(d.code);
 		System.out.println(username);
-		System.out.println(password);
+		System.out.println(passwordEncoder.encode(password));
 		System.out.println(email);
 		if(code.equals(d.code)){
 			if(rpassword.equals(password)){
 				XcUser user=userService.selectByUsername(username);
 				if(user==null){
-					int result=userService.regUser(username, email, password);
+					int result=userService.regUser(username, email, passwordEncoder.encode(password));
 					if(result>0){
 						model.addAttribute("msg","注册成功！");
 						return "learning-sign";
@@ -254,6 +267,52 @@ public class UserController {
 		Data d=new Data();
 		System.out.println(d.code);
 		return res;
+	}
+	
+	@RequestMapping("/findUserById/{id}")
+	public String findUserById(@PathVariable("id") Integer id,Model model) throws JsonProcessingException{
+		XcUser user = userService.findUserById(id);
+		model.addAttribute("user", user);
+		return "forward:/admin/user-detail.jsp";
+	}
+	
+	@RequestMapping("/findAllRoleList")
+	@ResponseBody
+	public List<XcRole> findAllRoleList(Model model){
+		return userService.findAllRoleList();
+	}
+	
+	@RequestMapping("/saveRole")
+	public String saveRole(XcRole role){
+		userService.saveRole(role);
+		return "redirect:/admin/role-list.html";
+	}
+	
+	@RequestMapping("/findRoleById/{id}")
+	public String findRoleById(@PathVariable("id")Integer id,Model model){
+		model.addAttribute("role", userService.findRoleById(id));
+		return "forward:/admin/role-detail.jsp";
+	}
+	
+	@RequestMapping("/showRoles2User/{id}")
+	public String showRoles2User(@PathVariable("id")Integer id,Model model){
+		model.addAttribute("roleList", userService.findOtherRolesByUid(id));
+		model.addAttribute("uid", id);
+		return "forward:/admin/showroles.jsp";
+	}
+	
+	@RequestMapping("/addRole2User")
+	public String addRole2User(Integer id,Integer uid){
+		userService.addRole2User(id,uid);
+		return "redirect:/admin/user-list.html";
+	}
+	
+	@Autowired SysLogService sysLogService;
+	@RequestMapping("/findAllSyslog")
+	public String findAllSyslog(Model model){
+		List<SysLog> sysLogList = sysLogService.findAllSyslog();
+		model.addAttribute("sysLogList", sysLogList);
+		return "forward:/admin/syslog.jsp";
 	}
 	
 }

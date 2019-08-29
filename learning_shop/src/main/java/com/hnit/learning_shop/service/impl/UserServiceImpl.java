@@ -5,7 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hnit.learning_shop.dao.UserRoleMapper;
+import com.hnit.learning_shop.dao.XcRoleMapper;
 import com.hnit.learning_shop.dao.XcUserMapper;
+import com.hnit.learning_shop.entity.UserRoleKey;
+import com.hnit.learning_shop.entity.XcRole;
+import com.hnit.learning_shop.entity.XcRoleExample;
 import com.hnit.learning_shop.entity.XcUser;
 import com.hnit.learning_shop.entity.XcUserExample;
 import com.hnit.learning_shop.service.UserService;
@@ -15,6 +20,12 @@ public class UserServiceImpl implements UserService{
 
 	@Autowired
 	private XcUserMapper xcUserMapper;	
+	
+	@Autowired
+	private XcRoleMapper xcRoleMapper;
+	
+	@Autowired
+	private UserRoleMapper userRoleMapper;
 	
 	@Override
 	public XcUser login(String username,String password) {
@@ -45,7 +56,11 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public int regUser(String username, String email, String password) {
-		return xcUserMapper.register(username, email, password);
+		XcUser record = new XcUser();
+		record.setUsername(username);
+		record.setEmail(email);
+		record.setPassword(password);
+		return xcUserMapper.insert(record );
 	}
 
 	@Override
@@ -66,6 +81,39 @@ public class UserServiceImpl implements UserService{
 		if(list.size()>0)
 			return list.get(0);
 		return null;
+	}
+
+	@Override
+	public XcUser findUserById(Integer id) {
+		return xcUserMapper.selectByPrimaryKey(id);
+	}
+
+	@Override
+	public List<XcRole> findAllRoleList() {
+		return xcRoleMapper.selectByExample(null);
+	}
+
+	@Override
+	public void saveRole(XcRole role) {
+		xcRoleMapper.insert(role);
+	}
+
+	@Override
+	public XcRole findRoleById(Integer id) {
+		return xcRoleMapper.selectByPrimaryKey(id);
+	}
+
+	@Override
+	public List<XcRole> findOtherRolesByUid(Integer id) {
+		return xcRoleMapper.findOtherRolesByUid(id);
+	}
+
+	@Override
+	public void addRole2User(Integer id, Integer uid) {
+		UserRoleKey record = new UserRoleKey();
+		record.setRid(id);
+		record.setUid(uid);
+		userRoleMapper.insert(record);
 	}
 		
 }

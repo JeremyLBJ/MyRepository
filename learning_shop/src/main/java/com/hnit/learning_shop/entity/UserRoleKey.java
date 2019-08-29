@@ -2,10 +2,10 @@ package com.hnit.learning_shop.entity;
 
 import java.io.Serializable;
 
-public class UserRloeKey implements Serializable {
+public class UserRoleKey implements Serializable {
     private Integer uid;
 
-    private Integer role;
+    private Integer rid;
 
     private static final long serialVersionUID = 1L;
 
@@ -17,12 +17,12 @@ public class UserRloeKey implements Serializable {
         this.uid = uid;
     }
 
-    public Integer getRole() {
-        return role;
+    public Integer getRid() {
+        return rid;
     }
 
-    public void setRole(Integer role) {
-        this.role = role;
+    public void setRid(Integer rid) {
+        this.rid = rid;
     }
 
     @Override
@@ -32,7 +32,7 @@ public class UserRloeKey implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", uid=").append(uid);
-        sb.append(", role=").append(role);
+        sb.append(", rid=").append(rid);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

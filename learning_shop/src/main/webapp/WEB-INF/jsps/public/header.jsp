@@ -19,11 +19,11 @@
                     	<c:choose>
                     		<c:when test="${user==null}">
                     			<!-- 未登录 -->
-                        		<a href="tologin">登录 </a> <span> | </span> <a href="toreg"> 注册</a>
+                        		<a href="/tologin">登录 </a> <span> | </span> <a href="/toreg"> 注册</a>
                     		</c:when>
                     		<c:otherwise>
                     			<!-- 登录 -->
-                        		<a href="mypersonal" class="personal">个人中心<span class="personalIco"></span></a> <a href="#" class="myInfo"><img src="./img/${user.userPic}" alt="">${user.name }</a>
+                        		<a href="mypersonal" class="personal">个人中心<span class="personalIco"></span></a> <a href="#" class="myInfo"><img src="${user.userPic}" alt="">${user.name }</a>
                     		</c:otherwise>
                     	</c:choose>
                         

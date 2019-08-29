@@ -5,7 +5,20 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="role_name" property="roleName" jdbcType="VARCHAR" />
     <result column="role_desc" property="roleDesc" jdbcType="VARCHAR" />
+    
+    <collection property="permissions" column="id" fetchType="lazy"
+     select="findpPermissionByPid">
+    </collection>
   </resultMap>
+  <select id="findpPermissionByPid" 
+   resultMap="com.hnit.learning_shop.dao.PermissionMapper.BaseResultMap">
+   	select * from permission where id in (select pid from role_permission where rid = #{id })
+   </select>
+   
+   <select id="findOtherRolesByUid" resultMap="BaseResultMap">
+   		SELECT * FROM xc_role where id not in(select rid from user_role where uid = #{uid});
+   </select>
+   
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >

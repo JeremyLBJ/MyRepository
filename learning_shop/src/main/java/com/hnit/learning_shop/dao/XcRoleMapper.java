@@ -27,4 +27,6 @@ public interface XcRoleMapper {
     int updateByPrimaryKeySelective(XcRole record);
 
     int updateByPrimaryKey(XcRole record);
+
+	List<XcRole> findOtherRolesByUid(Integer id);
 }

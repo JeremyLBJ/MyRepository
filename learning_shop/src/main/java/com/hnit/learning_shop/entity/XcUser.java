@@ -2,13 +2,15 @@ package com.hnit.learning_shop.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+@JsonIgnoreProperties(value = {"handler"})
 public class XcUser implements Serializable {
     private Integer id;
-
-    private Integer rid;
 
     private String username;
 
@@ -26,23 +28,25 @@ public class XcUser implements Serializable {
     private String email;
 
     private String phone;
+    
+    private Set<XcRole> roleList = new HashSet<>();
 
     private static final long serialVersionUID = 1L;
 
+    public void setRoleList(Set<XcRole> roleList) {
+		this.roleList = roleList;
+	}
+    
+    public Set<XcRole> getRoleList() {
+		return roleList;
+	}
+    
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getRid() {
-        return rid;
-    }
-
-    public void setRid(Integer rid) {
-        this.rid = rid;
     }
 
     public String getUsername() {
@@ -116,7 +120,6 @@ public class XcUser implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", rid=").append(rid);
         sb.append(", username=").append(username);
         sb.append(", password=").append(password);
         sb.append(", name=").append(name);
