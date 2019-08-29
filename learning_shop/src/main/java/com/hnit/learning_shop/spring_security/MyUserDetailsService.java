@@ -42,6 +42,7 @@ public class MyUserDetailsService implements UserDetailsService {
     	return null;
     }
     request.getSession().setAttribute("user", userInfo);
+    System.out.println(userInfo);
     //String password = passwordEncoder.encode(userInfo.getPassword());
 
     // 封装用户信息，并返回。参数分别是：用户名，密码，用户权限

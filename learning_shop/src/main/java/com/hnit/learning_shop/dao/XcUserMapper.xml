@@ -12,13 +12,15 @@
     <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="phone" property="phone" jdbcType="VARCHAR" />
     
+    	<!-- 用户表和笔记表关联查询 -->
+    <association property="userNotes" column="id" fetchType="lazy"
+    select="selectCommentsByRid"></association>
+    
     
     <collection property="roleList" column="id" fetchType="lazy"
      select="findRoleByRoleUser">
     </collection>
-    	<!-- 用户表和笔记表关联查询 -->
-    <association property="userNotes" column="id" fetchType="lazy"
-    select="selectCommentsByRid"></association>
+    
     
   </resultMap>
   <select id="findRoleByRoleUser" 

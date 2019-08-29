@@ -4,6 +4,9 @@ package com.hnit.learning_shop.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,7 +28,8 @@ import com.hnit.learning_shop.service.IndexService;
 @RequestMapping("index")
 public class IndexController {
 
-	
+	@Autowired
+	private HttpServletRequest request;
 	@Autowired
 	private CourseService courseService;
 	@Autowired
@@ -41,9 +45,9 @@ public class IndexController {
 	private IndexService indexService;
 
 
-	@RequestMapping
-	public String toIndex(Model model,@SessionAttribute(name="user",required=false)XcUser user) {
-		
+	@RequestMapping("/toIndex")
+	public String toIndex(Model model) {
+		XcUser user = (XcUser) request.getSession().getAttribute("user");
 		//初始页面
 		List<Category> catList = indexService.findAllCategory();
 		List<Interest> interestList = indexService.findAllInterestByUid(user==null?0:user.getId());
@@ -72,7 +76,8 @@ public class IndexController {
 		model.addAttribute("catList", catList);
 		model.addAttribute("subCatList", subCatList);
 		
-		
+		System.out.println(catList);
+		System.out.println(subCatList);
 		//初始化页面上的 老师
 		model.addAttribute("teacherList", teacherService.queryAllTeacher());
 		
@@ -108,9 +113,10 @@ public class IndexController {
 	
 
 	@RequestMapping("/saveInterest")
-	public String saveInterest(String[] ids,@SessionAttribute(name="user",required=false)XcUser user) {
+	public String saveInterest(String[] ids) {
+		XcUser user = (XcUser) request.getSession().getAttribute("user");
 		if(user == null){
-			return "redirect:../tologin";
+			return "redirect:/tologin";
 		}
 		List<Interest> interestList = indexService.findAllInterestByUid(user.getId());
 		if(interestList!= null && interestList.size() > 0){
@@ -118,12 +124,13 @@ public class IndexController {
 		}else{
 			indexService.saveInterest(ids,user.getId());
 		}
-		return "redirect:../index";
+		return "redirect:/index/toIndex";
 	}
 	
 	@RequestMapping("/isShowInterestBox")
 	@ResponseBody
-	public Result isShowInterestBox(@SessionAttribute(name="user",required=false)XcUser user){
+	public Result isShowInterestBox(){
+		XcUser user = (XcUser) request.getSession().getAttribute("user");
 		if(user == null){
 			return new Result(1);
 		}

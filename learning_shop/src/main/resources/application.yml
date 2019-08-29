@@ -2,17 +2,10 @@
 spring:
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-<<<<<<< HEAD
     url: jdbc:mysql://www.hujiatai.cn:3306/learning_shop?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false
-=======
-    url: jdbc:mysql://127.0.0.1:3306/learning_shop
->>>>>>> branch 'master' of https://github.com/jthnit/learning_shop.git
     username: root
-    password: a
-<<<<<<< HEAD
-=======
+    password: abc
     
->>>>>>> branch 'master' of https://github.com/jthnit/learning_shop.git
   http:
     multipart:
           enabled: true # 默认支持文件上传

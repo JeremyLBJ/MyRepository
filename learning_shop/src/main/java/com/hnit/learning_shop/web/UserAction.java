@@ -7,9 +7,9 @@ import javax.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hnit.learning_shop.Biz.UserServiceBiz;
 import com.hnit.learning_shop.common.Result;
 import com.hnit.learning_shop.entity.XcUser;
+import com.hnit.learning_shop.service.UserServiceBiz;
 
 @RestController
 public class UserAction {

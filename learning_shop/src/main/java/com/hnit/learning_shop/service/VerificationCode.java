@@ -1,4 +1,4 @@
-package com.hnit.learning_shop.Biz;
+package com.hnit.learning_shop.service;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;

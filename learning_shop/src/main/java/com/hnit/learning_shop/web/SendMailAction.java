@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.hnit.learning_shop.Biz.MailServiceImpl;
 import com.hnit.learning_shop.common.Result;
+import com.hnit.learning_shop.service.MailServiceImpl;
 
 @RestController
 public class SendMailAction {

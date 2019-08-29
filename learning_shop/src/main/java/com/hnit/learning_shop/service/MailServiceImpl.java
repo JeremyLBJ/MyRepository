@@ -1,4 +1,4 @@
-package com.hnit.learning_shop.Biz;
+package com.hnit.learning_shop.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;

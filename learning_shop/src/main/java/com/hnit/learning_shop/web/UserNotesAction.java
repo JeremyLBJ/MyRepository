@@ -9,16 +9,16 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.hnit.learning_shop.Biz.UserNotesBiz;
+
 import com.hnit.learning_shop.common.Result;
 import com.hnit.learning_shop.entity.UserNotes;
 import com.hnit.learning_shop.entity.XcUser;
+import com.hnit.learning_shop.service.UserNotesBiz;
 
 @RestController
 public class UserNotesAction {
 	@Resource
 	private UserNotesBiz userNotesBiz;
-	//@SessionAttribute(name="loginUser",required=false) XcUser user
 	@PostMapping("comment")
 	public Result commnet(@Valid UserNotes userNotes, Model model , Errors errors
 			) {

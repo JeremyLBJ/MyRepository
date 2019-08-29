@@ -40,7 +40,6 @@ import com.hnit.learning_shop.utils.MyUtils;
 
 @Controller
 @PropertySource("ftp.properties")
-@SessionAttributes("user")
 public class UserController {
 	@Value("${filePathPre}")
 	private String filePathPre;
@@ -118,7 +117,6 @@ public class UserController {
 		}else{
 			if(code.equalsIgnoreCase(ccode)){
 				user=userService.login(username, password);
-				model.addAttribute("user", user);//存入session
 				if(user==null) {
 					model.addAttribute("msg","账号或密码错误");
 					return "learning-sign";

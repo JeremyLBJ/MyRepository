@@ -27,6 +27,6 @@ public class MyAuthenctiationSuccessHandler extends SimpleUrlAuthenticationSucce
  
 //    response.setContentType("application/json;charset=UTF-8");
 //    response.getWriter().write(objectMapper.writeValueAsString(authentication));
-    response.sendRedirect(request.getContextPath() + "/index");
+    response.sendRedirect(request.getContextPath() + "/index/toIndex");
   }
 }

@@ -622,7 +622,7 @@
         	
         	$('.interest-box').hide();
         	
-        	$.get("index/isShowInterestBox",function(data){
+        	$.get("/index/isShowInterestBox",function(data){
         		console.log(data);
         		if(data.code == 1){
         			$('.interest-box').show();
@@ -645,7 +645,7 @@
                     ids[index] = $(this).attr("lang");
                 });
                 $('.interest-box').hide();
-                window.location.href = "index/saveInterest?ids="+ids;
+                window.location.href = "/index/saveInterest?ids="+ids;
             })
             $('.button .skip').click(function() {
                 $('.interest-box').hide();

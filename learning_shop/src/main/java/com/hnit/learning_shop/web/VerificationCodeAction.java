@@ -5,7 +5,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import com.hnit.learning_shop.Biz.VerificationCode;
+
+import com.hnit.learning_shop.service.VerificationCode;
 
 @Controller
 public class VerificationCodeAction {
