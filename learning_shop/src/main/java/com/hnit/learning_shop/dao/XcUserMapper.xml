@@ -14,12 +14,20 @@
     <result column="phone" property="phone" jdbcType="VARCHAR" />
     	<!-- 用户表和笔记表关联查询 -->
     <association property="userNotes" column="id" fetchType="lazy"
-    select="selectCommentsByRid"></association>
+    select="selectCommentsByRid"></association> 
+    
+    <collection property="userNotes" column="id" fetchType="lazy"
+    select="orderByAgreeCnt"></collection>
+    
     
   </resultMap>
   
    <select id="selectCommentsByRid" resultMap="com.hnit.learning_shop.dao.UserNotesMapper.BaseResultMap">
   		select * from user_notes where uid = #{rid}
+  </select>
+  
+  <select id="orderByAgreeCnt" resultMap="com.hnit.learning_shop.dao.UserNotesMapper.BaseResultMap">
+  		select * from user_notes where uid = #{rid} order by agreeCnt desc
   </select>
   <sql id="Example_Where_Clause" >
     <where >
