@@ -51,11 +51,13 @@ public class CourseService {
 	
 	//查询所有的课程
 	public List<CourseBase> queryAllCourse(){
-		return courseBaseMapper.selectByExample(null);
+		CourseBaseExample example=new CourseBaseExample();
+		example.setOrderByClause("start_time desc");
+		return courseBaseMapper.selectByExample(example);
 	}
 	
-	//根据难度查询课程
-	public List<CourseBase> queryAllByGrade(String grade, int catid){
+	//根据难度和指定id查询课程
+	public List<CourseBase> queryCourseByCatidAndGrade(String grade, int catid){
 		CourseBaseExample courseBaseExample=new CourseBaseExample();
 		courseBaseExample.createCriteria().andGradeEqualTo(grade).andCatidEqualTo(catid);
 		return courseBaseMapper.selectByExample(courseBaseExample); 

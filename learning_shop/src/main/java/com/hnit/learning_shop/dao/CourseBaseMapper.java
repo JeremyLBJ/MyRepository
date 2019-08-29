@@ -18,7 +18,7 @@ public interface CourseBaseMapper {
 
     List<CourseBase> selectByExample(CourseBaseExample example);
 
-    CourseBase selectByPrimaryKey(Integer id);
+    CourseBase selectByPrimaryKey(int id);
 
     int updateByExampleSelective(@Param("record") CourseBase record, @Param("example") CourseBaseExample example);
 

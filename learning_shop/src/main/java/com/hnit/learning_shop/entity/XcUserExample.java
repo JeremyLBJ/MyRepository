@@ -165,6 +165,66 @@ public class XcUserExample {
             return (Criteria) this;
         }
 
+        public Criteria andRidIsNull() {
+            addCriterion("rid is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRidIsNotNull() {
+            addCriterion("rid is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRidEqualTo(Integer value) {
+            addCriterion("rid =", value, "rid");
+            return (Criteria) this;
+        }
+
+        public Criteria andRidNotEqualTo(Integer value) {
+            addCriterion("rid <>", value, "rid");
+            return (Criteria) this;
+        }
+
+        public Criteria andRidGreaterThan(Integer value) {
+            addCriterion("rid >", value, "rid");
+            return (Criteria) this;
+        }
+
+        public Criteria andRidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("rid >=", value, "rid");
+            return (Criteria) this;
+        }
+
+        public Criteria andRidLessThan(Integer value) {
+            addCriterion("rid <", value, "rid");
+            return (Criteria) this;
+        }
+
+        public Criteria andRidLessThanOrEqualTo(Integer value) {
+            addCriterion("rid <=", value, "rid");
+            return (Criteria) this;
+        }
+
+        public Criteria andRidIn(List<Integer> values) {
+            addCriterion("rid in", values, "rid");
+            return (Criteria) this;
+        }
+
+        public Criteria andRidNotIn(List<Integer> values) {
+            addCriterion("rid not in", values, "rid");
+            return (Criteria) this;
+        }
+
+        public Criteria andRidBetween(Integer value1, Integer value2) {
+            addCriterion("rid between", value1, value2, "rid");
+            return (Criteria) this;
+        }
+
+        public Criteria andRidNotBetween(Integer value1, Integer value2) {
+            addCriterion("rid not between", value1, value2, "rid");
+            return (Criteria) this;
+        }
+
         public Criteria andUsernameIsNull() {
             addCriterion("username is null");
             return (Criteria) this;
