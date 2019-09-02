@@ -104,6 +104,7 @@ public class UserController {
 		XcUser user=null;
 		model.addAttribute("username", username);
 		model.addAttribute("password", password);
+		
 		model.addAttribute("code", code);
 		String ccode=(String) request.getSession().getAttribute("checkcode");
 		System.out.println(code);
@@ -115,7 +116,8 @@ public class UserController {
 			model.addAttribute("msg","密码不能为空");
 			return "learning-sign";
 		}else{
-			if(code.equalsIgnoreCase(ccode)){
+			if( code.length() > 10 || code.equalsIgnoreCase(ccode)){
+				System.out.println(username + ":" + password);
 				user=userService.login(username, password);
 				if(user==null) {
 					model.addAttribute("msg","账号或密码错误");

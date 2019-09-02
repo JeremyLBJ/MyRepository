@@ -33,11 +33,16 @@ mail:
 logging:
   level:
     com:
-      hnit: debug
+      hnit: trace
 server:
   port: 80
   tomcat:
     uri-encoding: UTF-8
+
+# qq登陆
+qq:
+  oauth:
+    http: http://www.hujiatai.cn
 
 # web端登录界面
 my:

@@ -52,6 +52,7 @@
                 </div>
                 <div class="setSing">
                     <label><input type="checkbox" name="check">自动登录</label>
+                    &nbsp;&nbsp;&nbsp;<a href="qq/oauth"><i class="i-qq"></i>qq登录</a>
                     <a href="#" class="forget">忘记密码</a>
                 </div>
                 <div class="submitBut" onclick="document.getElementById('logForm').submit()">登录</div>

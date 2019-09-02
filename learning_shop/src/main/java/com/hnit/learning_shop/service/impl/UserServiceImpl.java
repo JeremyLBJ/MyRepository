@@ -10,7 +10,6 @@ import com.hnit.learning_shop.dao.XcRoleMapper;
 import com.hnit.learning_shop.dao.XcUserMapper;
 import com.hnit.learning_shop.entity.UserRoleKey;
 import com.hnit.learning_shop.entity.XcRole;
-import com.hnit.learning_shop.entity.XcRoleExample;
 import com.hnit.learning_shop.entity.XcUser;
 import com.hnit.learning_shop.entity.XcUserExample;
 import com.hnit.learning_shop.service.UserService;
@@ -78,7 +77,7 @@ public class UserServiceImpl implements UserService{
 		XcUserExample example = new XcUserExample();
 		example.createCriteria().andUsernameEqualTo(username);
 		List<XcUser> list = xcUserMapper.selectByExample(example);
-		if(list.size()>0)
+		if(list != null && list.size()>0)
 			return list.get(0);
 		return null;
 	}

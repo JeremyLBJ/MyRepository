@@ -28,4 +28,5 @@ public interface UserService {
 	List<XcRole> findOtherRolesByUid(Integer id);
 
 	void addRole2User(Integer id, Integer uid);
+
 }
