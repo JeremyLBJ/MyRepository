@@ -110,6 +110,8 @@
             <div class="Recommend">
                 <div class="title">精品推荐<a href="#">查看全部</a></div>
                 <div class="content">
+                    
+                    
                     <div class="recom-item">
                         <a href="#">
                             <p><img src="${pageContext.request.contextPath}/img/widget-demo1.png" width="100%" alt=""><span class="lab">HOT</span></p>

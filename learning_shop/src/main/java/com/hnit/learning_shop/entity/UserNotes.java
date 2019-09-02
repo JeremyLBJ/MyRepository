@@ -2,6 +2,8 @@ package com.hnit.learning_shop.entity;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class UserNotes {
 	
     /**
@@ -56,6 +58,7 @@ public class UserNotes {
      *
      * @mbg.generated Tue Aug 27 10:03:51 CST 2019
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date createtime;
 
     /**

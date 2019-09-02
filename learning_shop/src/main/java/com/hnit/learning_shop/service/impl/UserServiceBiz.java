@@ -1,4 +1,4 @@
-package com.hnit.learning_shop.Biz;
+package com.hnit.learning_shop.service.impl;
 
 import java.util.List;
 

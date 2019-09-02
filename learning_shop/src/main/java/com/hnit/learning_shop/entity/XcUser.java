@@ -3,7 +3,6 @@ package com.hnit.learning_shop.entity;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(value= {"handler"})

@@ -14,11 +14,21 @@
     <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
     <result column="pic" property="pic" jdbcType="VARCHAR" />
     <result column="learncount" property="learncount" jdbcType="INTEGER" />
-  
+  	
+  	 <collection property="xcUsers" column="catid" fetchType="lazy"
+    select="selectByUid"></collection>
+    
   
   </resultMap>
   <select id="selectByCatid" resultMap="BaseResultMap" parameterType="com.hnit.learning_shop.entity.CourseBaseExample">
   	select * from course_base where catid=#{id}
+  </select>
+  
+  <select id="selectByUid" resultMap="com.hnit.learning_shop.dao.XcUserMapper.BaseResultMap">
+  	SELECT u.* FROM  orders o 
+	  	JOIN shop_cart t ON o.uid = t.uid 
+	  	JOIN course_base b ON t.id = b.catid 
+	  	JOIN xc_user u ON t.uid=u.id AND o.uid=#{uid}
   </select>
   
   <sql id="Example_Where_Clause" >

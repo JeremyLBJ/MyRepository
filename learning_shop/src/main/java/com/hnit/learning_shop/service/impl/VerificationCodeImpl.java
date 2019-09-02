@@ -1,4 +1,4 @@
-package com.hnit.learning_shop.Biz;
+package com.hnit.learning_shop.service.impl;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Service;
 @Service
-public class VerificationCode extends HttpServlet{
+public class VerificationCodeImpl extends HttpServlet{
 	/**
 	 * 
 	 */

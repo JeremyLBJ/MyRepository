@@ -5,7 +5,6 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/learning_shop
     username: root
     password: a
-    
   http:
     multipart:
           enabled: true # 默认支持文件上传

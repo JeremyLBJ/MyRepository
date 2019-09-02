@@ -1,4 +1,4 @@
-package com.hnit.learning_shop.Biz;
+package com.hnit.learning_shop.service.impl;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import com.hnit.learning_shop.entity.XcUser;
 import com.hnit.learning_shop.entity.XcUserExample;
 
 @Service
-public class UserNotesBiz {
+public class UserNotesImpl {
 	@Autowired
 	private UserNotesMapper userNotesMapper;
 	
