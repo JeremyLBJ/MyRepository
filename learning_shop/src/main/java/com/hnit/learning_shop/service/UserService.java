@@ -2,7 +2,7 @@ package com.hnit.learning_shop.service;
 
 import java.util.List;
 
-
+import com.hnit.learning_shop.entity.XcRole;
 import com.hnit.learning_shop.entity.XcUser;
 
 public interface UserService {
@@ -18,4 +18,16 @@ public interface UserService {
 	XcUser selectByUsername(String username);
 	
 	void sendSimpleEmail(String to,String subject,String text);
+
+	XcUser findUserById(Integer id);
+
+	List<XcRole> findAllRoleList();
+
+	void saveRole(XcRole role);
+
+	XcRole findRoleById(Integer id);
+
+	List<XcRole> findOtherRolesByUid(Integer id);
+
+	void addRole2User(Integer id, Integer uid);
 }

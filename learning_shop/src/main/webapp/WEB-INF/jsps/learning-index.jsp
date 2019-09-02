@@ -619,6 +619,16 @@
 
 		
         $(function() {
+        	
+        	$('.interest-box').hide();
+        	
+        	$.get("/index/isShowInterestBox",function(data){
+        		console.log(data);
+        		if(data.code == 1){
+        			$('.interest-box').show();
+        		}
+        	},"json");
+        	
             $('.interest-box .interest-cont li').click(function() {
                 if ($(this).hasClass('active')) {
                     $(this).removeClass('active');
@@ -635,12 +645,13 @@
                     ids[index] = $(this).attr("lang");
                 });
                 $('.interest-box').hide();
-                window.location.href = "index/saveInterest?ids="+ids;
+                window.location.href = "/index/saveInterest?ids="+ids;
             })
             $('.button .skip').click(function() {
                 $('.interest-box').hide();
             })
         })
+        
         
        	//修改兴趣
        	function updateInterest(uid){

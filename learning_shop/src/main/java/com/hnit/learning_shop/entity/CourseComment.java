@@ -3,6 +3,9 @@ package com.hnit.learning_shop.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+@JsonIgnoreProperties(value = {"handler"})
 public class CourseComment implements Serializable {
     private Integer id;
 
@@ -10,6 +13,7 @@ public class CourseComment implements Serializable {
 
     private Integer uid;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date publishTime;
 
     private String content;
@@ -17,8 +21,19 @@ public class CourseComment implements Serializable {
     private Float grade;
 
     private static final long serialVersionUID = 1L;
+    
+    private XcUser xcUser;
+    
+    
+    public XcUser getXcUser() {
+		return xcUser;
+	}
 
-    public Integer getId() {
+	public void setXcUser(XcUser xcUser) {
+		this.xcUser = xcUser;
+	}
+
+	public Integer getId() {
         return id;
     }
 

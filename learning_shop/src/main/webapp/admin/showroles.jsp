@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -14,51 +17,37 @@
 <body>
 <form method="post" action="" id="app">
   <div class="panel admin-panel">
-    <div class="panel-head"><strong class="icon-reorder"> 用户管理</strong></div>
+    <div class="panel-head"><strong class="icon-reorder">添加角色</strong></div>
     <div class="padding border-bottom">
       <ul class="search">
         <li>
           <button type="button"  class="button border-green" id="checkall"><span class="icon-check"></span> 全选</button>
-          <button type="button" onclick="toAddUser()" class="button border-yellow"><span class="icon-plus-square-o"></span> 添加用户</button>
+          <button type="button" onclick="toAddRole()" class="button border-yellow"><span class="icon-plus-square-o"></span> 添加角色</button>
         </li>
       </ul>
     </div>
     <table class="table table-hover text-center">
       <tr>
         <th>ID</th>
-        <th>姓名</th>       
-        <th>电话</th>
-        <th>邮箱</th>
-        <th width="120">生日</th>
-        <th>头像</th>
-        <th>操作</th>       
-      </tr>      
-        <tr v-for="user in userList">
-          <td><input type="checkbox" name="id[]" value="1" />
-            {{user.id}}</td>
-          <td>{{user.username}}</td>
-          <td>{{user.phone}}</td>
-          <td>{{user.email}}</td>  
-          <td>{{user.brithday}}</td>         
-          <td><img alt="" :src="user.userPic" width="60" height="60"/></td>
+        <th>角色名</th>       
+        <th>角色描述</th>
+    
+      </tr>
+      <c:forEach items="${roleList }" var="role">      
+        <tr>
+          <td><input type="checkbox" name="ids" value="1" />
+            ${role.id}</td>
+          <td>${role.roleName}</td>
+          <td>${role.roleDesc}</td>
           <td>
           	<div class="button-group">
-          	 <a class="button border-red" href="javascript:void(0)" onclick="return del(1)">
-          	 	<span class="icon-trash-o"></span> 删除
-          	 </a> 
-          	</div>
-          	<div class="button-group">
-          	 <a class="button border-green" :href="'/showRoles2User/'+ user.id">
-          	 	<span class="icon-plus-square-o"></span> 增加角色
-          	 </a> 
-          	</div>
-          	<div class="button-group">
-          	 <a class="button border-blue" :href="'/findUserById/' + user.id">
-          	 	<span class="icon-user"></span> 用户详情
+          	 <a class="button border-red" href="/addRole2User?id=${role.id }&uid=${uid }">
+          	 	<span class="icon-plus-square-o"></span> 添加此角色
           	 </a> 
           	</div>
           </td>
         </tr>
+       </c:forEach>
         
       <tr>
         <td colspan="8"><div class="pagelist"> <a href="">上一页</a> <span class="current">1</span><a href="">2</a><a href="">3</a><a href="">下一页</a><a href="">尾页</a> </div></td>
@@ -68,7 +57,6 @@
 </form>
 <script type="text/javascript" src="/js/vuejs-2.5.16.js"></script>
 <script type="text/javascript" src="/js/axios-0.18.0.js"></script>
-<script type="text/javascript" src="/admin/js/user.js"></script>
 <script type="text/javascript">
 
 function del(id){
@@ -76,8 +64,8 @@ function del(id){
 		
 	}
 }
-function toAddUser(){
-	location.href="/admin/user-add.html";
+function toAddRole(){
+	location.href="/admin/role-add.html";
 }
 $("#checkall").click(function(){ 
   $("input[name='id[]']").each(function(){

@@ -4,29 +4,32 @@ package com.hnit.learning_shop.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.github.pagehelper.PageHelper;
 import com.hnit.learning_shop.common.Result;
 import com.hnit.learning_shop.entity.CategorySub;
 import com.hnit.learning_shop.service.CourseService;
 import com.hnit.learning_shop.service.TeacherService;
-import org.springframework.web.bind.annotation.RequestParam;
-
 import com.hnit.learning_shop.entity.Category;
-import com.hnit.learning_shop.entity.CategorySub;
 import com.hnit.learning_shop.entity.Interest;
+import com.hnit.learning_shop.entity.XcUser;
 import com.hnit.learning_shop.service.IndexService;
 
 @Controller
 @RequestMapping("index")
 public class IndexController {
 
-	
+	@Autowired
+	private HttpServletRequest request;
 	@Autowired
 	private CourseService courseService;
 	@Autowired
@@ -42,34 +45,39 @@ public class IndexController {
 	private IndexService indexService;
 
 
-	@RequestMapping
-	public String toIndex(Model model, @RequestParam(defaultValue = "1") String uid) {
-		
+	@RequestMapping("/toIndex")
+	public String toIndex(Model model) {
+		XcUser user = (XcUser) request.getSession().getAttribute("user");
 		//初始页面
 		List<Category> catList = indexService.findAllCategory();
-		List<Interest> interestList = indexService.findAllInterestByUid(uid);
+		List<Interest> interestList = indexService.findAllInterestByUid(user==null?0:user.getId());
 		List<CategorySub> subCatList = new ArrayList<>();
-		for (Interest interest : interestList) {
-			subCatList.add(indexService.findSubById(interest.getSubCatId()));
-			if(subCatList.size() > 6){
-				break;
+		if(interestList != null && interestList.size() >0){
+			for (Interest interest : interestList) {
+				subCatList.add(indexService.findSubById(interest.getSubCatId()));
+				if(subCatList.size() > 6){
+					break;
+				}
 			}
+		}else{
+			subCatList = indexService.findAllSub().subList(0, 6);
 		}
-		
-		for (Category cat : catList) {
-			for (CategorySub categorySub : cat.getCategorySubList()) {
-				for (Interest interest : interestList) {
-					if (interest.getSubCatId() == categorySub.getId()) {
-						categorySub.setActive(true);
-						break;
+		if(interestList != null && interestList.size() >0)
+			for (Category cat : catList) {
+				for (CategorySub categorySub : cat.getCategorySubList()) {
+					for (Interest interest : interestList) {
+						if (interest.getSubCatId() == categorySub.getId()) {
+							categorySub.setActive(true);
+							break;
+						}
 					}
 				}
 			}
-		}
 		model.addAttribute("catList", catList);
 		model.addAttribute("subCatList", subCatList);
 		
-		
+		System.out.println(catList);
+		System.out.println(subCatList);
 		//初始化页面上的 老师
 		model.addAttribute("teacherList", teacherService.queryAllTeacher());
 		
@@ -106,7 +114,31 @@ public class IndexController {
 
 	@RequestMapping("/saveInterest")
 	public String saveInterest(String[] ids) {
-		indexService.saveInterest(ids);
-		return "redirect:index";
+		XcUser user = (XcUser) request.getSession().getAttribute("user");
+		if(user == null){
+			return "redirect:/tologin";
+		}
+		List<Interest> interestList = indexService.findAllInterestByUid(user.getId());
+		if(interestList!= null && interestList.size() > 0){
+			indexService.updateInterest(ids,user.getId());
+		}else{
+			indexService.saveInterest(ids,user.getId());
+		}
+		return "redirect:/index/toIndex";
+	}
+	
+	@RequestMapping("/isShowInterestBox")
+	@ResponseBody
+	public Result isShowInterestBox(){
+		XcUser user = (XcUser) request.getSession().getAttribute("user");
+		if(user == null){
+			return new Result(1);
+		}
+		
+		List<Interest> list = indexService.findAllInterestByUid(user.getId());
+		if(list == null || list.size() == 0){
+			return new Result(1);
+		}
+		return new Result(0, "用户已选择");
 	}
 }

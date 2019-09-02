@@ -27,19 +27,29 @@ public class IndexService {
 		List<Category> catList = categoryMapper.selectByExample(null);
 		return catList;
 	}
-	public void saveInterest(String[] ids) {
+	public void saveInterest(String[] ids, Integer uid) {
 		for(String id : ids){
 			Interest inserest = new Interest();
 			inserest.setSubCatId(Integer.parseInt(id));
+			inserest.setUid(uid);
 			interestMapper.insert(inserest );
 		}
 	}
-	public List<Interest> findAllInterestByUid(String uid) {
+	public List<Interest> findAllInterestByUid(Integer uid) {
 		InterestExample example = new InterestExample();
-		example.createCriteria().andUidEqualTo(Integer.parseInt(uid));
+		example.createCriteria().andUidEqualTo(uid);
 		return interestMapper.selectByExample(example);
 	}
 	public CategorySub findSubById(Integer subCatId) {
 		return categorySubMapper.selectByPrimaryKey(subCatId);
+	}
+	public List<CategorySub> findAllSub() {
+		return categorySubMapper.selectByExample(null);
+	}
+	public void updateInterest(String[] ids, Integer uid) {
+		InterestExample example = new InterestExample();
+		example.createCriteria().andUidEqualTo(uid);
+		interestMapper.deleteByExample(example);
+		saveInterest(ids, uid);
 	}
 }

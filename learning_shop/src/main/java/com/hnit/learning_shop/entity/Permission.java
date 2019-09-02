@@ -2,6 +2,8 @@ package com.hnit.learning_shop.entity;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+@JsonIgnoreProperties(value = {"handler"})
 public class Permission implements Serializable {
     private Integer id;
 

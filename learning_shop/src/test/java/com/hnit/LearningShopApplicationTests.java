@@ -11,7 +11,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.hnit.learning_shop.service.impl.MailServiceImpl;
 import com.hnit.learning_shop.utils.FtpUtils;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class LearningShopApplicationTests {

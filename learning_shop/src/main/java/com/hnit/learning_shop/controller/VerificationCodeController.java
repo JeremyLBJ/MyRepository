@@ -47,7 +47,7 @@ public class VerificationCodeController {
 		return "learning-course-video";
 	}
 	
-	@GetMapping("order")
+	@GetMapping("orderList")
 	public String order() {
 		return "order-list";
 	}
