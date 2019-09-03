@@ -94,7 +94,7 @@ position: relative;
 	                        </div>
 	                        <div class="sumMon">
 <%-- 	                            <p><strong>原价</strong> ￥ <span>${cb.courseBase.oldPricee }</span></p>
- --%>	                            <p><strong>优惠</strong> ￥ <span id="price">${cb.courseBase.price }</span></p>
+ --%>	                            <p><strong>优惠价</strong> ￥ <span id="price">${cb.courseBase.oldPricee }</span></p>
 	                        </div>
 	                        
 	                        <div class="sumMon delete"  >

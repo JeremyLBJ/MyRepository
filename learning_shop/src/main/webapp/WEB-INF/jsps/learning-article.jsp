@@ -993,17 +993,20 @@
 
         <!--支付弹窗- start -->
         <div class="popup-pay-box">
-            <div class="title">程序设计语言 <span class="close-popup">×</span></div>
+            <div class="title">${course.cname } <span class="close-popup">×</span></div>
             <div class="content">
                 <img src="./text.png" alt="">
                 <div class="info">
-                    <p class="info-tit">程序语言设计 <span>课程有效期:2017年9月12日-2018年9月11日</span></p>
-                    <p class="info-pic">课程价格 : <span>￥1999</span></p>
-                    <p class="info-new-pic">优惠价格 : <span>￥999</span></p>
+                    <p class="info-tit">${course.cname }  <span>课程有效期:2019年9月12日-2020年9月11日</span></p>
+                    <p class="info-new-pic">课程价格 : <span>￥${course.price }</span></p>
+                    <p class="info-pic">优惠价格 : <span>￥${course.price - course.oldPricee }</span></p>
                 </div>
             </div>
-            <div class="fact-pic">实际支付: <span>￥999</span></div>
-            <div class="go-pay"><a href="">去支付</a><a class="addCar" href="">加入购物车</a></div>
+            <div class="fact-pic">实际支付: <span>￥${course.oldPricee }</span></div>
+            <div class="go-pay">
+	            <a href="/pay?id=${course.id }">去支付</a>
+	            <a class="addCar" href="/addCart?id=${course.id }">加入购物车</a>
+            </div>
         </div>
         <!--支付弹窗- end -->
         <div class="popup-comment-box">

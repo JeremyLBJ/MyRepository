@@ -1,22 +1,24 @@
 package com.hnit.learning_shop.controller;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttribute;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.pagehelper.PageHelper;
 import com.hnit.learning_shop.common.Result;
 import com.hnit.learning_shop.entity.CategorySub;
+import com.hnit.learning_shop.entity.CourseBase;
 import com.hnit.learning_shop.service.CourseService;
 import com.hnit.learning_shop.service.TeacherService;
 import com.hnit.learning_shop.entity.Category;
@@ -35,6 +37,10 @@ public class IndexController {
 	@Autowired
 	private TeacherService teacherService;
 	
+	@Autowired
+    private RedisTemplate<String,String> redisTemplate;
+	
+	
 	@RequestMapping("teacherInfo")
 	public String checkTeacherInfo(){
 		return "index-gray";
@@ -45,13 +51,22 @@ public class IndexController {
 	private IndexService indexService;
 
 
+	@SuppressWarnings("unchecked")
 	@RequestMapping("/toIndex")
-	public String toIndex(Model model) {
+	public String toIndex(Model model) throws IOException {
 		XcUser user = (XcUser) request.getSession().getAttribute("user");
 		//初始页面
+		ObjectMapper objectMapper = new ObjectMapper();
+		String catListByUid = "catList:" + (user==null?0:user.getId());
+		List<CategorySub> subCatList = new ArrayList<>();
+		String catJson = redisTemplate.boundValueOps(catListByUid).get();
+		
+		
+		
+		
 		List<Category> catList = indexService.findAllCategory();
 		List<Interest> interestList = indexService.findAllInterestByUid(user==null?0:user.getId());
-		List<CategorySub> subCatList = new ArrayList<>();
+		
 		if(interestList != null && interestList.size() >0){
 			for (Interest interest : interestList) {
 				subCatList.add(indexService.findSubById(interest.getSubCatId()));
@@ -62,17 +77,33 @@ public class IndexController {
 		}else{
 			subCatList = indexService.findAllSub().subList(0, 6);
 		}
-		if(interestList != null && interestList.size() >0)
-			for (Category cat : catList) {
-				for (CategorySub categorySub : cat.getCategorySubList()) {
-					for (Interest interest : interestList) {
-						if (interest.getSubCatId() == categorySub.getId()) {
-							categorySub.setActive(true);
-							break;
+		if(catJson != null){
+			catList = objectMapper.readValue(catJson, List.class);
+		}else{
+			if(interestList != null && interestList.size() >0)
+				for (Category cat : catList) {
+					for (CategorySub categorySub : cat.getCategorySubList()) {
+						for (Interest interest : interestList) {
+							if (interest.getSubCatId() == categorySub.getId()) {
+								categorySub.setActive(true);
+								break;
+							}
 						}
 					}
 				}
+			if(catList == null){
+				catList = new ArrayList<>();
 			}
+			String json = objectMapper.writeValueAsString(catList);
+			redisTemplate.boundValueOps(catListByUid).set(json);
+		}
+		
+		
+		//根据阅读数量显示精品推荐
+		List<CourseBase> courses = indexService.findRecommend();
+		
+		System.out.println(courses);
+		model.addAttribute("courses", courses);
 		model.addAttribute("catList", catList);
 		model.addAttribute("subCatList", subCatList);
 		
@@ -121,6 +152,8 @@ public class IndexController {
 		List<Interest> interestList = indexService.findAllInterestByUid(user.getId());
 		if(interestList!= null && interestList.size() > 0){
 			indexService.updateInterest(ids,user.getId());
+			String catListByUid = "catList:" + (user==null?0:user.getId());
+			redisTemplate.delete(catListByUid);
 		}else{
 			indexService.saveInterest(ids,user.getId());
 		}

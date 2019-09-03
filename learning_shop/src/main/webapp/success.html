@@ -1,9 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html lang="zh-CN">
-
+<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,19 +21,12 @@
         <div class="register-body container text-center">
             <div class="signIco"><img src="../img/asset-logoIco.png" alt="logo" width="180"></div>
             <div class="signTit cl"></div>
-            <form action="/doLogin" method="post" id="logForm">
             <div class="signItem show">
                 <div>
-                    <p>欢迎您  ： ${username }</p>
-                    <p>
-                        <input type="hidden" name="username" value="${username }">
-                        <input type="hidden" name="password" value="${username }">
-                        <span class="proof cl-orange"></span>
-                    </p>
+                    <h3>购买成功!</h3>
+                    <a href="/index/toIndex"></a>
                 </div>
-                <div class="submitBut" onclick="document.getElementById('logForm').submit()">确认</div>
             </div>
-            </form>
         </div>
         <footer>
             <p><a href="#">关于我们</a><a href="#">联系我们</a><a href="#">客户服务</a><a href="#">管理团队</a><a href="#">新手指南</a><a href="#">合作伙伴</a></p>
@@ -48,8 +37,4 @@
     <script type="text/javascript" src="../plugins/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="../plugins/bootstrap/dist/js/bootstrap.js"></script>
     <script src="../js/page-learing-sign.js"></script>
-    <script type="text/javascript">
-    $(".submitBut").click();
-    </script>
 </body>
-
