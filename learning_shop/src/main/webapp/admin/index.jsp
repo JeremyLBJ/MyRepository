@@ -29,6 +29,7 @@
   </security:authorize>
     <li><a href="/admin/user-list.html" target="right"><span class="icon-caret-right"></span>用户管理</a></li>
   	<li><a href="/findAllSyslog" target="right"><span class="icon-caret-right"></span>日志管理</a></li>
+  	<li><a href="/orderItems" target="right"><span class="icon-caret-right"></span>订单管理</a></li>
     <!-- <li><a href="info.html" target="right"><span class="icon-caret-right"></span>网站设置</a></li>
     <li><a href="pass.html" target="right"><span class="icon-caret-right"></span>修改密码</a></li>
     <li><a href="page.html" target="right"><span class="icon-caret-right"></span>单页管理</a></li> 

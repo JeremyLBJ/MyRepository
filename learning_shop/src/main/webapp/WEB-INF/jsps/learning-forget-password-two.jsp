@@ -71,7 +71,7 @@
                                 <div class="col-sm-9 verifphone">
                                     <input type="text" class="form-control" id="verif" name="verif" placeholder="请输入验证码">
                                     
-                                    <button class="btn btn-default send" type="button">发送验证码</button>
+                                    <button class="btn btn-default send" id="sends" type="button">发送验证码</button>
                                     <input type="hidden" value="" id="mails">
                                     <span style="color: red" class="messages"></span>
                                     <span class="verif-span"></span>
@@ -149,6 +149,8 @@
     //点击发送验证码
       $('.send').click(function send(){
     	$.get("sendMail",function(data){
+    		//让onclick失效
+    		document.getElementById('sends').onclick=null;
     		$('#mails').val(data.data)
     	});
     	

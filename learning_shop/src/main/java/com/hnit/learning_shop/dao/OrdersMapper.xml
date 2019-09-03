@@ -8,7 +8,17 @@
     <result column="ordertime" property="ordertime" jdbcType="TIMESTAMP" />
     <result column="status" property="status" jdbcType="INTEGER" />
     <result column="paytype" property="paytype" jdbcType="INTEGER" />
+    
+    <collection property="orderitem" column="id"
+    select="selectByOid"></collection>
+    
+    
   </resultMap>
+  
+ <select id="selectByOid" resultMap="com.hnit.learning_shop.dao.OrderitemMapper.BaseResultMap">
+ 	SELECT * FROM orderitem d  where d.id=#{id} 
+ </select>
+  
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >

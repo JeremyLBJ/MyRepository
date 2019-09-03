@@ -9,7 +9,6 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
     <meta name="author" content="">
-<<<<<<< HEAD
     <link rel="icon" href="${pageContext.request.contextPath}/img/asset-favicon.ico">
     <title>在线教育网</title>
 
@@ -1173,8 +1172,8 @@
             //星级评分
             $('.grade').map(function(n, i) {
                 var pret = $(this).find('.percent-num i').text();
-                //var wt = $(this).find('.grade-percent').width();
-                $(this).find('.grade-percent span').css('width', 437.75 * pret / 100);
+                var wt = $(this).find('.grade-percent').width();
+                $(this).find('.grade-percent span').css('width', wt * pret / 100);
             })
 
 
@@ -1244,8 +1243,6 @@ function qqShare(url,title,summary,pics){
 }
 
     </script>
-    
-=======
     <link rel="icon" href="../img/asset-favicon.ico">
     <title>在线教育网</title>
 
@@ -3572,5 +3569,4 @@ function qqShare(url,title,summary,pics){
             })
         })
     </script>
->>>>>>> branch 'master' of https://github.com/jthnit/learning_shop.git
 </body>

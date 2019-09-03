@@ -10,8 +10,10 @@
     <collection property="courseBase" column="cid"
     select="com.hnit.learning_shop.dao.CourseBaseMapper.selectByPrimaryKey"></collection>
     
-    
+   
   </resultMap>
+  
+  
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >

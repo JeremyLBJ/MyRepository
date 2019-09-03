@@ -19,7 +19,7 @@
     <collection property="userNotes" column="id" fetchType="lazy"
     select="orderByAgreeCnt"></collection>
     
-    
+   
     
     <collection property="roleList" column="id" fetchType="lazy"
      select="findRoleByRoleUser">
@@ -27,6 +27,8 @@
     
     
   </resultMap>
+  
+  
   <select id="findRoleByRoleUser" 
    resultMap="com.hnit.learning_shop.dao.XcRoleMapper.BaseResultMap">
    	select * from xc_role where id in (select rid from user_role where uid = #{id })

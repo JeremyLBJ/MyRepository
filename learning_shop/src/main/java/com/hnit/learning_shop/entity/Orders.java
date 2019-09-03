@@ -3,13 +3,26 @@ package com.hnit.learning_shop.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class Orders implements Serializable {
-    private Integer id;
+	private Orderitem orderitem;
+
+	public Orderitem getOrderitem() {
+		return orderitem;
+	}
+
+	public void setOrderitem(Orderitem orderitem) {
+		this.orderitem = orderitem;
+	}
+
+	private Integer id;
 
     private Integer uid;
 
     private Double paymoney;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date ordertime;
 
     private Integer status;
@@ -41,11 +54,9 @@ public class Orders implements Serializable {
     public void setPaymoney(Double paymoney) {
         this.paymoney = paymoney;
     }
-
     public Date getOrdertime() {
         return ordertime;
     }
-
     public void setOrdertime(Date ordertime) {
         this.ordertime = ordertime;
     }

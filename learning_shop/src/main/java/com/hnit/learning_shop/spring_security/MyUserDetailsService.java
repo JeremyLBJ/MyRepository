@@ -35,9 +35,10 @@ public class MyUserDetailsService implements UserDetailsService {
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
     logger.info("用户的用户名: {}", username);
 
-
+    System.out.println(username);
     // TODO 根据用户名，查找到对应的密码，与权限
     XcUser userInfo = userService.selectByUsername(username);
+    System.out.println(userInfo +"1");
     if(userInfo == null){
     	return null;
     }

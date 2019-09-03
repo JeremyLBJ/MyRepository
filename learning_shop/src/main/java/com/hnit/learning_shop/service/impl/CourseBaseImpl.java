@@ -5,21 +5,21 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hnit.learning_shop.dao.CourseBaseMapper;
-import com.hnit.learning_shop.entity.CourseBase;
-import com.hnit.learning_shop.entity.CourseBaseExample;
+import com.hnit.learning_shop.dao.OrdersMapper;
+import com.hnit.learning_shop.dao.XcUserMapper;
+import com.hnit.learning_shop.entity.Orders;
+import com.hnit.learning_shop.entity.XcUser;
+import com.hnit.learning_shop.entity.XcUserExample;
 
 @Service
 public class CourseBaseImpl {
 	
 	@Autowired
-	private CourseBaseMapper baseMapper;
+	private OrdersMapper ordersMapper;
 	
-	//查询所有的订单    数据库应从order表开始查询
-	public List<CourseBase> order (CourseBase courseBase) {
-		CourseBaseExample example = new CourseBaseExample();
-		example.createCriteria().andIdEqualTo(courseBase.getId());
-		List<CourseBase> list = baseMapper.selectByExample(example);
+	//查询所有的订单  
+	public List<Orders> order () {
+		 List<Orders> list = ordersMapper.selectByExample(null);
 		return list;
 	}
 

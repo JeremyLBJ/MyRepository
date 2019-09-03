@@ -1,4 +1,4 @@
-package com.hnit.learning_shop.controller;
+/*package com.hnit.learning_shop.controller;
 
 import java.util.List;
 
@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hnit.learning_shop.entity.CourseBase;
+import com.hnit.learning_shop.entity.Orders;
 import com.hnit.learning_shop.service.impl.CourseBaseImpl;
 
 @RestController
@@ -20,9 +21,10 @@ public class CourseBaseController {
 	public List<CourseBase> order (Model model) {
 		CourseBase courseBase = new CourseBase();
 		courseBase.setId(2);
-		List<CourseBase> order = courseBaseImpl.order(courseBase);
+		List<CourseBase> order = courseBaseImpl.order();
 		model.addAttribute("order", order);
 		return order;
 	}
 
 }
+*/
