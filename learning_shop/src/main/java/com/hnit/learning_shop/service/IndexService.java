@@ -66,4 +66,7 @@ public class IndexService {
 		PageHelper.startPage(0, 10);
 		return courseBaseMapper.selectByExample(example);
 	}
+	public List<CourseBase> findAllCourseByUid(Integer uid) {
+		return courseBaseMapper.findAllCourseByUid(uid);
+	}
 }

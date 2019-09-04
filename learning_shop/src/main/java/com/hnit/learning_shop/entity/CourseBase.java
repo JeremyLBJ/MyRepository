@@ -3,6 +3,7 @@ package com.hnit.learning_shop.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(value = {"handler"})
 public class CourseBase implements Serializable {
@@ -29,6 +30,15 @@ public class CourseBase implements Serializable {
     private String pic;
 
     private Integer learncount;
+    
+    private Category category;
+    
+    public void setCategory(Category category) {
+		this.category = category;
+	}
+    public Category getCategory() {
+		return category;
+	}
 
     private static final long serialVersionUID = 1L;
 

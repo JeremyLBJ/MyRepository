@@ -55,9 +55,10 @@ public class CourseController {
 	
 	@RequestMapping("toArticle")
 	public String toArticle(Integer id,Model model){
-		System.out.println("111111111111111111111");
 		CourseBase course = courseService.findById(id);
 		model.addAttribute("course", course);
+		System.out.println(course);
+		System.out.println(course.getCategory());
 		return "learning-article";
 	}
 	

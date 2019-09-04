@@ -81,20 +81,19 @@
         </div>
         <div class="my-class-box">
             <div class="title">我的课程表</div>
+            <c:if test="${empty courseList }">
+            	<div>
+	                <p>您暂未添加要学习的课程</p>
+	            </div>
+            </c:if>
+            <c:forEach items="${courseList }" var="course">
+	            <div>
+	                <p>${course.cname }</p>
+	                <p>${course.cDesc }</p>
+	            </div>
+            </c:forEach>
             <div>
-                <p>继续学习 程序语言设计</p>
-                <p>正在学习-使用对象</p>
-            </div>
-            <div>
-                <p>继续学习 程序语言设计</p>
-                <p>正在学习-使用对象</p>
-            </div>
-            <div>
-                <p>继续学习 程序语言设计</p>
-                <p>正在学习-使用对象</p>
-            </div>
-            <div>
-                <a href="#">全部课程</a>
+                <a href="/mypersonal">全部课程</a>
             </div>
         </div>
         <div class="recommend-list">
