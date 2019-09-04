@@ -293,11 +293,11 @@
                     </div>
                 </div>
                 <script type="text/javascript">
-                function MyNote(){
+               /*  function MyNote(){
                 	$.post("findAllNotes",function(data){
             			 showDatas(data,"#box"); 
             		})
-                };
+                }; */
                 /*文章评论*/
                 	$(".not-but").click(function(){
                 		var Content = $("#note");

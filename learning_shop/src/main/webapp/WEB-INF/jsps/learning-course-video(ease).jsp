@@ -68,22 +68,22 @@
                         <div class="course-nav">
                             <div class="nav-stacked text-center">
                                 <li class="nav"><a href="javascript:;" class="glyphicon glyphicon-list-alt"><span>目录</span></a></li>
-                                <li class="lab-note"><a href="javascript:;" class="glyphicon glyphicon-user"><span>笔记</span></a></li>
+                                <li class="lab-note"><a href="javascript:;" class="glyphicon glyphicon-user" onclick="MyNote()"><span>笔记</span></a></li>
                                 <li class="lab-ask"><a href="javascript:;" class="glyphicon glyphicon-cog"><span>问答</span></a></li>
                                 <li class="lab-com"><a href="javascript:;" class="glyphicon glyphicon-duplicate"><span>评论</span></a></li>
                             </div>
                         </div>
                         <div class="note">
                             <div class="note-box">
-                                <div class="note-lab"><span class="active">我的笔记</span><span>精选笔记</span></div>
+                                <div class="note-lab"><span class="active">我的笔记</span><span id="notes">精选笔记</span></div>
                                 <div class="note-item-cont">
                                     <div class="my-note">
                                         <div class="textarea-box">
-                                            <textarea name="my-note" id=""></textarea>
-                                            <div class="info"><span class="time"><i class="i-play"></i>23`22` </span><span class="not-but">提交</span></div>
+                                            <textarea name="my-note" id="note"></textarea>
+                                            <div class="info"><span class="time"><i class="i-play"></i>23`22` </span><span class="not-but" id="btn">提交</span></div>
                                         </div>
-                                        <ul class="my-item-box">
-                                            <li>
+                                        <ul class="my-item-box" id="box">
+                                           <%--  <li>
                                                 <div><span><img src="${pageContext.request.contextPath}/img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="time"><i class="i-play"></i>23`22` </span></div>
                                                 <div class="cont">
                                                     课程内容 消息回复接口（图文,语音消息的自动回复） 素材管理接口（图片上传） 自定义菜单接口（菜单的创建，查询，删除）
@@ -91,12 +91,12 @@
                                                 <div class="operation"><span>2017-2-29</span>
                                                     <div class="oper-box"><span><i class="i-edt"></i>编辑</span><span><i class="i-del"></i>删除</span><span><i class="i-laud"></i>赞</span></div>
                                                 </div>
-                                            </li>
+                                            </li> --%>
                                         </ul>
                                         <a href="#" class="more">查看更多</a>
                                     </div>
                                     <div class="sel-note">
-                                        <ul class="my-item-box">
+                                        <ul class="my-item-box" id="itemBox">
                                             <li>
                                                 <div><span><img src="${pageContext.request.contextPath}/img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="time"><i class="i-play"></i>23`22` </span></div>
                                                 <div class="cont">
@@ -2492,6 +2492,74 @@
 
             })
         </script>
+        <script type="text/javascript">
+                function MyNote(){
+                	$.post("findAllNotes",function(data){
+                		console.log(data);
+            			 showDatas(data,"#box"); 
+            		})
+                };
+                /*文章评论*/
+                	$("#btn").click(function(){
+                		var Content = $("#note");
+                		if(Content.val() === ''){
+                			alert('内容不能为空');
+                			return false;
+                		} 
+                		var content = Content.val();
+                	 	 $.post("comment",
+                				{Content:content},
+                				function(data){ 
+                					$("#note").val('');
+                					showDatas(data);
+                				}); 
+                });
+                
+                $("#not").click(function(){
+                	alert(1);
+                });
+                
+                //通过用户的id号查询信息
+                	$('#myNote').click(function(){
+                		$.post("findAllNotes",function(data){
+                			showDatas(data,"#box");
+                		})
+                	});
+                
+                $('#notes').click(function(){
+                	$.post("orderByAgreeCnt",function(data){
+                		showDatas(data,"#itemBox");
+                	})
+                });
+                
+                function showDatas(data,url){
+                	//-1表示登录失败 可能会有多个验证信息 拼装后输出
+					if(data.code == -1) {
+						var msgs = "";
+						for(var i = 0 ; i < data.data.length ; i++){
+							msgs += data.data[i].defaultMessage+"\r\n";
+						}
+						alert(msgs);
+					}else{
+					}
+					if(data.code == 1) {
+						var index = (data.data.length);
+						var str = "";
+						for(var i = 0 ; i < index ; i++){
+						 //评论成功!要更新评论列表    此处只是添加一行
+						 str+= "<li><div><span><img src='"+data.data[0].userPic+"' alt=''></span>"+
+					        " <span class='name'>"+data.data[0].username+"</span><span class='time'>"+
+					        "<i class='i-play'></i>'time'</span></div>"+<!--time当前视频定格评论的时间-->
+					        "<div class='cont'>"+
+					        ""+data.data[i].userNotes[0].content+"</div>"+
+					        "<div class='operation'><span>"+data.data[i].userNotes[0].createtime+"</span>"+
+					        "<div class='oper-box'><span><i class='i-edt'></i>编辑</span>"+
+					        "<span><i class='i-del'></i>删除</span><span><i class='i-laud'></i>赞</span></div></div></li>";
+					}
+					}
+						$(url).html(str); 
+                };
+                </script>
         
 <script> 
 
