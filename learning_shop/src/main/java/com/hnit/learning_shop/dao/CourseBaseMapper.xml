@@ -18,8 +18,13 @@
   	 <!-- <collection property="xcUsers" column="id" fetchType="lazy"
     select="selectByUid"></collection> -->
     
+  <association property="category" column="catid" fetchType="lazy" 
+  select="findCategoryByCatid"></association>
   
   </resultMap>
+   <select id="findCategoryByCatid" resultMap="com.hnit.learning_shop.dao.CategoryMapper.BaseResultMap" parameterType="com.hnit.learning_shop.entity.CourseBaseExample">
+  	select * from category where id=#{id}
+  </select>
   <select id="selectByCatid" resultMap="BaseResultMap" parameterType="com.hnit.learning_shop.entity.CourseBaseExample">
   	select * from course_base where catid=#{id}
   </select>
@@ -32,6 +37,10 @@
 		JOIN orders d ON o.oid=d.id 
 		JOIN xc_user u ON d.uid=u.id  
   </select>
+  <select id="findAllCourseByUid" resultMap="BaseResultMap">
+  		select * from course_base where id in (select cid from orders o join orderitem i on o.id = i.oid where uid = #{uid });
+  </select>
+  
   
   <sql id="Example_Where_Clause" >
     <where >

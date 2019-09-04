@@ -50,6 +50,7 @@ public class UserNotesImpl {
 	
 	//查看所有笔记
 	public List<XcUser> findAllNotes(){
+		
 		return	xcUserMapper.selectByExample(null);
 	}
 

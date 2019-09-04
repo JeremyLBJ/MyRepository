@@ -42,6 +42,15 @@ public class CourseBase implements Serializable {
     private String pic;
 
     private Integer learncount;
+    
+    private Category category;
+    
+    public void setCategory(Category category) {
+		this.category = category;
+	}
+    public Category getCategory() {
+		return category;
+	}
 
     private static final long serialVersionUID = 1L;
 

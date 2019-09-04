@@ -27,4 +27,6 @@ public interface CourseBaseMapper {
     int updateByPrimaryKeySelective(CourseBase record);
 
     int updateByPrimaryKey(CourseBase record);
+
+	List<CourseBase> findAllCourseByUid(Integer uid);
 }

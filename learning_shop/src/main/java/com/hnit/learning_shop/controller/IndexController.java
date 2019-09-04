@@ -125,6 +125,10 @@ public class IndexController {
 		//前端开发工程师 
 		model.addAttribute("UI", courseService.queryCategorySubById(18));
 		
+		
+		//显示我的课程表
+		List<CourseBase> courseList =  indexService.findAllCourseByUid(user.getId());
+		model.addAttribute("courseList", courseList);
 		return "learning-index";
 	}
 

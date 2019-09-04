@@ -26,12 +26,12 @@
         <div class="banner-bg"></div>
         <div class="banner-info">
             <div class="banner-left">
-                <p>课程 <span>\ 编程入门</span></p>
-                <p class="tit">程序语言设计</p>
-                <p class="pic"><span class="new-pic">特惠价格￥999</span> <span class="old-pic">原价￥1999</span></p>
+                <p>课程 <span>\ ${course.category.categoryName }</span></p>
+                <p class="tit">${course.cname }</p>
+                <p class="pic"><span class="new-pic">特惠价格￥${course.oldPricee }</span> <span class="old-pic">原价￥${course.price }</span></p>
                 <p class="info">
                     <a href="#">马上学习</a>
-                    <span><em>难度等级</em>中级</span>
+                    <span><em>难度等级</em>${course.grade }</span>
                     <span><em>课程时长</em>2小时27分</span>
                     <span><em>评分</em>4.7分</span>
                     <span><em>授课模式</em>录播</span>
@@ -43,7 +43,7 @@
                  <i class="i-heart"></i>收藏 23 </span>
                   <span>分享 
                   <i class="i-weixin"></i>
-                  <a href="javascript:qqShare('http://127.0.0.1/index','学成在线','分享课程','http://www.hujiatai.cn:81/1.jpg')"><i class="i-qq"></i></a>
+                  <a href="javascript:qqShare('http://www.hujiatai.cn/course/toArticle?id=${course.id }','${course.cname }','分享课程','http://www.hujiatai.cn:81/1.jpg')"><i class="i-qq"></i></a>
                   </span>
                   </p>
             </div>

@@ -9,13 +9,13 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../img/asset-favicon.ico">
+    <link rel="icon" href="${pageContext.request.contextPath}/img/asset-favicon.ico">
     <title>在线教育网</title>
 
-    <link rel="stylesheet" href="/plugins/rainbow.css" />
-    <link rel="stylesheet" href="../css/page-learing-course-videoes.css" />
-    <link rel="stylesheet" href="../plugins/normalize-css/normalize.css" />
-    <link rel="stylesheet" href="../plugins/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/plugins/rainbow.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/page-learing-course-videoes.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/plugins/normalize-css/normalize.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/plugins/bootstrap/dist/css/bootstrap.css" />
 </head>
 
 <body>
@@ -41,15 +41,30 @@
                         </div>
                         <div class="video text-center" style="padding-right: 55px;">
                             <div class="video-mine">
-                                <div class="cls-text"><a class="media" href="./../plugins/js-pdf/NodeJSDeveloperGuid.pdf"></a></div>
+                                <div class="cls-text"><a class="media" href="${pageContext.request.contextPath}/plugins/js-pdf/NodeJSDeveloperGuid.pdf"></a></div>
                                 <div class="cls-video">
-                                    <div id="vdplay"></div>
-                                    <div class="vdControl">
-                                        <!--<div class="play" onclick="vdPlay()">播放</div>-->
-                                    </div>
+                                    <div style="text-align:center">
+									  <button onclick="playPause()">播放/暂停</button>
+									  <button onclick="makeBig()">放大</button>
+									  <button onclick="makeSmall()">缩小</button>
+									  <button onclick="makeNormal()">普通</button>
+									  <button onclick="getPlaySpeed()" type="button">当前播放速度</button>
+									  <button onclick="setPlaySpeed()" type="button">将视频设置2倍</button>
+									  <br>
+									  <video id="video" width="890"  autoplay controls>
+										<source src="http://106.15.176.125:81/01.mp4" type="video/mp4" type="video/mp4">
+									  </video>
+									</div>
                                 </div>
                             </div>
                         </div>
+                        <div class="search-area">
+                               <input type="text" id="dm" class="search-area nav-justified" placeholder="搜索文字字幕" value="">
+                         		<button onclick="publishCanvas()">发送弹幕</button>
+                         </div>
+                        <canvas style="width: 1290px;height: 300px;background-color: rgba(0,0,0,0.2)">你的浏览器不支持canvas</canvas>
+                         
+						                        
                         <div class="course-nav">
                             <div class="nav-stacked text-center">
                                 <li class="nav"><a href="javascript:;" class="glyphicon glyphicon-list-alt"><span>目录</span></a></li>
@@ -69,61 +84,7 @@
                                         </div>
                                         <ul class="my-item-box">
                                             <li>
-                                                <div><span><img src="../img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="time"><i class="i-play"></i>23`22` </span></div>
-                                                <div class="cont">
-                                                    课程内容 消息回复接口（图文,语音消息的自动回复） 素材管理接口（图片上传） 自定义菜单接口（菜单的创建，查询，删除）
-                                                </div>
-                                                <div class="operation"><span>2017-2-29</span>
-                                                    <div class="oper-box"><span><i class="i-edt"></i>编辑</span><span><i class="i-del"></i>删除</span><span><i class="i-laud"></i>赞</span></div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div><span><img src="../img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="time"><i class="i-play"></i>23`22` </span></div>
-                                                <div class="cont">
-                                                    课程内容 消息回复接口（图文,语音消息的自动回复） 素材管理接口（图片上传） 自定义菜单接口（菜单的创建，查询，删除）
-                                                </div>
-                                                <div class="operation"><span>2017-2-29</span>
-                                                    <div class="oper-box"><span><i class="i-edt"></i>编辑</span><span><i class="i-del"></i>删除</span><span><i class="i-laud"></i>赞</span></div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div><span><img src="../img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="time"><i class="i-play"></i>23`22` </span></div>
-                                                <div class="cont">
-                                                    课程内容 消息回复接口（图文,语音消息的自动回复） 素材管理接口（图片上传） 自定义菜单接口（菜单的创建，查询，删除）
-                                                </div>
-                                                <div class="operation"><span>2017-2-29</span>
-                                                    <div class="oper-box"><span><i class="i-edt"></i>编辑</span><span><i class="i-del"></i>删除</span><span><i class="i-laud"></i>赞</span></div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div><span><img src="../img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="time"><i class="i-play"></i>23`22` </span></div>
-                                                <div class="cont">
-                                                    课程内容 消息回复接口（图文,语音消息的自动回复） 素材管理接口（图片上传） 自定义菜单接口（菜单的创建，查询，删除）
-                                                </div>
-                                                <div class="operation"><span>2017-2-29</span>
-                                                    <div class="oper-box"><span><i class="i-edt"></i>编辑</span><span><i class="i-del"></i>删除</span><span><i class="i-laud"></i>赞</span></div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div><span><img src="../img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="time"><i class="i-play"></i>23`22` </span></div>
-                                                <div class="cont">
-                                                    课程内容 消息回复接口（图文,语音消息的自动回复） 素材管理接口（图片上传） 自定义菜单接口（菜单的创建，查询，删除）
-                                                </div>
-                                                <div class="operation"><span>2017-2-29</span>
-                                                    <div class="oper-box"><span><i class="i-edt"></i>编辑</span><span><i class="i-del"></i>删除</span><span><i class="i-laud"></i>赞</span></div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div><span><img src="../img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="time"><i class="i-play"></i>23`22` </span></div>
-                                                <div class="cont">
-                                                    课程内容 消息回复接口（图文,语音消息的自动回复） 素材管理接口（图片上传） 自定义菜单接口（菜单的创建，查询，删除）
-                                                </div>
-                                                <div class="operation"><span>2017-2-29</span>
-                                                    <div class="oper-box"><span><i class="i-edt"></i>编辑</span><span><i class="i-del"></i>删除</span><span><i class="i-laud"></i>赞</span></div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div><span><img src="../img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="time"><i class="i-play"></i>23`22` </span></div>
+                                                <div><span><img src="${pageContext.request.contextPath}/img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="time"><i class="i-play"></i>23`22` </span></div>
                                                 <div class="cont">
                                                     课程内容 消息回复接口（图文,语音消息的自动回复） 素材管理接口（图片上传） 自定义菜单接口（菜单的创建，查询，删除）
                                                 </div>
@@ -137,7 +98,7 @@
                                     <div class="sel-note">
                                         <ul class="my-item-box">
                                             <li>
-                                                <div><span><img src="../img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="time"><i class="i-play"></i>23`22` </span></div>
+                                                <div><span><img src="${pageContext.request.contextPath}/img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="time"><i class="i-play"></i>23`22` </span></div>
                                                 <div class="cont">
                                                     课程内容 消息回复接口（图文,语音消息的自动回复） 素材管理接口（图片上传） 自定义菜单接口（菜单的创建，查询，删除）
                                                 </div>
@@ -146,7 +107,7 @@
                                                 </div>
                                             </li>
                                             <li>
-                                                <div><span><img src="../img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="time"><i class="i-play"></i>23`22` </span></div>
+                                                <div><span><img src="${pageContext.request.contextPath}/img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="time"><i class="i-play"></i>23`22` </span></div>
                                                 <div class="cont">
                                                     课程内容 消息回复接口（图文,语音消息的自动回复） 素材管理接口（图片上传） 自定义菜单接口（菜单的创建，查询，删除）
                                                 </div>
@@ -155,7 +116,7 @@
                                                 </div>
                                             </li>
                                             <li>
-                                                <div><span><img src="../img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="time"><i class="i-play"></i>23`22` </span></div>
+                                                <div><span><img src="${pageContext.request.contextPath}/img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="time"><i class="i-play"></i>23`22` </span></div>
                                                 <div class="cont">
                                                     课程内容 消息回复接口（图文,语音消息的自动回复） 素材管理接口（图片上传） 自定义菜单接口（菜单的创建，查询，删除）
                                                 </div>
@@ -164,7 +125,7 @@
                                                 </div>
                                             </li>
                                             <li>
-                                                <div><span><img src="../img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="time"><i class="i-play"></i>23`22` </span></div>
+                                                <div><span><img src="${pageContext.request.contextPath}/img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="time"><i class="i-play"></i>23`22` </span></div>
                                                 <div class="cont">
                                                     课程内容 消息回复接口（图文,语音消息的自动回复） 素材管理接口（图片上传） 自定义菜单接口（菜单的创建，查询，删除）
                                                 </div>
@@ -173,7 +134,7 @@
                                                 </div>
                                             </li>
                                             <li>
-                                                <div><span><img src="../img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="time"><i class="i-play"></i>23`22` </span></div>
+                                                <div><span><img src="${pageContext.request.contextPath}/img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="time"><i class="i-play"></i>23`22` </span></div>
                                                 <div class="cont">
                                                     课程内容 消息回复接口（图文,语音消息的自动回复） 素材管理接口（图片上传） 自定义菜单接口（菜单的创建，查询，删除）
                                                 </div>
@@ -182,7 +143,7 @@
                                                 </div>
                                             </li>
                                             <li>
-                                                <div><span><img src="../img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="time"><i class="i-play"></i>23`22` </span></div>
+                                                <div><span><img src="${pageContext.request.contextPath}/img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="time"><i class="i-play"></i>23`22` </span></div>
                                                 <div class="cont">
                                                     课程内容 消息回复接口（图文,语音消息的自动回复） 素材管理接口（图片上传） 自定义菜单接口（菜单的创建，查询，删除）
                                                 </div>
@@ -191,7 +152,7 @@
                                                 </div>
                                             </li>
                                             <li>
-                                                <div><span><img src="../img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="time"><i class="i-play"></i>23`22` </span></div>
+                                                <div><span><img src="${pageContext.request.contextPath}/img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="time"><i class="i-play"></i>23`22` </span></div>
                                                 <div class="cont">
                                                     课程内容 消息回复接口（图文,语音消息的自动回复） 素材管理接口（图片上传） 自定义菜单接口（菜单的创建，查询，删除）
                                                 </div>
@@ -217,7 +178,7 @@
                                         </div>
                                         <ul class="my-item-box">
                                             <li>
-                                                <div><span><img src="../img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="our-answer">我来回答</span></div>
+                                                <div><span><img src="${pageContext.request.contextPath}/img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="our-answer">我来回答</span></div>
                                                 <div class="tit">这个是我想问的问题</div>
                                                 <div class="cont">
                                                     课程内容 消息回复接口（图文,语音消息的自动回复） 素材管理接口（图片上传） 自定义菜单接口（菜单的创建，查询，删除）
@@ -227,7 +188,7 @@
                                                 </div>
                                             </li>
                                             <li>
-                                                <div><span><img src="../img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="our-answer">我来回答</span></div>
+                                                <div><span><img src="${pageContext.request.contextPath}/img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="our-answer">我来回答</span></div>
                                                 <div class="tit">这个是我想问的问题</div>
                                                 <div class="cont">
                                                     课程内容 消息回复接口（图文,语音消息的自动回复） 素材管理接口（图片上传） 自定义菜单接口（菜单的创建，查询，删除）
@@ -237,7 +198,7 @@
                                                 </div>
                                             </li>
                                             <li>
-                                                <div><span><img src="../img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="our-answer">我来回答</span></div>
+                                                <div><span><img src="${pageContext.request.contextPath}/img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="our-answer">我来回答</span></div>
                                                 <div class="tit">这个是我想问的问题</div>
                                                 <div class="cont">
                                                     课程内容 消息回复接口（图文,语音消息的自动回复） 素材管理接口（图片上传） 自定义菜单接口（菜单的创建，查询，删除）
@@ -247,7 +208,7 @@
                                                 </div>
                                             </li>
                                             <li>
-                                                <div><span><img src="../img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="our-answer">我来回答</span></div>
+                                                <div><span><img src="${pageContext.request.contextPath}/img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="our-answer">我来回答</span></div>
                                                 <div class="tit">这个是我想问的问题</div>
                                                 <div class="cont">
                                                     课程内容 消息回复接口（图文,语音消息的自动回复） 素材管理接口（图片上传） 自定义菜单接口（菜单的创建，查询，删除）
@@ -257,7 +218,7 @@
                                                 </div>
                                             </li>
                                             <li>
-                                                <div><span><img src="../img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="our-answer">我来回答</span></div>
+                                                <div><span><img src="${pageContext.request.contextPath}/img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="our-answer">我来回答</span></div>
                                                 <div class="tit">这个是我想问的问题</div>
                                                 <div class="cont">
                                                     课程内容 消息回复接口（图文,语音消息的自动回复） 素材管理接口（图片上传） 自定义菜单接口（菜单的创建，查询，删除）
@@ -267,7 +228,7 @@
                                                 </div>
                                             </li>
                                             <li>
-                                                <div><span><img src="../img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="our-answer">我来回答</span></div>
+                                                <div><span><img src="${pageContext.request.contextPath}/img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="our-answer">我来回答</span></div>
                                                 <div class="tit">这个是我想问的问题</div>
                                                 <div class="cont">
                                                     课程内容 消息回复接口（图文,语音消息的自动回复） 素材管理接口（图片上传） 自定义菜单接口（菜单的创建，查询，删除）
@@ -277,7 +238,7 @@
                                                 </div>
                                             </li>
                                             <li>
-                                                <div><span><img src="../img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="our-answer">我来回答</span></div>
+                                                <div><span><img src="${pageContext.request.contextPath}/img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="our-answer">我来回答</span></div>
                                                 <div class="cont">
                                                     课程内容 消息回复接口（图文,语音消息的自动回复） 素材管理接口（图片上传） 自定义菜单接口（菜单的创建，查询，删除）
                                                 </div>
@@ -291,7 +252,7 @@
                                     <div class="sel-note">
                                         <ul class="my-item-box">
                                             <li>
-                                                <div><span><img src="../img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="our-answer">我来回答</span></div>
+                                                <div><span><img src="${pageContext.request.contextPath}/img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="our-answer">我来回答</span></div>
                                                 <div class="tit">这个是我想问的问题</div>
                                                 <div class="cont">
                                                     课程内容 消息回复接口（图文,语音消息的自动回复） 素材管理接口（图片上传） 自定义菜单接口（菜单的创建，查询，删除）
@@ -301,7 +262,7 @@
                                                 </div>
                                             </li>
                                             <li>
-                                                <div><span><img src="../img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="our-answer">我来回答</span></div>
+                                                <div><span><img src="${pageContext.request.contextPath}/img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="our-answer">我来回答</span></div>
                                                 <div class="tit">这个是我想问的问题</div>
                                                 <div class="cont">
                                                     课程内容 消息回复接口（图文,语音消息的自动回复） 素材管理接口（图片上传） 自定义菜单接口（菜单的创建，查询，删除）
@@ -311,7 +272,7 @@
                                                 </div>
                                             </li>
                                             <li>
-                                                <div><span><img src="../img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="our-answer">我来回答</span></div>
+                                                <div><span><img src="${pageContext.request.contextPath}/img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="our-answer">我来回答</span></div>
                                                 <div class="tit">这个是我想问的问题</div>
                                                 <div class="cont">
                                                     课程内容 消息回复接口（图文,语音消息的自动回复） 素材管理接口（图片上传） 自定义菜单接口（菜单的创建，查询，删除）
@@ -321,7 +282,7 @@
                                                 </div>
                                             </li>
                                             <li>
-                                                <div><span><img src="../img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="our-answer">我来回答</span></div>
+                                                <div><span><img src="${pageContext.request.contextPath}/img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="our-answer">我来回答</span></div>
                                                 <div class="tit">这个是我想问的问题</div>
                                                 <div class="cont">
                                                     课程内容 消息回复接口（图文,语音消息的自动回复） 素材管理接口（图片上传） 自定义菜单接口（菜单的创建，查询，删除）
@@ -331,7 +292,7 @@
                                                 </div>
                                             </li>
                                             <li>
-                                                <div><span><img src="../img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="our-answer">我来回答</span></div>
+                                                <div><span><img src="${pageContext.request.contextPath}/img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="our-answer">我来回答</span></div>
                                                 <div class="tit">这个是我想问的问题</div>
                                                 <div class="cont">
                                                     课程内容 消息回复接口（图文,语音消息的自动回复） 素材管理接口（图片上传） 自定义菜单接口（菜单的创建，查询，删除）
@@ -341,7 +302,7 @@
                                                 </div>
                                             </li>
                                             <li>
-                                                <div><span><img src="../img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="our-answer">我来回答</span></div>
+                                                <div><span><img src="${pageContext.request.contextPath}/img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="our-answer">我来回答</span></div>
                                                 <div class="tit">这个是我想问的问题</div>
                                                 <div class="cont">
                                                     课程内容 消息回复接口（图文,语音消息的自动回复） 素材管理接口（图片上传） 自定义菜单接口（菜单的创建，查询，删除）
@@ -351,7 +312,7 @@
                                                 </div>
                                             </li>
                                             <li>
-                                                <div><span><img src="../img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="our-answer">我来回答</span></div>
+                                                <div><span><img src="${pageContext.request.contextPath}/img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="our-answer">我来回答</span></div>
                                                 <div class="tit">这个是我想问的问题</div>
                                                 <div class="cont">
                                                     课程内容 消息回复接口（图文,语音消息的自动回复） 素材管理接口（图片上传） 自定义菜单接口（菜单的创建，查询，删除）
@@ -361,7 +322,7 @@
                                                 </div>
                                             </li>
                                             <li>
-                                                <div><span><img src="../img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="our-answer">我来回答</span></div>
+                                                <div><span><img src="${pageContext.request.contextPath}/img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="our-answer">我来回答</span></div>
                                                 <div class="tit">这个是我想问的问题</div>
                                                 <div class="cont">
                                                     课程内容 消息回复接口（图文,语音消息的自动回复） 素材管理接口（图片上传） 自定义菜单接口（菜单的创建，查询，删除）
@@ -371,7 +332,7 @@
                                                 </div>
                                             </li>
                                             <li>
-                                                <div><span><img src="../img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="our-answer">我来回答</span></div>
+                                                <div><span><img src="${pageContext.request.contextPath}/img/asset-vid.png" alt=""></span><span class="name">王老师</span><span class="our-answer">我来回答</span></div>
                                                 <div class="tit">这个是我想问的问题</div>
                                                 <div class="cont">
                                                     课程内容 消息回复接口（图文,语音消息的自动回复） 素材管理接口（图片上传） 自定义菜单接口（菜单的创建，查询，删除）
@@ -413,7 +374,7 @@
                                         <ul class="my-item-box">
                                             <li>
                                                 <div>
-                                                    <span><img src="../img/asset-vid.png" alt=""></span>
+                                                    <span><img src="${pageContext.request.contextPath}/img/asset-vid.png" alt=""></span>
                                                     <span class="name">王老师</span>
                                                     <div class="item-rit">
                                                         <div class="star-show">
@@ -431,7 +392,7 @@
                                             </li>
                                             <li>
                                                 <div>
-                                                    <span><img src="../img/asset-vid.png" alt=""></span>
+                                                    <span><img src="${pageContext.request.contextPath}/img/asset-vid.png" alt=""></span>
                                                     <span class="name">王老师</span>
                                                     <div class="item-rit">
                                                         <div class="star-show">
@@ -449,7 +410,7 @@
                                             </li>
                                             <li>
                                                 <div>
-                                                    <span><img src="../img/asset-vid.png" alt=""></span>
+                                                    <span><img src="${pageContext.request.contextPath}/img/asset-vid.png" alt=""></span>
                                                     <span class="name">王老师</span>
                                                     <div class="item-rit">
                                                         <div class="star-show">
@@ -467,7 +428,7 @@
                                             </li>
                                             <li>
                                                 <div>
-                                                    <span><img src="../img/asset-vid.png" alt=""></span>
+                                                    <span><img src="${pageContext.request.contextPath}/img/asset-vid.png" alt=""></span>
                                                     <span class="name">王老师</span>
                                                     <div class="item-rit">
                                                         <div class="star-show">
@@ -485,7 +446,7 @@
                                             </li>
                                             <li>
                                                 <div>
-                                                    <span><img src="../img/asset-vid.png" alt=""></span>
+                                                    <span><img src="${pageContext.request.contextPath}/img/asset-vid.png" alt=""></span>
                                                     <span class="name">王老师</span>
                                                     <div class="item-rit">
                                                         <div class="star-show">
@@ -503,7 +464,7 @@
                                             </li>
                                             <li>
                                                 <div>
-                                                    <span><img src="../img/asset-vid.png" alt=""></span>
+                                                    <span><img src="${pageContext.request.contextPath}/img/asset-vid.png" alt=""></span>
                                                     <span class="name">王老师</span>
                                                     <div class="item-rit">
                                                         <div class="star-show">
@@ -549,17 +510,18 @@
                                     <div class="search-area">
                                         <input type="text" class="search-area nav-justified" placeholder="搜索文字字幕" value="">
                                     </div>
-                                    <div class="video-textes">
+                                    <!-- <div class="video-textes">
                                         <li><span>0：00</span>[音乐]最后一个主题，我想涵盖的介绍材料，在我们真正开始的过程，并开始在这个惊人的旅程，只是一个高层次的纲要，我们要去。我想这是可选的，因为，首先，它是罚款，只要开始，看看我们要去那里，我们到达那里。但也因为没有办法讨论的过程中，在短短几分钟内没有使用一堆术语和术语，我不希望你知道。整个过程的重点是让你了解这些事情，我恨你看这个视频，认为，我不知道他在走动，我想我不应该继续下去，当这就是为什么你应该继续。</li>
                                         <li><span>4：00</span>这样你就可以了解所有这些事情，我们将解释一件一次。有了这一点，让我们给概述，以防你看到这些东西之前，想知道，我要去一些新的东西，或者我听说我真的想了解一些东西，这是要来了吗？我当然不会列出这里的每一个主题。有太多，有很多星期价值的东西，但在一个非常高的水平。这部分的合唱，我们要做的功能性编程的基础知识，EMA的静态类型的语言，即ML.首先是基础知识，如变量和范围、数量和加。不要担心，当然你以前见过，但在编程之前，但在一个精确的方式。我们将建立功能，我喜欢的方法，但没有对象，如果你看到面向对象编程。我们要做递归，实际上这是我们要写计算以及其他计算的方式。我们要建立更大的数据结构的元组和列表的方式。这将是第一节。因此，与软件安装的东西，这是一个公平的数额，特别是在一个不寻常的环境。所以我们给额外的时间，这真的像你有两倍长的那一节，为那些跟随。</li>
                                         <li><span>9:54</span>之后，第二节是所有关于数据类型和模式匹配。这是一种新的方式，你们大多数人以前没有见过，以代表更大的数据结构，模型不同的数据</li>
                                         <li><span>10：30</span>我想涵盖的介绍材料，在我们真正开始的过程，并开始在这个惊人的旅程，只是一个高层次的纲要，我们要去。我想这是可选的，因为，首先，它是罚款，只要开始，看看我们要去那里，我们到达那里。但也因为没有办法讨论的过程中，在短短几分钟内没有使用一堆术语和术语，我不希望你知道。整个过程的重点是让你了解这些事情，我恨你看这个视频，认为，我不知道他在走动，我想我不应该继续下去，当这就是为什么你应该继续。</li>
                                         <li><span>14：00</span>这样你就可以了解所有这些事情，我们将解释一件一次。有了这一点，让我们给概述，以防你看到这些东西之前，想知道，我要去一些新的东西，或者我听说我真的想了解一些东西，这是要来了吗？我当然不会列出这里的每一个主题。有太多，有很多星期价值的东西，但在一个非常高的水平。这部分的合唱，我们要做的功能性编程的基础知识，EMA的静态类型的语言，即ML.首先是基础知识，如变量和范围、数量和加。不要担心，当然你以前见过，但在编程之前，但在一个精确的方式。我们将建立功能，我喜欢的方法，但没有对象，如果你看到面向对象编程。我们要做递归，实际上这是我们要写计算以及其他计算的方式。我们要建立更大的数据结构的元组和列表的方式。这将是第一节。因此，与软件安装的东西，这是一个公平的数额，特别是在一个不寻常的环境。所以我们给额外的时间，这真的像你有两倍长的那一节，为那些跟随。</li>
                                         <li><span>19:54</span>之后，第二节是所有关于数据类型和模式匹配。这是一种新的方式，你们大多数人以前没有见过，以代表更大的数据结构，模型不同的数据。。</li>
-                                    </div>
+                                    </div> -->
                                     <div><a href="#" class="btn btn-primary pull-right">下一项</a></div>
                                 </div>
-
+								
+								
                             </div>
                             <div class="not" style="display: none;">
                                 <div class="article-cont-note">
@@ -571,19 +533,19 @@
                                             </div>
                                             <div class="item">
                                                 <div class="item-left">
-                                                    <p><img src="../img/widget-myImg.jpg" width="60px" alt=""></p>
+                                                    <p><img src="${pageContext.request.contextPath}/img/widget-myImg.jpg" width="60px" alt=""></p>
                                                     <p>毛老师</p>
                                                 </div>
                                                 <div class="item-right">
                                                     <span class="video-time"><i class="i-play"></i>2`10`</span>
-                                                    <p><img src="../img/widget-demo.png" width="221" alt=""></p>
+                                                    <p><img src="${pageContext.request.contextPath}/img/widget-demo.png" width="221" alt=""></p>
                                                     <p class="action-box">4小时前 <span class="active-box"><span><i class="i-coll"></i>采集</span><span><i class="i-laud"></i>赞</span></span>
                                                     </p>
                                                 </div>
                                             </div>
                                             <div class="item">
                                                 <div class="item-left">
-                                                    <p><img src="../img/widget-myImg.jpg" width="60px" alt=""></p>
+                                                    <p><img src="${pageContext.request.contextPath}/img/widget-myImg.jpg" width="60px" alt=""></p>
                                                     <p>毛老师</p>
                                                 </div>
                                                 <div class="item-right">
@@ -594,7 +556,7 @@
                                             </div>
                                             <div class="item">
                                                 <div class="item-left">
-                                                    <p><img src="../img/widget-myImg.jpg" width="60px" alt=""></p>
+                                                    <p><img src="${pageContext.request.contextPath}/img/widget-myImg.jpg" width="60px" alt=""></p>
                                                     <p>毛老师</p>
                                                 </div>
                                                 <div class="item-right">
@@ -605,7 +567,7 @@
                                             </div>
                                             <div class="item">
                                                 <div class="item-left">
-                                                    <p><img src="../img/widget-myImg.jpg" width="60px" alt=""></p>
+                                                    <p><img src="${pageContext.request.contextPath}/img/widget-myImg.jpg" width="60px" alt=""></p>
                                                     <p>毛老师</p>
                                                 </div>
                                                 <div class="item-right">
@@ -620,7 +582,7 @@
                                         <div class="question-butte"><i class="i-node"></i>发布笔记</div>
                                         <div class="about-teach">
                                             <div class="teach-info">
-                                                <img src="../img/widget-pic.png" width="90px" alt="">
+                                                <img src="${pageContext.request.contextPath}/img/widget-pic.png" width="90px" alt="">
                                                 <div>
                                                     <p>教学方：<span>毛老师</span></p>
                                                     <p class="about">高级前端开发工程师10年开发经验</p>
@@ -747,7 +709,7 @@
                                             </div>
                                             <div class="item">
                                                 <div class="item-left">
-                                                    <p><img src="../img/widget-myImg.jpg" width="60px" alt=""></p>
+                                                    <p><img src="${pageContext.request.contextPath}/img/widget-myImg.jpg" width="60px" alt=""></p>
                                                     <p>毛老师</p>
                                                 </div>
                                                 <div class="item-right">
@@ -758,7 +720,7 @@
                                             </div>
                                             <div class="item">
                                                 <div class="item-left">
-                                                    <p><img src="../img/widget-myImg.jpg" width="60px" alt=""></p>
+                                                    <p><img src="${pageContext.request.contextPath}/img/widget-myImg.jpg" width="60px" alt=""></p>
                                                     <p>毛老师</p>
                                                 </div>
                                                 <div class="item-right">
@@ -770,7 +732,7 @@
                                             </div>
                                             <div class="item">
                                                 <div class="item-left">
-                                                    <p><img src="../img/widget-myImg.jpg" width="60px" alt=""></p>
+                                                    <p><img src="${pageContext.request.contextPath}/img/widget-myImg.jpg" width="60px" alt=""></p>
                                                     <p>毛老师</p>
                                                 </div>
                                                 <div class="item-right">
@@ -782,7 +744,7 @@
                                             </div>
                                             <div class="item">
                                                 <div class="item-left">
-                                                    <p><img src="../img/widget-myImg.jpg" width="60px" alt=""></p>
+                                                    <p><img src="${pageContext.request.contextPath}/img/widget-myImg.jpg" width="60px" alt=""></p>
                                                     <p>毛老师</p>
                                                 </div>
                                                 <div class="item-right">
@@ -794,7 +756,7 @@
                                             </div>
                                             <div class="item">
                                                 <div class="item-left">
-                                                    <p><img src="../img/widget-myImg.jpg" width="60px" alt=""></p>
+                                                    <p><img src="${pageContext.request.contextPath}/img/widget-myImg.jpg" width="60px" alt=""></p>
                                                     <p>毛老师</p>
                                                 </div>
                                                 <div class="item-right">
@@ -806,7 +768,7 @@
                                             </div>
                                             <div class="item">
                                                 <div class="item-left">
-                                                    <p><img src="../img/widget-myImg.jpg" width="60px" alt=""></p>
+                                                    <p><img src="${pageContext.request.contextPath}/img/widget-myImg.jpg" width="60px" alt=""></p>
                                                     <p>毛老师</p>
                                                 </div>
                                                 <div class="item-right">
@@ -826,7 +788,7 @@
                                         <div class="question-butte"><i class="i-problem"></i>我有问题</div>
                                         <div class="about-teach">
                                             <div class="teach-info">
-                                                <img src="../img/widget-pic.png" width="90px" alt="">
+                                                <img src="${pageContext.request.contextPath}/img/widget-pic.png" width="90px" alt="">
                                                 <div>
                                                     <p>教学方：<span>毛老师</span></p>
                                                     <p class="about">高级前端开发工程师10年开发经验</p>
@@ -953,7 +915,7 @@
 
                                             <div class="item">
                                                 <div class="item-left">
-                                                    <img src="../img/widget-myImg.jpg" width="60px" class="touxiang" alt=""> <span class="name">毛老师老师说了</span> <img src="../img/widget-codeico.png" alt=""> <span class="action-info">2017-12-4 <span class="action"><span><i class="i-laud"></i>赞</span></span>
+                                                    <img src="${pageContext.request.contextPath}/img/widget-myImg.jpg" width="60px" class="touxiang" alt=""> <span class="name">毛老师老师说了</span> <img src="${pageContext.request.contextPath}/img/widget-codeico.png" alt=""> <span class="action-info">2017-12-4 <span class="action"><span><i class="i-laud"></i>赞</span></span>
                                                     </span>
                                                     <p class="mask"></p>
                                                     <pre>
@@ -1026,7 +988,7 @@
                                             </div>
                                             <div class="item">
                                                 <div class="item-left">
-                                                    <img src="../img/widget-myImg.jpg" width="60px" class="touxiang" alt=""> <span class="name">毛老师老师说了</span> <img src="../img/widget-codeico.png" alt=""> <span class="action-info">2017-12-4 <span class="action"><span><i class="i-laud"></i>赞</span></span>
+                                                    <img src="${pageContext.request.contextPath}/img/widget-myImg.jpg" width="60px" class="touxiang" alt=""> <span class="name">毛老师老师说了</span> <img src="${pageContext.request.contextPath}/img/widget-codeico.png" alt=""> <span class="action-info">2017-12-4 <span class="action"><span><i class="i-laud"></i>赞</span></span>
                                                     </span>
                                                     <p class="mask"></p>
                                                     <pre>
@@ -1099,7 +1061,7 @@
                                             </div>
                                             <div class="item">
                                                 <div class="item-left">
-                                                    <img src="../img/widget-myImg.jpg" width="60px" class="touxiang" alt=""> <span class="name">毛老师老师说了</span> <img src="../img/widget-codeico.png" alt=""> <span class="action-info">2017-12-4 <span class="action"><span><i class="i-laud"></i>赞</span></span>
+                                                    <img src="${pageContext.request.contextPath}/img/widget-myImg.jpg" width="60px" class="touxiang" alt=""> <span class="name">毛老师老师说了</span> <img src="${pageContext.request.contextPath}/img/widget-codeico.png" alt=""> <span class="action-info">2017-12-4 <span class="action"><span><i class="i-laud"></i>赞</span></span>
                                                     </span>
                                                     <p class="mask"></p>
                                                     <pre>
@@ -1172,7 +1134,7 @@
                                             </div>
                                             <div class="item">
                                                 <div class="item-left">
-                                                    <img src="../img/widget-myImg.jpg" width="60px" class="touxiang" alt=""> <span class="name">毛老师老师说了</span> <img src="../img/widget-codeico.png" alt=""> <span class="action-info">2017-12-4 <span class="action"><span><i class="i-laud"></i>赞</span></span>
+                                                    <img src="${pageContext.request.contextPath}/img/widget-myImg.jpg" width="60px" class="touxiang" alt=""> <span class="name">毛老师老师说了</span> <img src="${pageContext.request.contextPath}/img/widget-codeico.png" alt=""> <span class="action-info">2017-12-4 <span class="action"><span><i class="i-laud"></i>赞</span></span>
                                                     </span>
                                                     <p class="mask"></p>
                                                     <pre>
@@ -1245,7 +1207,7 @@
                                             </div>
                                             <div class="item">
                                                 <div class="item-left">
-                                                    <img src="../img/widget-myImg.jpg" width="60px" class="touxiang" alt=""> <span class="name">毛老师老师说了</span> <img src="../img/widget-codeico.png" alt=""> <span class="action-info">2017-12-4 <span class="action"><span><i class="i-laud"></i>赞</span></span>
+                                                    <img src="${pageContext.request.contextPath}/img/widget-myImg.jpg" width="60px" class="touxiang" alt=""> <span class="name">毛老师老师说了</span> <img src="${pageContext.request.contextPath}/img/widget-codeico.png" alt=""> <span class="action-info">2017-12-4 <span class="action"><span><i class="i-laud"></i>赞</span></span>
                                                     </span>
                                                     <p class="mask"></p>
                                                     <pre>
@@ -1318,7 +1280,7 @@
                                             </div>
                                             <div class="item">
                                                 <div class="item-left">
-                                                    <img src="../img/widget-myImg.jpg" width="60px" class="touxiang" alt=""> <span class="name">毛老师老师说了</span> <img src="../img/widget-codeico.png" alt=""> <span class="action-info">2017-12-4 <span class="action"><span><i class="i-laud"></i>赞</span></span>
+                                                    <img src="${pageContext.request.contextPath}/img/widget-myImg.jpg" width="60px" class="touxiang" alt=""> <span class="name">毛老师老师说了</span> <img src="${pageContext.request.contextPath}/img/widget-codeico.png" alt=""> <span class="action-info">2017-12-4 <span class="action"><span><i class="i-laud"></i>赞</span></span>
                                                     </span>
                                                     <p class="mask"></p>
                                                     <pre>
@@ -1391,7 +1353,7 @@
                                             </div>
                                             <div class="item">
                                                 <div class="item-left">
-                                                    <img src="../img/widget-myImg.jpg" width="60px" class="touxiang" alt=""> <span class="name">毛老师老师说了</span> <img src="../img/widget-codeico.png" alt=""> <span class="action-info">2017-12-4 <span class="action"><span><i class="i-laud"></i>赞</span></span>
+                                                    <img src="${pageContext.request.contextPath}/img/widget-myImg.jpg" width="60px" class="touxiang" alt=""> <span class="name">毛老师老师说了</span> <img src="${pageContext.request.contextPath}/img/widget-codeico.png" alt=""> <span class="action-info">2017-12-4 <span class="action"><span><i class="i-laud"></i>赞</span></span>
                                                     </span>
                                                     <p class="mask"></p>
                                                     <pre>
@@ -1464,7 +1426,7 @@
                                             </div>
                                             <div class="item">
                                                 <div class="item-left">
-                                                    <img src="../img/widget-myImg.jpg" width="60px" class="touxiang" alt=""> <span class="name">毛老师老师说了</span> <img src="../img/widget-codeico.png" alt=""> <span class="action-info">2017-12-4 <span class="action"><span><i class="i-laud"></i>赞</span></span>
+                                                    <img src="${pageContext.request.contextPath}/img/widget-myImg.jpg" width="60px" class="touxiang" alt=""> <span class="name">毛老师老师说了</span> <img src="${pageContext.request.contextPath}/img/widget-codeico.png" alt=""> <span class="action-info">2017-12-4 <span class="action"><span><i class="i-laud"></i>赞</span></span>
                                                     </span>
                                                     <p class="mask"></p>
                                                     <pre>
@@ -1537,7 +1499,7 @@
                                             </div>
                                             <div class="item">
                                                 <div class="item-left">
-                                                    <img src="../img/widget-myImg.jpg" width="60px" class="touxiang" alt=""> <span class="name">毛老师老师说了</span> <img src="../img/widget-codeico.png" alt=""> <span class="action-info">2017-12-4 <span class="action"><span><i class="i-laud"></i>赞</span></span>
+                                                    <img src="${pageContext.request.contextPath}/img/widget-myImg.jpg" width="60px" class="touxiang" alt=""> <span class="name">毛老师老师说了</span> <img src="${pageContext.request.contextPath}/img/widget-codeico.png" alt=""> <span class="action-info">2017-12-4 <span class="action"><span><i class="i-laud"></i>赞</span></span>
                                                     </span>
                                                     <p class="mask"></p>
                                                     <pre>
@@ -1610,7 +1572,7 @@
                                             </div>
                                             <div class="item">
                                                 <div class="item-left">
-                                                    <img src="../img/widget-myImg.jpg" width="60px" class="touxiang" alt=""> <span class="name">毛老师老师说了</span> <img src="../img/widget-codeico.png" alt=""> <span class="action-info">2017-12-4 <span class="action"><span><i class="i-laud"></i>赞</span></span>
+                                                    <img src="${pageContext.request.contextPath}/img/widget-myImg.jpg" width="60px" class="touxiang" alt=""> <span class="name">毛老师老师说了</span> <img src="${pageContext.request.contextPath}/img/widget-codeico.png" alt=""> <span class="action-info">2017-12-4 <span class="action"><span><i class="i-laud"></i>赞</span></span>
                                                     </span>
                                                     <p class="mask"></p>
                                                     <pre>
@@ -1687,7 +1649,7 @@
                                         <div class="question-butte"><i class="i-node"></i>发布笔记</div>
                                         <div class="about-teach">
                                             <div class="teach-info">
-                                                <img src="../img/widget-pic.png" width="90px" alt="">
+                                                <img src="${pageContext.request.contextPath}/img/widget-pic.png" width="90px" alt="">
                                                 <div>
                                                     <p>教学方：<span>毛老师</span></p>
                                                     <p class="about">高级前端开发工程师10年开发经验</p>
@@ -1876,7 +1838,7 @@
                                                     <div class="title">评论 <span>12453条评论</span></div>
                                                     <div class="item">
                                                         <div class="item-left">
-                                                            <p><img src="../img/widget-pic.png" width="60px" alt=""></p>
+                                                            <p><img src="${pageContext.request.contextPath}/img/widget-pic.png" width="60px" alt=""></p>
                                                             <p>毛老师</p>
                                                         </div>
                                                         <div class="item-cent">
@@ -1894,7 +1856,7 @@
                                                     </div>
                                                     <div class="item">
                                                         <div class="item-left">
-                                                            <p><img src="../img/widget-pic.png" width="60px" alt=""></p>
+                                                            <p><img src="${pageContext.request.contextPath}/img/widget-pic.png" width="60px" alt=""></p>
                                                             <p>毛老师</p>
                                                         </div>
                                                         <div class="item-cent">
@@ -1912,7 +1874,7 @@
                                                     </div>
                                                     <div class="item">
                                                         <div class="item-left">
-                                                            <p><img src="../img/widget-pic.png" width="60px" alt=""></p>
+                                                            <p><img src="${pageContext.request.contextPath}/img/widget-pic.png" width="60px" alt=""></p>
                                                             <p>毛老师</p>
                                                         </div>
                                                         <div class="item-cent">
@@ -1930,7 +1892,7 @@
                                                     </div>
                                                     <div class="item">
                                                         <div class="item-left">
-                                                            <p><img src="../img/widget-pic.png" width="60px" alt=""></p>
+                                                            <p><img src="${pageContext.request.contextPath}/img/widget-pic.png" width="60px" alt=""></p>
                                                             <p>毛老师</p>
                                                         </div>
                                                         <div class="item-cent">
@@ -1954,7 +1916,7 @@
                                     <div class="article-right-box">
                                         <div class="about-teach">
                                             <div class="teach-info">
-                                                <img src="../img/widget-pic.png" width="90px" alt="">
+                                                <img src="${pageContext.request.contextPath}/img/widget-pic.png" width="90px" alt="">
                                                 <div>
                                                     <p>教学方：<span>毛老师</span></p>
                                                     <p class="about">高级前端开发工程师10年开发经验</p>
@@ -1995,7 +1957,7 @@
                             <div class="title">问题回答 <span class="clone glyphicon glyphicon-remove"></span></div>
                             <div class="set-item">
                                 <div class="ask-info">
-                                    <div><span><img src="../img/asset-vid.png" alt=""></span><span class="name">王老师</span></div>
+                                    <div><span><img src="${pageContext.request.contextPath}/img/asset-vid.png" alt=""></span><span class="name">王老师</span></div>
                                     <div class="tit">这个是我想问的问题</div>
                                     <div class="cont">
                                         课程内容 消息回复接口（图文,语音消息的自动回复） 素材管理接口（图片上传） 自定义菜单接口（菜单的创建，查询，删除）
@@ -2006,7 +1968,7 @@
                                 </div>
                                 <ul class="my-item-box">
                                     <li>
-                                        <div><span><img src="../img/asset-vid.png" alt=""></span><span class="name">王老师 <em>4小时前</em></span><span class="our-answer"><span class="hf-onck"><i class="glyphicon glyphicon-comment"></i> 回复</span> <span><i class="glyphicon glyphicon-thumbs-up"></i> 0</span></span>
+                                        <div><span><img src="${pageContext.request.contextPath}/img/asset-vid.png" alt=""></span><span class="name">王老师 <em>4小时前</em></span><span class="our-answer"><span class="hf-onck"><i class="glyphicon glyphicon-comment"></i> 回复</span> <span><i class="glyphicon glyphicon-thumbs-up"></i> 0</span></span>
                                         </div>
                                         <div class="cont">
                                             课程内容 消息回复接口（图文,语音消息的自动回复） 素材管理接口（图片上传） 自定义菜单接口（菜单的创建，查询，删除）
@@ -2031,9 +1993,9 @@
         <!-- 页面底部 -->
         <!-- 页面 css js -->
 
-        <script type="text/javascript" src="../plugins/jquery/dist/jquery.js"></script>
-        <script type="text/javascript" src="../plugins/js-pdf/jquery.media.js"></script>
-        <script type="text/javascript" charset="utf-8" src="../plugins/ckplayer/ckplayer.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/plugins/jquery/dist/jquery.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/plugins/js-pdf/jquery.media.js"></script>
+        <script type="text/javascript" charset="utf-8" src="${pageContext.request.contextPath}/plugins/ckplayer/ckplayer.js"></script>
         <script type="text/javascript">
             $(function() {
                 $('.active-box span').click(function() {
@@ -2084,7 +2046,8 @@
                 })
             })
         </script>
-        <script type="text/javascript" src="/plugins/rainbow-custom.min.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/plugins/rainbow-custom.min.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/js/barrager.js"></script>
         <script type="text/javascript">
             $(function() {
                 //代码点击显示
@@ -2171,7 +2134,7 @@
                 allowScriptAccess: 'always',
                 wmode: 'transparent'
             };
-            CKobject.embedSWF('../../../dist/plugins/ckplayer/ckplayer.swf', 'vdplay', 'ckplayer_a1', '100%', '100%', flashvars, params);
+            CKobject.embedSWF('${pageContext.request.contextPath}/${pageContext.request.contextPath}/${pageContext.request.contextPath}/dist/plugins/ckplayer/ckplayer.swf', 'vdplay', 'ckplayer_a1', '100%', '100%', flashvars, params);
 
             var video = ['http://img.ksbbs.com/asset/Mon_1605/0ec8cc80112a2d6.mp4->video/mp4'];
             var support = ['iPad', 'iPhone', 'ios', 'android+false', 'msie10+false'];
@@ -2245,7 +2208,7 @@
                 $('.hf-answer').hide()
             })
         </script>
-        <script type="text/javascript" src="../plugins/bootstrap/dist/js/bootstrap.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/plugins/bootstrap/dist/js/bootstrap.js"></script>
         <script>
             $(function() {
                 var vidHit = $('html').height() - 70;
@@ -2529,4 +2492,40 @@
 
             })
         </script>
+        
+<script> 
+
+var myVideo=document.getElementById("video"); 
+function getPlaySpeed() {
+    alert(myVideo.playbackRate);//获取播放速度
+    }
+function setPlaySpeed()  { 
+    myVideo.playbackRate=2;//设定新的播放速度2倍速度
+    } 
+function playPause(){ 
+    if (myVideo.paused) 
+      myVideo.play(); //播放
+    else 
+      myVideo.pause(); //暂停播放
+    } 
+function makeBig(){ 
+    myVideo.width=890; 
+    } 
+function makeSmall(){ 
+    myVideo.width=500; 
+    } 
+function makeNormal(){ 
+    myVideo.width=700; 
+    } 
+
+function publishCanvas(){
+	$('canvas').barrager([{"msg":$('#dm').val()}]);
+	$('#dm').val('');
+}
+
+$('canvas').barrager([{"msg":"看着不错。。。。"},{"msg":"哈哈哈。。。。"},{"msg":"不错不错。。"},{"msg":"真好看。。。。"}]);
+</script>
+        
+        
+        
 </body>

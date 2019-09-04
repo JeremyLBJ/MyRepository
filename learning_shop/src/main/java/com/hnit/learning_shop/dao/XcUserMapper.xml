@@ -23,7 +23,6 @@
      select="findRoleByRoleUser">
     </collection>
     
-    
   </resultMap>
   
   <select id="selectByUid" resultMap="com.hnit.learning_shop.dao.UserNotesMapper.BaseResultMap">

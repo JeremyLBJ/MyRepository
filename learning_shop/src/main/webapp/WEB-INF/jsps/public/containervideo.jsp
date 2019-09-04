@@ -1255,7 +1255,6 @@
                     		$.post("findAllNotes",function(data){
                     			showData(data);
                     		})	
-                    		
                     	});
                     	function showData(data){
                     		$("#noteItems").html(''); 
