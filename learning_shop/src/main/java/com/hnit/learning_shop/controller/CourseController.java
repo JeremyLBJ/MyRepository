@@ -16,6 +16,7 @@ import com.github.pagehelper.PageHelper;
 import com.hnit.learning_shop.common.Result;
 import com.hnit.learning_shop.entity.CourseComment;
 import com.hnit.learning_shop.entity.CategorySub;
+import com.hnit.learning_shop.entity.CourseBase;
 import com.hnit.learning_shop.service.CourseService;
 
 @Controller
@@ -36,7 +37,7 @@ public class CourseController {
 		PageHelper.startPage(page, 10);
 		List<CategorySub> categorySubList = courseService.queryAllCategorySub();
 		//查询所有的二级分类课程
-		model.addAttribute("categorySubList",courseService.queryAllCategorySub());
+		model.addAttribute("categorySubList",categorySubList);
 		//查询所有的课程
 		model.addAttribute("courseBaseList", courseService.queryAllCourse());
 		return "learning-list";
@@ -53,7 +54,10 @@ public class CourseController {
 	}
 	
 	@RequestMapping("toArticle")
-	public String toArticle(){
+	public String toArticle(Integer id,Model model){
+		System.out.println("111111111111111111111");
+		CourseBase course = courseService.findById(id);
+		model.addAttribute("course", course);
 		return "learning-article";
 	}
 	

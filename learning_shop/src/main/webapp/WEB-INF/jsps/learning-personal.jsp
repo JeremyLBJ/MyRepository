@@ -68,7 +68,7 @@
                         </div>
                         <div class="division"></div>
                         <div class="col-lg-4 text-right">
-                            <a href="#" class="goLear"> 继续学习</a>
+                            <a href="toCourseVideo" class="goLear"> 继续学习</a>
                             <a href="#" class="evalu"> 课程评价</a>
                             <div class="aft" style="top:0px;right:0px;">● ● ●
                                 <ul></ul>

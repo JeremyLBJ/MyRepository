@@ -82,5 +82,9 @@ public class CourseService {
 		example.createCriteria().andCidEqualTo(cid).andUidEqualTo(uid);
 		return courseCommentMapper.selectByExample(example);
 	}
+
+	public CourseBase findById(Integer id) {
+		return courseBaseMapper.selectByPrimaryKey(id);
+	}
 	
 }

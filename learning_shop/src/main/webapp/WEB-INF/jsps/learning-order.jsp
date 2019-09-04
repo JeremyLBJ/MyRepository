@@ -129,15 +129,20 @@
     <script>
     
     //获取需要购买的课程编号
-    getCourseIds();
+    
+    var ids;
+    var url=location.href;
     function getCourseIds(){
-    	var url=location.href;
     	return url.substr(url.indexOf('?')+1).split("=")[1];
     }
-    
+    if(url.indexOf("&sum") != -1){
+    	ids = '${course.id}';
+    }else{
+    	ids = getCourseIds()
+    }
         $.ajax({
         	url:'queryShopCourse',
-        	data:{ids:getCourseIds()},
+        	data:{ids:ids},
         	type:'get',
         	dataType:'json',
         	success:function(data){
@@ -148,7 +153,7 @@
         			+'<img src="../img/asset-video.png" width="160" height="90" alt="">'
         			+'<div class="contInfo"> <p class="tit">'+data[i].cname+'<span>教师名</span></p>'
         			+'<p class="info">这里是课程介绍这里是课程介绍这里是课程介绍这里是课程介绍</p> </div>'
-        			+'</div><div class="sumMon"><p><strong>优惠</strong> ￥ <span>'+data[i].price+'</span></p>'
+        			+'</div><div class="sumMon"><p><strong>价格</strong> ￥ <span>'+data[i].oldPricee+'</span></p>'
         			+'</div></div>';
         			num+=data[i].price;
         		}
@@ -160,9 +165,10 @@
 
         // 提交订单
         $('.subBut').click(function() {
+        	
         	$.ajax({
-        		url:'saveOrder',
-        		data:{ids:getCourseIds(),uid:'1',sum:'20'},
+        		url:'/saveOrder',
+        		data:{ids:getCourseIds(),sum:'20'},
             	type:'get',
             	dataType:'json',
             	async:false,
@@ -170,7 +176,6 @@
             		window.location.href="topay?orderId="+data;
             	}
         	})
-        	
         })
     </script>
 </body>

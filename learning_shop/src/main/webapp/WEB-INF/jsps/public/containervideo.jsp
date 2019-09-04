@@ -1234,6 +1234,7 @@
                     <script type="text/javascript">
                     function findAllNote(){
                     	$.post("findAllNote",function(data){
+                    		console.log(data);
                 			showData(data);
                 		})
                     }
@@ -1261,6 +1262,9 @@
                     		var index = (data.data.length);
     						var str = "";
     						for(var i = 0 ; i < index ; i++){
+    							if(null==(data.data[i].userNotes[0]) || '' ==(data.data[i].userNotes[0])){
+    								break;
+    							}
     							str+="<div class='item'>"+
                                     "<div class='item-left'>"+
                                     "<p><img src='../img/widget-myImg.jpg' width='60px' alt=''></p>"+
@@ -1273,7 +1277,6 @@
                                     "</p></div></div>";
     						}
     						$("#noteItems").html(str); 
-    						
                     	}
                     	//根据笔记表id删除
                     	function deleteById(id){

@@ -111,97 +111,18 @@
                 <div class="title">精品推荐<a href="#">查看全部</a></div>
                 <div class="content">
                     
-                    
+                   <c:forEach items="${courses }" var="c">
                     <div class="recom-item">
-                        <a href="#">
+                        <a href="/course/toArticle?id=${c.id }">
                             <p><img src="${pageContext.request.contextPath}/img/widget-demo1.png" width="100%" alt=""><span class="lab">HOT</span></p>
                             <ul>
-                                <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                <li><span>高级</span> <em> · </em> 1125人在学习</li>
+                                <li>${c.cname }</li>
+                                <li><span>${c.grade }</span> <em> · </em> ${c.learncount }人在学习</li>
                             </ul>
                         </a>
                     </div>
-                    <div class="recom-item">
-                        <a href="#">
-                            <p><img src="${pageContext.request.contextPath}/img/widget-demo2.png" width="100%" alt=""><span class="lab">HOT</span></p>
-                            <ul>
-                                <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                            </ul>
-                        </a>
-                    </div>
-                    <div class="recom-item">
-                        <a href="#">
-                            <p><img src="${pageContext.request.contextPath}/img/widget-demo3.png" width="100%" alt=""><span class="lab">HOT</span></p>
-                            <ul>
-                                <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                            </ul>
-                        </a>
-                    </div>
-                    <div class="recom-item">
-                        <a href="#">
-                            <p><img src="${pageContext.request.contextPath}/img/widget-demo4.png" width="100%" alt=""><span class="lab">HOT</span></p>
-                            <ul>
-                                <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                            </ul>
-                        </a>
-                    </div>
-                    <div class="recom-item">
-                        <a href="#">
-                            <p><img src="${pageContext.request.contextPath}/img/widget-demo1.png" width="100%" alt=""></p>
-                            <ul>
-                                <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                            </ul>
-                        </a>
-                    </div>
-                    <div class="recom-item">
-                        <a href="#">
-                            <p><img src="${pageContext.request.contextPath}/img/widget-demo3.png" width="100%" alt=""></p>
-                            <ul>
-                                <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                            </ul>
-                        </a>
-                    </div>
-                    <div class="recom-item">
-                        <a href="#">
-                            <p><img src="${pageContext.request.contextPath}/img/widget-demo2.png" width="100%" alt=""></p>
-                            <ul>
-                                <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                            </ul>
-                        </a>
-                    </div>
-                    <div class="recom-item">
-                        <a href="#">
-                            <p><img src="${pageContext.request.contextPath}/img/widget-demo1.png" width="100%" alt=""></p>
-                            <ul>
-                                <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                            </ul>
-                        </a>
-                    </div>
-                    <div class="recom-item">
-                        <a href="#">
-                            <p><img src="${pageContext.request.contextPath}/img/widget-demo2.png" width="100%" alt=""></p>
-                            <ul>
-                                <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                            </ul>
-                        </a>
-                    </div>
-                    <div class="recom-item">
-                        <a href="#">
-                            <p><img src="${pageContext.request.contextPath}/img/widget-demo4.png" width="100%" alt=""></p>
-                            <ul>
-                                <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                            </ul>
-                        </a>
-                    </div>
+                   </c:forEach>
+                   
                 </div>
             </div>
 
@@ -224,7 +145,7 @@
          				<div><img src="${pageContext.request.contextPath}/img/widget-ind-top.png" width="100%" alt=""></div>
          				<c:forEach items="${html.courseList}" var="h">
 							<div class="recom-item">
-								<a href="#">
+								<a href="/course/toArticle?id=${h.id }">
 									<p>
 										<img src="${pageContext.request.contextPath}/img/widget-demo4.png" width="100%" alt=""><span
 											class="lab">HOT</span>
@@ -523,7 +444,7 @@
        	 console.log(data);
        	 var html='';
        	 for(var i=0;i<data.data.length;i++){
-       		 html+='<div class="recom-item"><a href="#"><p><img src="${pageContext.request.contextPath}/img/widget-demo4.png" width="100%" alt="">'
+       		 html+='<div class="recom-item"><a href="/course/toArticle?id='+data.data[i].id+'"><p><img src="${pageContext.request.contextPath}/img/widget-demo4.png" width="100%" alt="">'
        		 +'</p><ul><li>Think '+data.data[i].cname+' </li>'
        		 +'<li><span>'+data.data[i].grade+'</span> <em> · </em> 1125人在学习</li></ul></a></div>'
        	 }
@@ -548,7 +469,7 @@
         	 
         	 var html='<div><img src="${pageContext.request.contextPath}/img/widget-ind-top.png" width="100%" alt=""></div>';
         	 for(var i=0;i<data.data.length;i++){
-        		 html+='<div class="recom-item"><a href="#"><p><img src="${pageContext.request.contextPath}/img/widget-demo4.png" width="100%" alt="">'
+        		 html+='<div class="recom-item"><a href="/course/toArticle?id='+data.data[i].id+'"><p><img src="${pageContext.request.contextPath}/img/widget-demo4.png" width="100%" alt="">'
         		 +'</p><ul><li>Think '+data.data[i].cname+' </li>'
         		 +'<li><span>'+data.data[i].grade+'</span> <em> · </em> 1125人在学习</li></ul></a></div>'
         	 }

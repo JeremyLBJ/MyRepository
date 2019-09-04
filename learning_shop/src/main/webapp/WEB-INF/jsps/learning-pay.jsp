@@ -56,8 +56,7 @@
                 
             </div>
             <div class="total-right text-right">
-                <p><span>小计：￥999</span></p>
-                <p><span>总计：<em class="cl-red">￥1998</em></span></p>
+                <p><span>总计：￥<em class="cl-red"></em></span></p>
             </div>
             <div class="tit">选择支付方式</div>
             <div class="pay-method">
@@ -129,9 +128,9 @@ $.ajax({
 			+'<div class="col-lg-2"><img src="../img/page-1.jpg" alt=""></div>'
 			+'<div class="col-lg-8"><p>'+data[i].courseBase.cname+'</p>'
 			+'<p>课程有效期：'+data[i].courseBase.startTime+' - 2018年9月11日</p></div>'
-			+'<div class="col-lg-2"><p><em>课程原价：</em> <span>￥'+data[i].courseBase.oldPricee+'</span></p>'
-			+'<p><em>优惠价格：</em> <span class="cl-red">￥'+data[i].courseBase.price+'</span></p></div> </div>';
-			num+=data[i].courseBase.price;
+			+'<div class="col-lg-2"><p><em>课程原价：</em> <span>￥'+data[i].courseBase.price+'</span></p>'
+			+'<p><em>优惠价格：</em> <span class="cl-red">￥'+data[i].courseBase.oldPricee+'</span></p></div> </div>';
+			num+=data[i].courseBase.oldPricee;
 		}
 		$('.pay-list').html(html);
 		$('.cl-red').html(num);

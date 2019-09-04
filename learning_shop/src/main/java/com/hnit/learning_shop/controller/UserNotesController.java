@@ -70,7 +70,7 @@ public class UserNotesController {
 	@ResponseBody
 	public Result findAllNotes(XcUser xcUser, Model model) {
 		try {
-			xcUser.setRid(1);
+			xcUser.setId(1);
 			List<XcUser> findByRid = userNotesBiz.findByRid(xcUser);
 			return new Result(1,"成功",findByRid);
 		}catch (RuntimeException e) {
@@ -83,7 +83,7 @@ public class UserNotesController {
 	@ResponseBody
 	public Result orderByAgreeCnt(@Valid XcUser xcUser) {
 		try {
-			xcUser.setRid(1);
+			xcUser.setId(1);
 			List<XcUser> orderByAgreeCnt = userNotesBiz.orderByAgreeCnt(xcUser);
 			return new Result(1,"成功",orderByAgreeCnt);
 		}catch (RuntimeException e) {

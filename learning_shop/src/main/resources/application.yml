@@ -12,7 +12,7 @@ spring:
 
   #Redis
   redis:
-    host: www.hujiatai.cn
+    host: 106.15.176.125
     port: 6379
   #mvc
   mvc:
@@ -33,7 +33,7 @@ mail:
 logging:
   level:
     com:
-      hnit: trace
+      hnit: debug
 server:
   port: 80
   tomcat:

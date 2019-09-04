@@ -295,7 +295,7 @@
                 <script type="text/javascript">
                 function MyNote(){
                 	$.post("findAllNotes",function(data){
-            			showDatas(data,"#box");
+            			 showDatas(data,"#box"); 
             		})
                 };
                 /*文章评论*/
@@ -312,6 +312,10 @@
                 					$("#note").val('');
                 					showDatas(data);
                 				}); 
+                });
+                
+                $("#not").click(function(){
+                	alert(1);
                 });
                 
                 //通过用户的id号查询信息

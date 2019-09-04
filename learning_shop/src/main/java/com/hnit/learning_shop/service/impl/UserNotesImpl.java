@@ -29,14 +29,14 @@ public class UserNotesImpl {
 	//根据用户id查询笔记信息
 	public List<XcUser> findByRid (XcUser xcUser) {
 		XcUserExample example = new XcUserExample();
-		example.createCriteria().andRidEqualTo(xcUser.getRid());
+		example.createCriteria().andIdEqualTo(xcUser.getId());
 		return xcUserMapper.selectByExample(example);
 	}
 	
 	//根据点赞数进行排序
 	public List<XcUser> orderByAgreeCnt (XcUser xcUser) {
 		XcUserExample example = new XcUserExample();
-		example.createCriteria().andRidEqualTo(xcUser.getRid());
+		example.createCriteria().andIdEqualTo(xcUser.getId());
 		List<XcUser> list = xcUserMapper.selectByExample(example);
 		PageHelper.startPage(0, 2);
 		return list;

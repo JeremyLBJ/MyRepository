@@ -64,7 +64,7 @@ public class ShopCartService {
 	}
 	
 	//插入订单中    并把订单号返回  生产订单后需要将购物车中商品删除（条件根据用户id和课程id）
-	public String insertOrder(String[] ids,int uid,int sum){
+	public String insertOrder(String[] ids,int uid,double sum){
 		
 		
 		String orderid=OrderUtil.genOrderId();
@@ -106,6 +106,11 @@ public class ShopCartService {
 		OrderitemExample example=new OrderitemExample();
 		example.createCriteria().andOidEqualTo(Integer.valueOf(orderid));
 		return orderItemMapper.selectByExample(example);
+	}
+
+
+	public Orders findOrderByid(String orderid) {
+		return ordersMapper.selectByPrimaryKey(Integer.parseInt(orderid));
 	}
 	
 	
