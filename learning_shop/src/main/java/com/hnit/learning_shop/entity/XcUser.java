@@ -20,6 +20,7 @@ public class XcUser implements Serializable {
 	public void setUserNotes(List<UserNotes> userNotes) {
 		this.userNotes = userNotes;
 	}
+	
 
 	private Integer id;
 

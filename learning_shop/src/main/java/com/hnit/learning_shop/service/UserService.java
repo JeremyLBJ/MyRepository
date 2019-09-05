@@ -16,6 +16,8 @@ public interface UserService {
 	XcUser selectByEmail(String email);
 	
 	XcUser selectByUsername(String username);
+	
+	void sendSimpleEmail(String to,String subject,String text);
 
 	XcUser findUserById(Integer id);
 

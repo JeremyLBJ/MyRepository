@@ -13,23 +13,29 @@
     <result column="phone" property="phone" jdbcType="VARCHAR" />
     
     	<!-- 用户表和笔记表关联查询 -->
-    <association property="userNotes" column="id" fetchType="lazy"
-    select="selectCommentsByRid"></association>
+    <collection property="userNotes" column="id" fetchType="lazy"
+    select="orderByAgreeCnt"></collection>
     
+    <collection property="userNotes" column="id"
+    select="selectByUid"></collection>
     
     <collection property="roleList" column="id" fetchType="lazy"
      select="findRoleByRoleUser">
     </collection>
     
-    
   </resultMap>
+  
+  <select id="selectByUid" resultMap="com.hnit.learning_shop.dao.UserNotesMapper.BaseResultMap">
+  		SELECT * FROM user_notes n join xc_user u on n.uid = u.id and u.id=#{id}
+  </select>
+  
   <select id="findRoleByRoleUser" 
    resultMap="com.hnit.learning_shop.dao.XcRoleMapper.BaseResultMap">
    	select * from xc_role where id in (select rid from user_role where uid = #{id })
    </select>
   
-   <select id="selectCommentsByRid" resultMap="com.hnit.learning_shop.dao.UserNotesMapper.BaseResultMap">
-  		select * from user_notes where uid = #{rid}
+  <select id="orderByAgreeCnt" resultMap="com.hnit.learning_shop.dao.UserNotesMapper.BaseResultMap">
+  		select * from user_notes where uid = #{id} order by agreeCnt desc
   </select>
   <sql id="Example_Where_Clause" >
     <where >

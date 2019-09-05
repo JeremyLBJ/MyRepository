@@ -14,6 +14,10 @@
     <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
     <result column="pic" property="pic" jdbcType="VARCHAR" />
     <result column="learncount" property="learncount" jdbcType="INTEGER" />
+  	
+  	 <!-- <collection property="xcUsers" column="id" fetchType="lazy"
+    select="selectByUid"></collection> -->
+    
   <association property="category" column="catid" fetchType="lazy" 
   select="findCategoryByCatid"></association>
   
@@ -25,6 +29,14 @@
   	select * from course_base where catid=#{id}
   </select>
   
+  <select id="selectByUid" resultMap="com.hnit.learning_shop.dao.XcUserMapper.BaseResultMap">
+		SELECT u.id,o.oid,c.id,d.ordertime,u.username,c.price
+		 FROM course_base c 
+		JOIN teacher_course t ON c.tid=t.tid 
+		JOIN orderitem o ON t.cid=o.cid 
+		JOIN orders d ON o.oid=d.id 
+		JOIN xc_user u ON d.uid=u.id  
+  </select>
   <select id="findAllCourseByUid" resultMap="BaseResultMap">
   		select * from course_base where id in (select cid from orders o join orderitem i on o.id = i.oid where uid = #{uid });
   </select>

@@ -16,10 +16,9 @@ public class AdminController {
 	@Autowired
 	private CourseService couseService; 
 	
-	@RequestMapping("findAllCourseList")
+	@RequestMapping("/findAllCourseList")
 	@ResponseBody
 	public List<CourseBase> findAllCourseList(){
-		System.out.println("----------------------------");
 		List<CourseBase> courseList = couseService.queryAllCourse();
 		return courseList;
 	}

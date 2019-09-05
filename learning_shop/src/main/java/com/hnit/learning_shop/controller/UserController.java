@@ -3,13 +3,11 @@ package com.hnit.learning_shop.controller;
 import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
@@ -27,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.hnit.learning_shop.entity.CourseBase;
+import com.hnit.learning_shop.entity.Orders;
 import com.hnit.learning_shop.entity.Interest;
 import com.hnit.learning_shop.entity.SysLog;
 import com.hnit.learning_shop.entity.XcRole;
@@ -34,6 +33,7 @@ import com.hnit.learning_shop.entity.XcUser;
 import com.hnit.learning_shop.service.IndexService;
 import com.hnit.learning_shop.service.SysLogService;
 import com.hnit.learning_shop.service.UserService;
+import com.hnit.learning_shop.service.impl.CourseBaseImpl;
 import com.hnit.learning_shop.utils.FtpUtils;
 import com.hnit.learning_shop.utils.Picture;
 import com.hnit.learning_shop.utils.Data;
@@ -333,7 +333,14 @@ public class UserController {
 		model.addAttribute("sysLogList", sysLogList);
 		return "forward:/admin/syslog.jsp";
 	}
-
+	@Autowired CourseBaseImpl courseBaseImpl;
+	@RequestMapping("/orderItems")
+	public String order (Model model) {
+		List<Orders> order = courseBaseImpl.order();
+		model.addAttribute("order", order);
+		return "forward:/admin/order-list.jsp";
+	}
+	
 	@RequestMapping("/toCourseVideo")
 	public String toCourseVideo() {
 		return "learning-course-video(ease)";

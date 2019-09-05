@@ -8,6 +8,7 @@ new Vue({
             var _this = this;
             axios.get("/findAllCourseList")
                 .then(function (response) {
+                	alert()
                     _this.courseList = response.data;
                 })
                 .catch(function (reason) {
@@ -16,7 +17,6 @@ new Vue({
         }
     },
     created:function () {
-    	alert();
         this.findAllCourseList();
     }
 })

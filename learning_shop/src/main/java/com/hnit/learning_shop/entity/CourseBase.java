@@ -2,12 +2,22 @@ package com.hnit.learning_shop.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(value = {"handler"})
 public class CourseBase implements Serializable {
-    private Integer id;
+	
+	/*private XcUser xcUser;
+
+	public XcUser getXcUser() {
+		return xcUser;
+	}
+
+	public void setXcUser(XcUser xcUser) {
+		this.xcUser = xcUser;
+	}*/
+
+	private Integer id;
 
     private String cname;
 
@@ -23,8 +33,10 @@ public class CourseBase implements Serializable {
 
     private Double oldPricee;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date startTime;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date endTime;
 
     private String pic;

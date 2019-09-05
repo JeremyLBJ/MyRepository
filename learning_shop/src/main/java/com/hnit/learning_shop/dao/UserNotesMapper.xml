@@ -13,7 +13,13 @@
     <result column="agreeCnt" jdbcType="INTEGER" property="agreecnt" />
     <result column="readTime" jdbcType="DATE" property="readtime" />
     <result column="createTime" jdbcType="DATE" property="createtime" />
+    
+   
   </resultMap>
+  
+  
+  
+  
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbg.generated

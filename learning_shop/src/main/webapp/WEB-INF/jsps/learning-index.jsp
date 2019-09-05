@@ -260,14 +260,14 @@
         <div class="teacher-list text-center">
             <div class="title"> 牛人推荐 </div>
             <div class="first-box">
-                <c:forEach items="${teacherList}" var="t" >
+                <c:forEach items="${teacherList}" var="t" varStatus="vs" >
                 
                 
                 <div class="teach-item" style="cursor:pointer" onclick="clickCheck(${t.id})">
-                    <img src="${pageContext.request.contextPath}/img/widget-teach1.png" width="100%" alt="">
+                    <img src="${pageContext.request.contextPath}/img/widget-teach${vs.index+1 }.png" width="100%" alt="">
                     <span class="lab">28555学习过</span>
                     <ul class="teach-info">
-                        <li>${t.tname} <span>Java EE</span></li>
+                        <li>${t.tname} <span></span></li>
                         <li>${t.intro}从事多年Java软件开发及相关教育工作，熟悉JavaSE、JavaEE、Struts1,2、Spring……</li>
                     </ul>
                 </div>

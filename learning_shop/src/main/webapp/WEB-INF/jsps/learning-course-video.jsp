@@ -33,7 +33,7 @@
                     <div class="course-nav">
                         <div class="nav-stacked text-center">
                             <li class="handout"><a href="javascript:;" class="glyphicon glyphicon-list-alt"><span>讲义</span></a></li>
-                            <li class="lab-note"><a href="javascript:;" class="glyphicon glyphicon-user"><span>笔记</span></a></li>
+                            <li class="lab-note"><a href="javascript:;" class="glyphicon glyphicon-user" onclick="MyNote()"><span>笔记</span></a></li>
                             <li class="on-line"><a href="javascript:;" class="glyphicon glyphicon-user"><span>直播</span></a></li>
                             <li><a href="javascript:;" onclick="screenshot()" class="glyphicon glyphicon-list-alt"><span>截图</span></a></li>
                             <li class="lab-ask"><a href="javascript:;" class="glyphicon glyphicon-cog"><span>问答</span></a></li>

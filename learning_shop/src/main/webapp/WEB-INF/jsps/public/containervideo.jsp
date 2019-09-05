@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <div class="container">
                         <div class="tit">
-                            <span class="active" id="txt">字幕</span><span id="not">笔记</span><span id="asks">问答</span><span id="code">代码</span>
+                            <span class="active" id="txt">字幕</span><span id="not" onclick="findAllNote()">笔记</span><span id="asks">问答</span><span id="code">代码</span>
                         </div>
                         <div class="content">
                             <div class="txt" style="display: block;">
@@ -30,54 +30,15 @@
                                     <div class="article-left-box">
                                         <div class="content">
                                             <div class="content-title">
-                                                <p><a class="all">全部</a><a>精选</a><a>我的</a></p>
+                                                <p><a class="all" id="all">全部</a><a id="choiceness">精选</a><a id="myNotes">我的</a></p>
                                                 <p><a class="all">全部</a><span><a>1.1</a><a>1.2</a><a>1.3</a><a>1.4</a><a>1.5</a></span><a href="$" class="more">更多 <i class="i-chevron-bot"></i></a></p>
                                             </div>
-                                            <div class="item">
-                                                <div class="item-left">
-                                                    <p><img src="../img/widget-myImg.jpg" width="60px" alt=""></p>
-                                                    <p>毛老师</p>
-                                                </div>
-                                                <div class="item-right">
-                                                    <span class="video-time"><i class="i-play"></i>2`10`</span>
-                                                    <p><img src="../img/widget-demo.png" width="221" alt=""></p>
-                                                    <p class="action-box">4小时前 <span class="active-box"><span><i class="i-coll"></i>采集</span><span><i class="i-laud"></i>赞</span></span>
-                                                    </p>
-                                                </div>
+                                            
+                                            <div class="item" id="noteItems">
+                                               
                                             </div>
-                                            <div class="item">
-                                                <div class="item-left">
-                                                    <p><img src="../img/widget-myImg.jpg" width="60px" alt=""></p>
-                                                    <p>毛老师</p>
-                                                </div>
-                                                <div class="item-right">
-                                                    <p>在讨论如何将重构转化为微服务之前，退后一步，<br>仔细观察微服务的内容和时间是很重要的。<br>以下两个要点将会对任何微服务重构策略产生重大影响。 </p>
-                                                    <p class="action-box">4小时前 <span class="active-box"><span><i class="i-edt"></i>编辑</span><span><i class="i-del"></i>删除</span><span><i class="i-laud"></i>赞</span></span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <div class="item-left">
-                                                    <p><img src="../img/widget-myImg.jpg" width="60px" alt=""></p>
-                                                    <p>毛老师</p>
-                                                </div>
-                                                <div class="item-right">
-                                                    <p>在讨论如何将重构转化为微服务之前，退后一步，<br>仔细观察微服务的内容和时间是很重要的。<br>以下两个要点将会对任何微服务重构策略产生重大影响。 </p>
-                                                    <p class="action-box">4小时前 <span class="active-box"><span><i class="i-edt"></i>编辑</span><span><i class="i-del"></i>删除</span><span><i class="i-laud"></i>赞</span></span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <div class="item-left">
-                                                    <p><img src="../img/widget-myImg.jpg" width="60px" alt=""></p>
-                                                    <p>毛老师</p>
-                                                </div>
-                                                <div class="item-right">
-                                                    <p>在讨论如何将重构转化为微服务之前，退后一步，<br>仔细观察微服务的内容和时间是很重要的。<br>以下两个要点将会对任何微服务重构策略产生重大影响。 </p>
-                                                    <p class="action-box">4小时前 <span class="active-box"><span><i class="i-edt"></i>编辑</span><span><i class="i-del"></i>删除</span><span><i class="i-laud"></i>赞</span></span>
-                                                    </p>
-                                                </div>
-                                            </div>
+                                            
+                                          
                                         </div>
                                     </div>
                                     <div class="article-right-box">
@@ -1270,5 +1231,62 @@
                             </div>
                         </div>
                     </div>
+                    <script type="text/javascript">
+                    function findAllNote(){
+                    	$.post("findAllNote",function(data){
+                    		console.log(data);
+                			showData(data);
+                		})
+                    }
+                    	//查看所有笔记
+                    	$('#all').click(function(){
+                    		$.post("findAllNote",function(data){
+                    			showData(data);
+                    		})
+                    	});
+                    	//精选笔记
+                    	$('#choiceness').click(function(){
+                    		$.post("choiceness",function(data){
+                    			showData(data);
+                    		});
+                    	});
+                    	//我的笔记
+                    	$('#myNotes').click(function(){
+                    		$.post("findAllNotes",function(data){
+                    			showData(data);
+                    		})	
+                    	});
+                    	function showData(data){
+                    		$("#noteItems").html(''); 
+                    		var index = (data.data.length);
+    						var str = "";
+    						for(var i = 0 ; i < index ; i++){
+    							if(null==(data.data[i].userNotes[0]) || '' ==(data.data[i].userNotes[0])){
+    								break;
+    							}
+    							str+="<div class='item'>"+
+                                    "<div class='item-left'>"+
+                                    "<p><img src='../img/widget-myImg.jpg' width='60px' alt=''></p>"+
+                                    "<p>"+data.data[i].username+"</p></div>"+
+                                    "<div class='item-right'>"+
+                                    "<p>"+data.data[i].userNotes[0].content+"</p>"+
+                                    "<p class='action-box'>4小时前 <span class='active-box'>"+
+                                    "<span><i class='i-edt'></i>编辑</span><span>"+
+                                    "<i class='i-del' onclick='deleteById("+data.data[i].userNotes[0].id+")'></i>删除</span><span><i class='i-laud'></i>赞</span></span>"+
+                                    "</p></div></div>";
+    						}
+    						$("#noteItems").html(str); 
+                    	}
+                    	//根据笔记表id删除
+                    	function deleteById(id){
+                    		alert(1);
+                    		if(null == id || '' == id){
+                    			return null;
+                    		}
+                    		$.post("deleteById",{id:id},function(data){
+                    			console.log(data);
+                    		})
+                    	}
+                    </script>
 </head>
 
