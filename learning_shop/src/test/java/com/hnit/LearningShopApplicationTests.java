@@ -2,7 +2,6 @@ package com.hnit;
 
 import java.io.FileInputStream;
 
-import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,7 +13,6 @@ import com.hnit.learning_shop.utils.FtpUtils;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class LearningShopApplicationTests {
-	@Resource
 	private MailServiceImpl mailserviceimpl;
 
 	@Test
@@ -31,5 +29,8 @@ public class LearningShopApplicationTests {
 		
 		mailserviceimpl.sendSimpleEmail("1447076355@qq.com", "12313", "116546");
 	}
+	
+	
+	
 
 }

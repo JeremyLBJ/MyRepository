@@ -4,7 +4,7 @@ spring:
     driverClassName: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/learning_shop?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false
     username: root
-    password: a
+    password: abc
     
   http:
     multipart:
@@ -43,15 +43,11 @@ server:
 qq:
   oauth:
     http: http://www.hujiatai.cn
+    
+# mybatis缓存
+mybatis:
+  configuration:
+    cache-enabled: true
 
-# web端登录界面
-my:
-  security:
-    browser:
-      loginPage: /login.jsp
-      
-
-# 登录成功后的处理方式（跳转，返回json）
-#my.security.browser.loginType = REDIRECT
 
 

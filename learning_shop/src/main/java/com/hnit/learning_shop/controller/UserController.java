@@ -40,7 +40,7 @@ import com.hnit.learning_shop.utils.Data;
 import com.hnit.learning_shop.utils.MyUtils;
 
 @Controller
-@PropertySource("ftp.properties")
+@PropertySource("classpath:ftp.properties")
 public class UserController {
 	@Value("${filePathPre}")
 	private String filePathPre;
