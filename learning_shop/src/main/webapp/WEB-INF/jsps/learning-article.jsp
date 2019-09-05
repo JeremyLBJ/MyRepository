@@ -833,7 +833,7 @@
                                     <div class="tit">课程评分 </div>
                                     <div class="star">
                                         <div class="score"><i>5</i></div>
-                                    </div><span class="star-score"> <i>5</i>分</span></div>
+                                    </div><span class="star-score" id="nums"> <i>5</i>分</span></div>
                                 <div class="eva-cont">
                                     <div class="tit">学员评语 </div>
                                     <div class="text-box">
@@ -842,6 +842,11 @@
 	                                        <span>
 	                                       		 <a style="color: white;" href="javascript:publishComment()">发表评论</a>
 	                                       		 <script type="text/javascript">
+	                                       		 $("#nums").mouseout(function(){
+	                                       			/* var num = $("#num").val();
+	                                       			alert(num); */
+	                                       			alert(1);
+	                                       		 });
 	                                       		 	function publishComment(){
 	                                       		 		var grade = $('.star-score').text().substring(0,$('.star-score').text().length-1);
 	                                       		 		var content = $('.form-control').val();
@@ -2086,7 +2091,7 @@ function qqShare(url,title,summary,pics){
                                     <div class="tit">课程评分 </div>
                                     <div class="star">
                                         <div class="score"><i>5</i></div>
-                                    </div><span class="star-score"> <i>5</i> 分</span></div>
+                                    </div><span class="star-score" id="comment"> <i>5</i> 分</span></div>
                                 <div class="eva-cont">
                                     <div class="tit">学员评语 </div>
                                     <div class="text-box">
