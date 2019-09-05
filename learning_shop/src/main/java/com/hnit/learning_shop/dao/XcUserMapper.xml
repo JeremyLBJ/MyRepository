@@ -26,6 +26,7 @@
   </resultMap>
   
   <select id="selectByUid" resultMap="com.hnit.learning_shop.dao.UserNotesMapper.BaseResultMap">
+  		
   		SELECT * FROM user_notes n join xc_user u on n.uid = u.id and u.id=#{id}
   </select>
   

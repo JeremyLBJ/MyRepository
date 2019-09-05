@@ -19,6 +19,8 @@ public class CourseBaseImpl {
 	
 	//查询所有的订单  
 	public List<Orders> order () {
+		
+		
 		 List<Orders> list = ordersMapper.selectByExample(null);
 		return list;
 	}
