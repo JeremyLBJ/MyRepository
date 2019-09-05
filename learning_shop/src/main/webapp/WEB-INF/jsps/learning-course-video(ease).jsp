@@ -2547,7 +2547,7 @@
 						var str = "";
 						for(var i = 0 ; i < index ; i++){
 						 //评论成功!要更新评论列表    此处只是添加一行
-						 str+= "<li><div><span><img src='"+data.data[0].userPic+"' alt=''></span>"+
+						 str+= "<li><div><span><img src='${pageContext.request.contextPath}${user.userPic }' alt=''></span>"+
 					        " <span class='name'>"+data.data[0].username+"</span><span class='time'>"+
 					        "<i class='i-play'></i>'time'</span></div>"+<!--time当前视频定格评论的时间-->
 					        "<div class='cont'>"+
