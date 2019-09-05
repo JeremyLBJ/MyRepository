@@ -184,10 +184,37 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
+            <groupId>org.springframework.boot</groupId>
+            <!--springboot-maven不能使用1.5.9.RELEASE版本, 否则会导致WEB-INF下的jsp资源无法访问-->
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <version>1.4.2.RELEASE</version>
+            <configuration><!--指定springboot的main方法类，否则会由于某些测试类中也有main方法而导致构建失败-->
+                <mainClass>com.hnit.LearningShopApplication</mainClass>
+            </configuration>
+            <executions>
+                <execution> <goals> <goal>repackage</goal> </goals> </execution>
+            </executions>
+        </plugin>
 		</plugins>
+		<resources> 
+            <resource>
+                <!-- JSP包打包到资源里 -->
+                <directory>src/main/webapp</directory>
+                <targetPath>META-INF/resources</targetPath>
+                <includes>
+                    <include>**/**</include>
+                </includes>
+            </resource>
+            <resource>
+                <!-- 其他资打包到资源里 -->
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/**</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+		
 	</build>
 
 </project>

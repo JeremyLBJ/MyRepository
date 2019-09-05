@@ -17,10 +17,10 @@ import com.google.gson.Gson;
 import com.hnit.learning_shop.service.MailServiceImpl;
 import com.hnit.learning_shop.utils.FtpUtils;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
+/*@RunWith(SpringRunner.class)
+@SpringBootTest*/
 public class LearningShopApplicationTests {
-	@Resource
+/*	@Resource
 	private MailServiceImpl mailserviceimpl;
 
 	@Test
@@ -84,6 +84,6 @@ public class LearningShopApplicationTests {
 		System.out.println(substring);
 		//Map destMap = gson.fromJson(substring, Map.class);
 		Map readValue = objectMapper.readValue(substring, Map.class);
-	}
+	}*/
 
 }
