@@ -33,13 +33,11 @@
         <th>商品ID</th>       
         <th>订单时间</th>
         <th>支付状态</th>
-       <!-- if(arr[i][j].status == 1){
-					   text = '未支付';
-				   }else{
-					   text = '支付完成'; -->
+        
      	<c:forEach items="${order}" var="o">
      		<tr v-for='user in userList' id='userList'>
 	     		<td><input type='checkbox' name='id[]' value='1' />${o.uid}</td>
+	     		
 				<td>${o.id}</td><td>${o.orderitem.cid}</td>
 		        <td><fmt:formatDate value="${o.ordertime}" pattern="yyy-MM-dd HH:mm:ss"/></td>
 		        <td id="status${o.id }">
