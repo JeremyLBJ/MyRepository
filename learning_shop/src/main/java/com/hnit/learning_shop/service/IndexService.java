@@ -48,6 +48,7 @@ public class IndexService {
 		example.createCriteria().andUidEqualTo(uid);
 		return interestMapper.selectByExample(example);
 	}
+	
 	public CategorySub findSubById(Integer subCatId) {
 		return categorySubMapper.selectByPrimaryKey(subCatId);
 	}

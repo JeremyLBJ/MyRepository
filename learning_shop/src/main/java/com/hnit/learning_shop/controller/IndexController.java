@@ -98,7 +98,6 @@ public class IndexController {
 			redisTemplate.boundValueOps(catListByUid).set(json);
 		}
 		
-		
 		//根据阅读数量显示精品推荐
 		List<CourseBase> courses = indexService.findRecommend();
 		

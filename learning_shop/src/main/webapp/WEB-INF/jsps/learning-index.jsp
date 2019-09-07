@@ -334,6 +334,7 @@
                         <li>从事多年Java软件开发及相关教育工作，熟悉JavaSE、JavaEE、Struts1,2、Spring从事多年Java软件开发及相关教育工作，熟悉JavaSE、JavaEE、Struts1,2、Spring从事多年Java软件开发及相关教育工作，熟悉JavaSE、JavaEE、Struts1,2、Spring……</li>
                     </ul>
                 </div> --%>
+                
                 <div class="clearfix"></div>
             </div>
         </div>
