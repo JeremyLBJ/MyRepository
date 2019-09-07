@@ -7,7 +7,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(value = {"handler"})
 public class CourseComment implements Serializable {
-    private Integer id;
+	
+	private Integer id;
 
     private Integer cid;
 

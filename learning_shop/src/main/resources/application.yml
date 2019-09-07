@@ -4,7 +4,7 @@ spring:
     driverClassName: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/learning_shop?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false
     username: root
-    password: abc
+    password: a
     
   http:
     multipart:

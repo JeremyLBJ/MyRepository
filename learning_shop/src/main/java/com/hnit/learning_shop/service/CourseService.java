@@ -86,5 +86,10 @@ public class CourseService {
 	public CourseBase findById(Integer id) {
 		return courseBaseMapper.selectByPrimaryKey(id);
 	}
-	
+
+	public List<CourseComment> findByGrad() {
+		List<CourseComment> list = courseCommentMapper.selectByExample(null);
+		return list;
+		
+	}
 }

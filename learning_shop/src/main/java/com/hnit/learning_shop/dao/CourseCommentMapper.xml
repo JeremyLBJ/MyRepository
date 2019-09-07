@@ -12,11 +12,14 @@
     <association property="xcUser" column="uid" fetchType="lazy"
      select="findCommentByUid">
     </association>
+   
+   
   </resultMap>
   <!-- 根据用户id查询用户 -->
   <select id="findCommentByUid" resultMap="com.hnit.learning_shop.dao.XcUserMapper.BaseResultMap">
   	select * from xc_user where id = #{uid }
   </select>
+  
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >

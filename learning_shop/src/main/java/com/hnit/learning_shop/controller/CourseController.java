@@ -92,6 +92,10 @@ public class CourseController {
 	public Result queryByIdAndGrade(int catid,String grade){
 		return new Result(1,"成功",courseService.queryCourseByCatidAndGrade(grade,catid));
 	}
-	
-	
+	@PostMapping("Start")
+	@ResponseBody
+	public Result findStart() {
+		List<CourseComment> list = courseService.findByGrad();
+		return new Result(1,"",list);
+	}
 }
