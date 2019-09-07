@@ -15,7 +15,7 @@
   </resultMap>
  
 	<select id="selectByCatid" resultMap="BaseResultMap" parameterType="com.hnit.learning_shop.entity.CategorySubExample">
-		select * from category_sub where catid=#{id}
+		select * from category_sub where catid=#{id} 
 	</select>
  
  

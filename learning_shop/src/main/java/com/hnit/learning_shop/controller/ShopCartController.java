@@ -46,7 +46,6 @@ public class ShopCartController {
 			return "redirect:tocart";
 		}
 		
-		
 	//到购物车 需要将当前用户下的购物车显示
 	@RequestMapping("tocart")
 	public String tocart(Model model){

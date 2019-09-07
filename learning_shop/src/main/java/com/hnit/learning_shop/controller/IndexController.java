@@ -119,8 +119,10 @@ public class IndexController {
 		model.addAttribute("html",html);
 		// 查询页面上 Javascript工程师 
 		CategorySub script = courseService.queryCategorySubById(3);
+		PageHelper.startPage(0,4);
+		script.getCourseList();
 		model.addAttribute("script",script );
-		//机器学习工程师
+		//机器学习工程师  微信开发
 		model.addAttribute("mechan", courseService.queryCategorySubById(17));
 		//前端开发工程师 
 		model.addAttribute("UI", courseService.queryCategorySubById(18));
@@ -139,6 +141,7 @@ public class IndexController {
 	@RequestMapping("queryBygrade")
 	@ResponseBody
 	public Result QueryCourseByGrade(String grade,int catid){
+		System.out.println("=====================");
 		System.out.println(catid+grade);
 		PageHelper.startPage(1,5);
 		

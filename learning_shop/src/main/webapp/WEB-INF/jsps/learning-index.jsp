@@ -113,7 +113,7 @@
                    <c:forEach items="${courses }" var="c">
                     <div class="recom-item">
                         <a href="/course/toArticle?id=${c.id }">
-                            <p><img src="${pageContext.request.contextPath}/img/widget-demo1.png" width="100%" alt=""><span class="lab">HOT</span></p>
+                            <p><img src="${pageContext.request.contextPath}/img/${c.cname}.png" width="100%" height="161px" alt=""><span class="lab">HOT</span></p>
                             <ul>
                                 <li>${c.cname }</li>
                                 <li><span>${c.grade }</span> <em> · </em> ${c.learncount }人在学习</li>
@@ -130,7 +130,7 @@
                     	${html.subCatName}
                     <div class="course-nav">
                         <span class="active" style="cursor:pointer" id="${html.id }">热门</span>
-                        <span style="cursor:pointer" id="${html.id }">初中</span>
+                        <span style="cursor:pointer" id="${html.id }">初级</span>
                         <span style="cursor:pointer" id="${html.id }">中级</span>
                         <span style="cursor:pointer" id="${html.id }">高级</span>
                     </div>
@@ -146,12 +146,12 @@
 							<div class="recom-item">
 								<a href="/course/toArticle?id=${h.id }">
 									<p>
-										<img src="${pageContext.request.contextPath}/img/widget-demo4.png" width="100%" alt=""><span
+										<img src="${pageContext.request.contextPath}/img/${h.cname}.png" width="100%" height="161px" alt=""><span
 											class="lab">HOT</span>
 									</p>
 									<ul>
 										<li>${h.cname }</li>
-										<li><span>${h.grade }</span> <em> · </em> 1125人在学习</li>
+										<li><span>${h.grade }</span> <em> · </em> ${h.learncount}人在学习</li>
 									</ul>
 								</a>
 							</div>
@@ -163,72 +163,102 @@
 
             <div class="course-box">
                 <div class="title">
-                    Javascript工程师
+                    ${script.subCatName}
                     <div class="course-nav">
-                        <span class="active" style="cursor:pointer" id="3">热门</span>
-                        <span style="cursor:pointer" id="3">初中</span>
-                        <span style="cursor:pointer" id="3">中级</span>
-                        <span style="cursor:pointer" id="3">高级</span>
+                        <span class="active" style="cursor:pointer" id="${script.id}">热门</span>
+                        <span style="cursor:pointer" id="${script.id}">初级</span>
+                        <span style="cursor:pointer" id="${script.id}">中级</span>
+                        <span style="cursor:pointer" id="${script.id}">高级</span>
                     </div>
                     <a href="list">查看全部</a>
                 </div>
-                <div class="content content_3">
+                <div class="content content_${script.id}">
                     <div class="cont-left">
                         <img src="${pageContext.request.contextPath}/img/widget-ind-left1.png" width="100%" alt="">
                     </div>
+                    
                     <div class="cont-right">
                         <div><img src="${pageContext.request.contextPath}/img/widget-ind-top1.png" width="100%" alt=""></div>
-                        
-                    
-                        
+                        <c:forEach items="${script.courseList}" var="h">
+							<div class="recom-item">
+								<a href="/course/toArticle?id=${h.id}">
+									<p>
+										<img src="${pageContext.request.contextPath}/img/${h.cname}.png" width="100%" height="161px" alt=""><span
+											class="lab">HOT</span>
+									</p>
+									<ul>
+										<li>${h.cname }</li>
+										<li><span>${h.grade }</span> <em> · </em> ${h.learncount}人在学习</li>
+									</ul>
+								</a>
+							</div>
+						</c:forEach>
                     </div>
                 </div>
             </div>
 
             <div class="Recommend">
                 <div class="title-class" >
-                    机器学习工程师
+                    ${mechan.subCatName}
                     <div class="course-nav">
                         <span class="active" style="cursor:pointer" id="17">热门</span>
-                        <span style="cursor:pointer" id="17">初中</span>
-                        <span style="cursor:pointer" id="17">中级</span>
-                        <span style="cursor:pointer" id="17">高级</span>
+                        <span style="cursor:pointer" id="${mechan.id}">初级</span>
+                        <span style="cursor:pointer" id="${mechan.id}">中级</span>
+                        <span style="cursor:pointer" id="${mechan.id}">高级</span>
                     </div>
                     <a href="list">查看全部</a>
                 </div>
-                <div class="content content_17" >
+                <div class="content content_${mechan.id}" >
                     
-                    <div class="recom-item">
-                        <a href="#">
-                            <p><img src="${pageContext.request.contextPath}/img/widget-demo1.png" width="100%" alt=""></p>
-                            <ul>
-                                <li>Think PHP 5.0 博客系统实战项目演练 </li>
-                                <li><span>高级</span> <em> · </em> 1125人在学习</li>
-                            </ul>
-                        </a>
+                     <c:forEach items="${mechan.courseList}" var="h">
+							<div class="recom-item">
+								<a href="/course/toArticle?id=${h.id}">
+									<p>
+										<img src="${pageContext.request.contextPath}/img/${h.cname}.png" width="100%" height="161px" alt="">
+										<span class="lab">HOT</span>
+									</p>
+									<ul>
+										<li>${h.cname }</li>
+										<li><span>${h.grade }</span> <em> · </em> ${h.learncount}人在学习</li>
+									</ul>
+								</a>
+							</div>
+						</c:forEach>
                     </div>
                 </div>
-            </div>
-
-
-            <div class="Recommend">
+                
+                
+                 <div class="Recommend">
                 <div class="title-class">
-                    前端开发工程师
+                    ${UI.subCatName}
                     <div class="course-nav">
                         <span class="active" style="cursor:pointer" id="18">热门</span>
-                        <span style="cursor:pointer" id="18">初中</span>
-                        <span style="cursor:pointer" id="18">中级</span>
-                        <span style="cursor:pointer" id="18">高级</span>
+                        <span style="cursor:pointer" id="${UI.id}">初级</span>
+                        <span style="cursor:pointer" id="${UI.id}">中级</span>
+                        <span style="cursor:pointer" id="${UI.id}">高级</span>
                     </div>
                     <a href="${pageContext.request.contextPath}/course/course">查看全部</a>
                 </div>
-                <div class="content content_18">
-                   
-                    
+                <div class="content content_${UI.id}">
+                
+                    <c:forEach items="${UI.courseList}" var="h">
+							<div class="recom-item">
+								<a href="/course/toArticle?id=${h.id}">
+									<p>
+										<img src="${pageContext.request.contextPath}/img/${h.cname}.png" width="214px" height="161px" alt=""><span
+											class="lab">HOT</span>
+									</p>
+									<ul>
+										<li>${h.cname }</li>
+										<li><span>${h.grade }</span> <em> · </em> ${h.learncount}人在学习</li>
+									</ul>
+								</a>
+							</div>
+						</c:forEach>
                 </div>
             </div>
-
-
+                
+            </div>
 
 
         </div>
@@ -277,33 +307,33 @@
                 <div class="clearfix"></div>
             </div>
             <div class="two-box">
-                <div class="teach-item-adv">
+                 <div class="teach-item-adv">
                     <img src="${pageContext.request.contextPath}/img/widget-teach-adv.png" width="100%" alt="">
                 </div>
-                <div class="teach-item">
+               <%--  <div class="teach-item">
                     <img src="${pageContext.request.contextPath}/img/widget-teach2.png" width="100%" alt="">
                     <span class="lab">28555学习过</span>
                     <ul class="teach-info">
                         <li>崔老师 <span>Java EE</span></li>
                         <li>从事多年Java软件开发及相关教育工作，熟悉JavaSE、JavaEE、Struts1,2、Spring……</li>
                     </ul>
-                </div>
-                <div class="teach-item">
+                </div>  --%>
+               <%--  <div class="teach-item">
                     <img src="${pageContext.request.contextPath}/img/widget-teach3.png" width="100%" alt="">
                     <span class="lab">28555学习过</span>
                     <ul class="teach-info">
                         <li>崔老师 <span>Java EE</span></li>
                         <li>从事多年Java软件开发及相关教育工作，熟悉JavaSE、JavaEE、Struts1,2、Spring……</li>
                     </ul>
-                </div>
-                <div class="teach-item">
+                </div> --%>
+               <%--  <div class="teach-item">
                     <img src="${pageContext.request.contextPath}/img/widget-teach4.png" width="100%" alt="">
                     <span class="lab">28555学习过</span>
                     <ul class="teach-info">
                         <li>崔老师 <span>Java EE</span></li>
                         <li>从事多年Java软件开发及相关教育工作，熟悉JavaSE、JavaEE、Struts1,2、Spring从事多年Java软件开发及相关教育工作，熟悉JavaSE、JavaEE、Struts1,2、Spring从事多年Java软件开发及相关教育工作，熟悉JavaSE、JavaEE、Struts1,2、Spring……</li>
                     </ul>
-                </div>
+                </div> --%>
                 <div class="clearfix"></div>
             </div>
         </div>
@@ -429,8 +459,9 @@
     	window.location.href="index/teacherInfo?id="+id;
     }
     
+  
     
-    $('.Recommend .course-nav span').on('click', function(){
+   /*  $('.Recommend .course-nav span').on('click', function(){
    	 $(this).addClass('active');
         $(this).siblings().removeClass('active');
         //根据难度进行查询课程
@@ -443,7 +474,7 @@
        	 console.log(data);
        	 var html='';
        	 for(var i=0;i<data.data.length;i++){
-       		 html+='<div class="recom-item"><a href="/course/toArticle?id='+data.data[i].id+'"><p><img src="${pageContext.request.contextPath}/img/widget-demo4.png" width="100%" alt="">'
+       		 html+='<div class="recom-item"><a href="/course/toArticle?id='+data.data[i].id+'"><p><img src="${pageContext.request.contextPath}/img/'+data.data[i].cname+'.png" width="100%" alt="">'
        		 +'</p><ul><li>Think '+data.data[i].cname+' </li>'
        		 +'<li><span>'+data.data[i].grade+'</span> <em> · </em> 1125人在学习</li></ul></a></div>'
        	 }
@@ -451,11 +482,11 @@
        	 $('.Recommend .content_'+catid).html(html);
        	
         })
-   })
+   }) */
    
    
    
-    $('.course-box .title .course-nav span').on('click', function(){
+    /*  $('.course-box .course-nav span').on("click", function(){
     	 $(this).addClass('active');
          $(this).siblings().removeClass('active');
          //根据难度进行查询课程
@@ -463,24 +494,19 @@
         
          var catid=$(this).attr('id');
          $('.course-box .content_'+catid+' .cont-right').html('');
-         $.get('queryBygrade',{grade:grade,catid:catid},function(data){
+           $.get("queryBygrade",{grade:grade,catid:catid},function(data){
         	 console.log(data);
         	 
-        	 var html='<div><img src="${pageContext.request.contextPath}/img/widget-ind-top.png" width="100%" alt=""></div>';
+        	  var html='<div><img src="${pageContext.request.contextPath}/img/widget-ind-top.png" width="100%" alt=""></div>';
         	 for(var i=0;i<data.data.length;i++){
-        		 html+='<div class="recom-item"><a href="/course/toArticle?id='+data.data[i].id+'"><p><img src="${pageContext.request.contextPath}/img/widget-demo4.png" width="100%" alt="">'
+        		 html+='<div class="recom-item"><a href="/course/toArticle?id='+data.data[i].id+'"><p><img src="${pageContext.request.contextPath}/img/'+data.data[i].cname+'.png" width="100%" alt="">'
         		 +'</p><ul><li>Think '+data.data[i].cname+' </li>'
         		 +'<li><span>'+data.data[i].grade+'</span> <em> · </em> 1125人在学习</li></ul></a></div>'
         	 }
-        	 $('.course-box .content_'+catid+' .cont-right').html(html);
-        	
-         })
-    })
-    
-    
-    
-    
-    
+        	 $('.course-box .content_'+catid+' .cont-right').html(html);  
+         })  ; 
+    }) ; 
+     */
     
     
     

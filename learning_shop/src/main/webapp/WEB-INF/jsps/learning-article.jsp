@@ -1025,7 +1025,7 @@
         <div class="popup-pay-box">
             <div class="title">${course.cname } <span class="close-popup">×</span></div>
             <div class="content">
-                <img src="./text.png" alt="">
+                <img src="${pageContext.request.contextPath}/img/${course.cname }.png" width="208px" height="160px" alt="">
                 <div class="info">
                     <p class="info-tit">${course.cname }  <span>课程有效期:2019年9月12日-2020年9月11日</span></p>
                     <p class="info-new-pic">课程价格 : <span>￥${course.price }</span></p>
