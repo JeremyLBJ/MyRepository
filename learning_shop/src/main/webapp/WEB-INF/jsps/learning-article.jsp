@@ -925,7 +925,6 @@
                                             <p>评分<span id="startNum">{{comment.grade}}</span>星</p>
                                         </div>
                                     </div>
-                                    
                                     <div class="get-more">页面加载中...</div>
                                 </div>
                             </div>

@@ -95,6 +95,7 @@ public class CourseController {
 	@PostMapping("Start")
 	@ResponseBody
 	public Result findStart() {
+		
 		List<CourseComment> list = courseService.findByGrad();
 		return new Result(1,"",list);
 	}
