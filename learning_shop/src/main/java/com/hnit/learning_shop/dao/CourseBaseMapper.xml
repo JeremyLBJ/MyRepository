@@ -29,6 +29,7 @@
   	select * from course_base where catid=#{id}
   </select>
   
+  
   <select id="selectByUid" resultMap="com.hnit.learning_shop.dao.XcUserMapper.BaseResultMap">
 		SELECT u.id,o.oid,c.id,d.ordertime,u.username,c.price
 		 FROM course_base c 

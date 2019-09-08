@@ -49,6 +49,7 @@ public class IndexService {
 		return interestMapper.selectByExample(example);
 	}
 	
+	
 	public CategorySub findSubById(Integer subCatId) {
 		return categorySubMapper.selectByPrimaryKey(subCatId);
 	}
