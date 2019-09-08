@@ -129,7 +129,7 @@
                 <div class="title">
                     	${html.subCatName}
                     <div class="course-nav">
-                        <span class="active" style="cursor:pointer" id="${html.id }">热门</span>
+                        <span class="active" style="cursor:pointer" id="${html.id}">热门</span>
                         <span style="cursor:pointer" id="${html.id }">初级</span>
                         <span style="cursor:pointer" id="${html.id }">中级</span>
                         <span style="cursor:pointer" id="${html.id }">高级</span>
@@ -462,7 +462,7 @@
     
   
     
-   /*  $('.Recommend .course-nav span').on('click', function(){
+     $('.Recommend .course-nav span').on('click', function(){
    	 $(this).addClass('active');
         $(this).siblings().removeClass('active');
         //根据难度进行查询课程
@@ -475,19 +475,19 @@
        	 console.log(data);
        	 var html='';
        	 for(var i=0;i<data.data.length;i++){
-       		 html+='<div class="recom-item"><a href="/course/toArticle?id='+data.data[i].id+'"><p><img src="${pageContext.request.contextPath}/img/'+data.data[i].cname+'.png" width="100%" alt="">'
-       		 +'</p><ul><li>Think '+data.data[i].cname+' </li>'
+       		 html+='<div class="recom-item"><a href="/course/toArticle?id='+data.data[i].id+'"><p><img src="${pageContext.request.contextPath}/img/'+data.data[i].cname+'.png" width="100%" height="161px" alt="">'
+       		 +'</p><ul><li>'+data.data[i].cname+' </li>'
        		 +'<li><span>'+data.data[i].grade+'</span> <em> · </em> 1125人在学习</li></ul></a></div>'
        	 }
        	 console.log($('.Recommend .content_'+catid));
        	 $('.Recommend .content_'+catid).html(html);
        	
         })
-   }) */
+   }) 
    
    
    
-    /*  $('.course-box .course-nav span').on("click", function(){
+     $('.course-box .course-nav span').on("click", function(){
     	 $(this).addClass('active');
          $(this).siblings().removeClass('active');
          //根据难度进行查询课程
@@ -496,18 +496,16 @@
          var catid=$(this).attr('id');
          $('.course-box .content_'+catid+' .cont-right').html('');
            $.get("queryBygrade",{grade:grade,catid:catid},function(data){
-        	 console.log(data);
-        	 
+        	   console.log(data);
         	  var html='<div><img src="${pageContext.request.contextPath}/img/widget-ind-top.png" width="100%" alt=""></div>';
         	 for(var i=0;i<data.data.length;i++){
-        		 html+='<div class="recom-item"><a href="/course/toArticle?id='+data.data[i].id+'"><p><img src="${pageContext.request.contextPath}/img/'+data.data[i].cname+'.png" width="100%" alt="">'
-        		 +'</p><ul><li>Think '+data.data[i].cname+' </li>'
+        		 html+='<div class="recom-item"><a href="/course/toArticle?id='+data.data[i].id+'"><p><img src="${pageContext.request.contextPath}/img/'+data.data[i].cname+'.png"  width="100%" height="161px" alt="">'
+        		 +'</p><ul><li> '+data.data[i].cname+' </li>'
         		 +'<li><span>'+data.data[i].grade+'</span> <em> · </em> 1125人在学习</li></ul></a></div>'
         	 }
-        	 $('.course-box .content_'+catid+' .cont-right').html(html);  
+        	 $('.course-box .content_'+catid+' .cont-right').html(html); 
          })  ; 
     }) ; 
-     */
     
     
     

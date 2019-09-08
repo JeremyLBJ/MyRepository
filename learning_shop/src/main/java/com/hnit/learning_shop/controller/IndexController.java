@@ -140,10 +140,11 @@ public class IndexController {
 	@RequestMapping("queryBygrade")
 	@ResponseBody
 	public Result QueryCourseByGrade(String grade,int catid){
-		System.out.println("=====================");
 		System.out.println(catid+grade);
-		PageHelper.startPage(1,5);
-		
+		PageHelper.startPage(1,4);
+		if("热门".equals(grade)) {
+			return new Result(1,"成功" ,courseService.queryCourseByCatid(catid));
+		}
 		return new Result(1,"成功",courseService.queryCourseByCatidAndGrade(grade,catid));
 	}
 	

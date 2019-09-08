@@ -62,6 +62,13 @@ public class CourseService {
 		courseBaseExample.createCriteria().andGradeEqualTo(grade).andCatidEqualTo(catid);
 		return courseBaseMapper.selectByExample(courseBaseExample); 
 	}
+	//热门 需要查询当前分类根据阅读数  （第一次加载页面可以显示，但是点及其他的选项，热门就没有查到）
+	public List<CourseBase> queryCourseByCatid( int catid){
+		CourseBaseExample courseBaseExample=new CourseBaseExample();
+		courseBaseExample.createCriteria().andCatidEqualTo(catid);
+		courseBaseExample.setOrderByClause("learncount DESC");
+		return courseBaseMapper.selectByExample(courseBaseExample); 
+	}
 	
 	
 	//根据二级分类 关联课程
