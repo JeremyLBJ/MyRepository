@@ -40,8 +40,8 @@ public class Picture {
 	  for(int i=1;i<=stringNum;i++){
 	   randomString=drowString(g,randomString,i);
 	  }
-	  session.removeAttribute(RANDOMCODEKEY);
-	  session.setAttribute(RANDOMCODEKEY, randomString);
+//	  session.removeAttribute(RANDOMCODEKEY);
+	  /*session.setAttribute(RANDOMCODEKEY, randomString);*/
 	  request.getSession().setAttribute("checkcode", randomString);
 	  g.dispose();
 	  try {
@@ -96,6 +96,7 @@ public class Picture {
 	  * 获取随机的字符
 	  */
 	 public String getRandomString(int num){
+		
 	  return String.valueOf(randString.charAt(num));
 	 }
 }

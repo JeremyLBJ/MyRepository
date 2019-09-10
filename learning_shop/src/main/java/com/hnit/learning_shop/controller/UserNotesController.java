@@ -22,17 +22,18 @@ public class UserNotesController {
 	@Resource
 	private  UserServiceImpl  userServiceImpl;
 	
-	@GetMapping("findUserName")
+	@GetMapping("/findUserName")
 	@ResponseBody
 	public Result findUserName (XcUser user) {
 		List<XcUser> list = userServiceImpl.userName(user);
+		System.out.println("==========");
 		if(list == null || list.size() <= 0) {
-			return new Result(0,"查无此用户");
+			return new Result(0);
 		}else {
 			return new Result(1);
 		}
 	}
-	@GetMapping("updatePassword")
+	@GetMapping("/updatePassword")
 	@ResponseBody
 	public Result updatePaddword(XcUser user) {
 		int i = userServiceImpl.newPassword(user);

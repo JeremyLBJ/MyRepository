@@ -46,7 +46,6 @@ public class IndexController {
 		return "index-gray";
 	}
 	
-
 	@Autowired
 	private IndexService indexService;
 
@@ -133,7 +132,10 @@ public class IndexController {
 		return "learning-index";
 	}
 
-	
+	@RequestMapping("list")
+	public String list() {
+		return "redirect:/course/course";
+	}
 	
 	
 	//根据难度查询所有的课程4条数据显示在主页上

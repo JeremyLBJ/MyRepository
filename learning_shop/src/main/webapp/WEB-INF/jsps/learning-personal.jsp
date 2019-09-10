@@ -39,7 +39,7 @@
             <div class="nav nav-stacked text-left">
                 <div class="title">个人中心</div>
                 <div class="my-ico">
-                    <img src="${pageContext.request.contextPath}/img/${user.userPic }" alt="">
+                    <img src="${pageContext.request.contextPath}${user.userPic }" alt="">
                     <p>${user.username }</p>
                 </div>
                 <div class="item">

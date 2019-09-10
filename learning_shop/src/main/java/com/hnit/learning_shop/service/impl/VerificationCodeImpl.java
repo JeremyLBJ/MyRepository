@@ -17,6 +17,9 @@ public class VerificationCodeImpl extends HttpServlet{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	 private int lineSize = 40;//干扰线数量
+	 private  Random random = new Random();
+	 private  int width=100, height=18; 
 	
 	 @SuppressWarnings("unused")
 	private static final String CONTENT_TYPE = "text/html; charset=UTF-8";   
@@ -28,14 +31,16 @@ public class VerificationCodeImpl extends HttpServlet{
 	    }   
 	    Color getRandColor(int fc,int bc)   
 	    {   
-	        Random random = new Random();   
-	        if(fc>255) fc=255;   
-	        if(bc>255) bc=255;   
-	        int r=fc+random.nextInt(bc-fc);   
-	        int g=fc+random.nextInt(bc-fc);   
-	        int b=fc+random.nextInt(bc-fc);   
-	        return new Color(r,g,b);   
+	    	if(fc > 255)
+	    		   fc = 255;
+	    		  if(bc > 255)
+	    		   bc = 255;
+	    		  int r = fc + random.nextInt(bc-fc-16);
+	    		  int g = fc + random.nextInt(bc-fc-14);
+	    		  int b = fc + random.nextInt(bc-fc-18);
+	    		  return new Color(r,g,b); 
 	    }
+	    
 	    public void service(HttpServletRequest request, HttpServletResponse response)
 	    		throws ServletException, IOException   
 	    {   
@@ -47,15 +52,15 @@ public class VerificationCodeImpl extends HttpServlet{
 	           
 	        int width=100, height=18;   
 	        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);   
-	           
-	        Graphics g = image.getGraphics();   
-	        Random random = new Random();   
-	        g.setColor(getRandColor(200,250));   
+	     
+	        Graphics g = image.getGraphics(); 
+	  
+	        g.setColor(getRandColor(160, 200));   
 	        g.fillRect(1, 1, width-1, height-1);   
-	        g.setColor(new Color(102,102,102));   
+	        g.setColor(new Color(random.nextInt(101),random.nextInt(111),random.nextInt(121)));
+	        g.translate(random.nextInt(3), random.nextInt(3));
 	        g.drawRect(0, 0, width-1, height-1);   
 	        g.setFont(mFont);   
-	  
 	        g.setColor(getRandColor(160,200));  
 	        
 	        //生成随机数,并将随机数字转换为字母   
@@ -70,6 +75,7 @@ public class VerificationCodeImpl extends HttpServlet{
 	            char ctmp = (char)itmp;
 	            sRand += String.valueOf(ctmp) + String.valueOf(index);
 	        }
+	        System.out.println(sRand+":::Srand");
 	        HttpSession session = request.getSession(true);  
 	        session.setAttribute("rand",sRand);   
 	        g.dispose();

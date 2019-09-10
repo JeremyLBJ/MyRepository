@@ -55,8 +55,9 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">账户名</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="phone" placeholder="请输入账户名">
-                                    <span class="verif-span">请输入5-25个字符</span>
+                                    <input type="text" class="form-control" name="phone" id="userName" placeholder="请输入账户名">
+                                    <span class="verif-span">请输入5-25个字符</span><br/>
+                                     <span class="uname" style="color: red"></span>
                                 </div>
                             </div>
                         </li>
@@ -64,10 +65,10 @@
                             <div class="form-group verif">
                                 <label class="col-sm-3 control-label">验证码</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="phone" id="phone" placeholder="请输入验证码">
-                                    <a href="javascript:;"><img src="" alt="${rand}" width="66" height="34"></a>
-                                    <input type="hidden" value="${rand}" id="rands">
-                                    <span class="verif-span" style="color: red"></span>
+                                    <input type="text" class="form-control" name="phone" id="password" placeholder="请输入验证码">
+                                    <a href="javascript:;"><img src="/checkCode"  onclick="this.src=this.src+'?'" width="66" height="34"></a>
+                                    <input type="hidden" value="${checkcode}" id="rands"><br/><br/>
+                                    <span class="vspan" style="color: red"></span>
                                 </div>
                             </div>
                         </li>
@@ -125,12 +126,31 @@
     <script type="text/javascript" src="../plugins/bootstrap/dist/js/bootstrap.js"></script>
     <script src="../js/page-learing-forget-password.js"></script>
     <script type="text/javascript">
-    $('.regStuBtn').click(function check(){
-    	if($('#phone').val() == $('#rands').val()){
-    		window.location.href = "learingTwo";
-    	}else{
-    		$('.verif-span').html('验证码输入有误');
-    	}
+    $('#password').blur(function(){
+    	var code = $('#password').val();
+    	$.get("/inputCode",{code:code},function(data){
+    		if(data == 0){
+    			$('.vspan').html('验证码输入有误');
+    		}else{
+    			window.location.href = "learingTwo";
+    		}
+    		
+    	})
     });
+    
+    $("#userName").blur(function(){
+    	var username = $('#userName').val();
+    	if('' == username || null == username){
+    		$('.uname').html('请正确填写相关信息');
+    	}
+    	$.get("/findUserName",{username:username},function(data){
+    		console.log(data.code);
+    		if(0 == data.code){
+    			$('.uname').html('查无此用户');
+    		}else{
+    			$('.uname').html('');
+    		}
+    	});
+    	});
     </script>
 </body>

@@ -54,46 +54,12 @@
                     <label><input type="checkbox" name="check">自动登录</label>
                     &nbsp;&nbsp;&nbsp;<a href="qq/oauth"><i class="i-qq"></i>qq登录</a>
                     <a href="#" class="forget">忘记密码</a>
+                    
                 </div>
                 <div class="submitBut" onclick="document.getElementById('logForm').submit()">登录</div>
             </div>
             </form>
-            <!-- <div class="regItem">
-                <div class="phoneBox">
-                    <p>手机号码</p>
-                    <p>
-                        <input type="text" name="phone" class="textInput" placeholder="请输入11位手机号码">
-                        <input type="submit" class="codeSub" value="发送验证码">
-                        <span class="proof cl-orange"></span>
-                    </p>
-                </div>
-                <div>
-                    <p>短信验证码</p>
-                    <p>
-                        <input type="text" name="phoneCode" class="textInput" placeholder="请输入11位手机号码">
-                        <span class="proof cl-orange"></span>
-                    </p>
-                </div>
-                <div>
-                    <p>设置密码</p>
-                    <p>
-                        <input type="text" name="setPassword" class="textInput" placeholder="请输入11位手机号码">
-                        <span class="proof cl-orange"></span>
-                    </p>
-                </div>
-                <div>
-                    <p>确认密码</p>
-                    <p>
-                        <input type="text" name="conPassword" class="textInput" placeholder="请输入11位手机号码">
-                        <span class="proof cl-orange"></span>
-                    </p>
-                </div>
-                <div class="setSing">
-                    <label><input type="checkbox" name="agreement">同意协议并注册 </label><a href="#">《学成网注册协议》</a>
-                    <span class="proof cl-orange"></span>
-                </div>
-                <div class="registerBut">注册</div>
-            </div> -->
+           
         </div>
         <footer>
             <p><a href="#">关于我们</a><a href="#">联系我们</a><a href="#">客户服务</a><a href="#">管理团队</a><a href="#">新手指南</a><a href="#">合作伙伴</a></p>
@@ -104,6 +70,11 @@
     <script type="text/javascript" src="../plugins/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="../plugins/bootstrap/dist/js/bootstrap.js"></script>
     <script src="../js/page-learing-sign.js"></script>
+    <script type="text/javascript">
+    	$('.forget').click(function(){
+    		　window.location.href = '/learingOne';
+    	});
+    </script>
 </body>
 <c:if test="${!empty msg}">
 	<script type="text/javascript">

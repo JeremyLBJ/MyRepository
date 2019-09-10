@@ -18,9 +18,9 @@ public class SendMailController {
 	@Resource
 	private UserServiceImpl userServiceImpl;
 	
-	@GetMapping("sendMail")
+	@GetMapping("/sendMail")
 	@ResponseBody
-	public Result sendMail(ModelAndView model) {
+	public Result sendMail(ModelAndView model,String email) {
 		 Random random = new Random();   
 			String sRand="";
 	        for (int i=0;i<2;i++)   
@@ -33,7 +33,7 @@ public class SendMailController {
 	            char ctmp = (char)itmp;
 	            sRand += String.valueOf(ctmp) + String.valueOf(index);
 	        }
-	        userServiceImpl.sendSimpleEmail("1447076355@qq.com", "验证码", sRand);
+	        userServiceImpl.sendSimpleEmail(email, "验证码", sRand);
 		Result result = new Result(1,"success",sRand);
 		return result;
 	}

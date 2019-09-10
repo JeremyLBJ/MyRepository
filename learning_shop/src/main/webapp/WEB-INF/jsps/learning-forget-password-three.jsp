@@ -56,8 +56,8 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">账户名</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" name="username" id="username" placeholder="请输入账户名">
-                                    <br><span style="color: red" class="message"></span>
+                                    <input type="text" class="form-control" name="username" id="userName" placeholder="请输入账户名">
+                                    <br><span style="color: red" class="uname"></span>
                                     <span class="verif-span">请输入5-25个字符</span>
                                 </div>
                             </div>
@@ -85,7 +85,7 @@
                             
                         </li>
                         <li class="mag-left">
-                            <button type="button" class="btn btn-primary regStuBtn">下一步</button>
+                            <button type="button" class="btn btn-primary regStuBtn" id="btn">下一步</button>
                              <br><span style="color: red" class="bmessage"></span>
                         </li>
                     </ul>
@@ -139,46 +139,44 @@
     <script type="text/javascript" src="../plugins/bootstrap/dist/js/bootstrap.js"></script>
     <script src="../js/page-learing-forget-password.js"></script>
     <script type="text/javascript">
-    //判断用户是否存在
-    $('#username').click(function (){
-    	var username = $('#username').val();
-    	if(username == null || username == ''){
-    		$('#username').val('');
-    	}else{
-    	$.get("findUserName",{username:username},
-    			function(data){
-    		console.log(data);
-    		if(data.code==1){
-    			$('.message').html('');
-    		}else{
-    			$('.message').html('该用户不存在');
-    		}
-    	})
+    $("#userName").blur(function(){
+    	var username = $('#userName').val();
+    	if('' == username || null == username){
+    		$('.uname').html('请正确填写相关信息');
     	}
-    });
+    	$.get("/findUserName",{username:username},function(data){
+    		console.log(data);
+    		if(0 == data.code){
+    			$('.uname').html('查无此用户');
+    		}else{
+    			$('.uname').html('');
+    		}
+    	});
+    	});
+   
     //判断密码是否一致
-    $('#password2').click(function(){
+    $('#password2').blur(function(){
     	var password1 = $('#password1').val();
     	var password2 = $('#password2').val();
     	if(password1 == password2){
-    		$('.psmessage').html('');
+    		$('.p2message').html('');
     	}else{
     		if(password2 == null || password2 == ''){
     			$('#password2').val('');
     		}else{
-    		$('.psmessage').html('密码输入有误请重新输入');
+    		$('.p2message').html('密码输入有误请重新输入');
     		}
     	}
     });
     //下一步
-    $('.regStuBtn').click(function(){
-    	var username = $('#username').val();
+    $('#btn').click(function(){
+    	var username = $('#userName').val();
     	var password1 = $('#password1').val();
     	var password2 = $('#password2').val();
     	if(username=='' || password1=='' || password2==''){
     		$('.bmessage').html('请正确填写相关信息');
     	}else{
-    	$.get("updatePassword",{username:username,password:password2},function(data){
+    	$.get("/updatePassword",{username:username,password:password2},function(data){
     		console.log(data);
     		if(data.code==1){
     		 window.location.href = "OK";

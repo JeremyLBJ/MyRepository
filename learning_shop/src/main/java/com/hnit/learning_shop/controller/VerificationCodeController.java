@@ -5,6 +5,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hnit.learning_shop.service.impl.VerificationCodeImpl;
 
@@ -15,31 +17,47 @@ public class VerificationCodeController {
 	private VerificationCodeImpl verificationCode;
 	
 	//验证码
-	@GetMapping("learingOne")
+	@GetMapping("images")
 	public String verifiationCode (HttpServletRequest request,
 			HttpServletResponse response , Model model) throws Exception {
 		 verificationCode.service(request, response);
-		 return "learning-forget-password-one";
+		 return "";
 	}
 	
-	@GetMapping("learingTwo")
+	@GetMapping("/inputCode")
+	@ResponseBody
+	public int check(String code ,HttpServletRequest request) {
+		String codes = (String)	request.getSession().getAttribute("checkcode");
+		if(code.equals(codes)) {
+			return 1;
+		}else {
+			return 0;
+		}
+	}
+	@GetMapping("/learingOne")
+	public String verifiation() {
+		return "learning-forget-password-one";
+	}
+	
+	
+	@GetMapping("/learingTwo")
 	public String email (Model model)  {
 		 return "learning-forget-password-two";
 	}
 	
-	@GetMapping("learingThree")
+	@GetMapping("/learingThree")
 	public String emails ()  {
 		 return "learning-forget-password-three";
 	}
 	
-	@GetMapping("OK")
+	@GetMapping("/OK")
 	public String OK () {
 		return "learning-forget-password-ok";
 	}
 	
-	@GetMapping("index")
+	@GetMapping("/index")
 	public String index () {
-		return "learning-index";
+		return "redirect:/index/toIndex";
 	}
 	
 	@GetMapping("video")

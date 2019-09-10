@@ -38,7 +38,8 @@ public class BrowerSecurityConfig extends WebSecurityConfigurerAdapter {
         .authorizeRequests()// 定义哪些URL需要被保护、哪些不需要被保护
         .antMatchers("/toQuickReg","/admin/login.html","/qq/callback","/qq/oauth","/plugins/**","/css/**","/img/**",
         		"/admin/css/**","/admin/js/**","/admin/images/**",
-        		"/js/**","/tologin","/toreg","/saveUser","/admin/user-add.html","/checkCode/**").permitAll() // 设置所有人都可以访问登录页面
+        		"/js/**","/tologin","/learingOne","/learingTwo",
+        		"/toreg","/learingThree","/updatePassword","/findUserName","/inputCode","/OK","/index","/sendMail","/saveUser","/admin/user-add.html","/checkCode/**").permitAll() // 设置所有人都可以访问登录页面
         .anyRequest()// 任何请求,登录后可以访问
         .authenticated()
         .and()

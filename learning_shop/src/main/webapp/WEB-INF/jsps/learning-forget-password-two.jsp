@@ -73,7 +73,7 @@
                                     
                                     <button class="btn btn-default send" id="sends" type="button">发送验证码</button>
                                     <input type="hidden" value="" id="mails">
-                                    <span style="color: red" class="messages"></span>
+                                    <span style="color: red" class="messages"></span><br/><br/>
                                     <span class="verif-span"></span>
                                 </div>
                             </div>
@@ -148,7 +148,8 @@
     });
     //点击发送验证码
       $('.send').click(function send(){
-    	$.get("sendMail",function(data){
+    	  var email = $('#email').val();
+    	$.get("/sendMail",{email:email},function(data){
     		//让onclick失效
     		document.getElementById('sends').onclick=null;
     		$('#mails').val(data.data)
