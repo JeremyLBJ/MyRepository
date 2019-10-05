@@ -24,7 +24,16 @@
     <association property="category" column="categoryId" fetchType="lazy"
     select="com.lhd.dao.CategoryMapper.selectByPrimaryKey"></association>
     
+    <!-- 	一对多关联查询	 -->
+    <collection property="comments" column="id" fetchType="lazy"
+    	select="selectCommentsByArticled"></collection>
+    
   </resultMap>
+  
+  <select id="selectCommentsByArticled" resultMap="com.lhd.dao.CommentMapper.BaseResultMap">
+  		select * from comment where articleid = #{articleid}
+  </select>
+  
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.lhd.bean.Article">
     <!--
       WARNING - @mbg.generated

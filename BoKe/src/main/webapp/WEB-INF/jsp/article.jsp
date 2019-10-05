@@ -18,15 +18,6 @@
 <script src="js/jquery-2.1.4.min.js"></script>
 <script src="js/nprogress.js"></script>
 <script src="js/jquery.lazyload.min.js"></script>
-<!--[if gte IE 9]>
-  <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
-  <script src="js/html5shiv.min.js" type="text/javascript"></script>
-  <script src="js/respond.min.js" type="text/javascript"></script>
-  <script src="js/selectivizr-min.js" type="text/javascript"></script>
-<![endif]-->
-<!--[if lt IE 9]>
-  <script>window.location.href='upgrade-browser.html';</script>
-<![endif]-->
 </head>
 
 <body class="user-select single">
@@ -56,17 +47,6 @@
       <article class="article-content">
         <p><img data-original="images/banner/banner_03.jpg" src="images/banner/banner_03.jpg" alt="" /></p>
         ${article.content }
-      <!--   <p> 用php获取上个月最后一天的时间，有两种方法，都非常简单，详细实现源码如下： </p>
-        <pre class="prettyprint lang-php">&lt;?php
-  date_default_timezone_set("PRC"); //设置时区
-  //方法一
-  $times = date("d") * 24 * 3600;
-  echo date("Y-m-d H:i:s", time()-$times);
-  echo '&lt;br/&gt;';
-  //方法二
-  $day = date('d');
-  echo date("Y-m-d H:i:s", strtotime(-$day.' day'));
-?&gt;</pre> -->
         <p> 方法一是利用当前时间离本月初有多少时间，然后用当前时间减去这个时间差，就可以得到上月最后一天了。 </p>
         <p> 方法二是先计算本月多少号，即离月初有多少天，然后用strtotime计算出$day天前的时间戳，也可以得到上个月的最后一天。 </p>
         <p class="article-copyright hidden-xs">未经允许不得转载：<a href="">异清轩博客</a> » <a href="article.html">php如何判断一个日期的格式是否正确</a></p>
@@ -85,40 +65,47 @@
       <div class="title" id="comment">
         <h3>评论 <small>抢沙发</small></h3>
       </div>
-      <!--<div id="respond">
-        <div class="comment-signarea">
-          <h3 class="text-muted">评论前必须登录！</h3>
-          <p> <a href="javascript:;" class="btn btn-primary login" rel="nofollow">立即登录</a> &nbsp; <a href="javascript:;" class="btn btn-default register" rel="nofollow">注册</a> </p>
-          <h3 class="text-muted">当前文章禁止评论</h3>
-        </div>
-      </div>-->
       <div id="respond">
-        <form action="" method="post" id="comment-form">
+       <!--  <form action="comment" method="post" id="comment-form"> -->
           <div class="comment">
             <div class="comment-title"><img class="avatar" src="images/icon/icon.png" alt="" /></div>
             <div class="comment-box">
               <textarea placeholder="您的评论可以一针见血" name="comment" id="comment-textarea" cols="100%" rows="3" tabindex="1" ></textarea>
               <div class="comment-ctrl"> <span class="emotion"><img src="images/face/5.png" width="20" height="20" alt="" />表情</span>
                 <div class="comment-prompt"> <i class="fa fa-spin fa-circle-o-notch"></i> <span class="comment-prompt-text"></span> </div>
-                <input type="hidden" value="1" class="articleid" />
-                <button type="submit" name="comment-submit" id="comment-submit" tabindex="5" articleid="1">评论</button>
+                <input type="hidden" value="${article.id }" class="articleid" />
+               <!--  <button type="button" name="comment-submit" id="comment-submit" tabindex="5" articleid="1">评论</button> -->
+                <input type="button"  name="comment-submit" id="comment-submit" tabindex="5" articleid="1" value="评论">
               </div>
             </div>
           </div>
-        </form>
+       <!--  </form> -->
       </div>
       <div id="postcomments">
+      <!-- varStatus: 用来计算索引值	 -->
+      <c:forEach items="${article.comments}" var="a" varStatus="vs">
         <ol class="commentlist">
-          <li class="comment-content"><span class="comment-f">#1</span>
+          <li class="comment-content"><span class="comment-f">#${vs.index+1 }</span>
             <div class="comment-avatar"><img class="avatar" src="images/icon/icon.png" alt="" /></div>
             <div class="comment-main">
-              <p>来自<span class="address">河南郑州</span>的用户<span class="time">(2016-01-06)</span><br />
-                这是匿名评论的内容这是匿名评论的内容，这是匿名评论的内容这是匿名评论的内容这是匿名评论的内容这是匿名评论的内容这是匿名评论的内容这是匿名评论的内容。</p>
+              <p>来自<span class="address">河南郑州</span>的用户<span class="time">(<fmt:formatDate value="${a.createtime }" pattern="yyy-MM-dd HH:mm:ss"/>)
+              
+              </span><br />
+                 ${a.content}
+                </p>
             </div>
           </li>
         </ol>
+        </c:forEach>
+        <div class="quotes" style="display: none;">
+        <a id="commPage" href="article">下一页</a>
         
-        <div class="quotes"><span class="disabled">首页</span><span class="disabled">上一页</span><a class="current">1</a><a href="">2</a><span class="disabled">下一页</span><span class="disabled">尾页</span></div>
+        <!-- <span class="disabled">首页</span>
+        <span class="disabled">上一页</span>
+        <a class="current">1</a>
+        <a href="">2</a><span class="disabled">下一页</span>
+        <span class="disabled">尾页</span> -->
+        </div>
       </div>
     </div>
   </div>
@@ -184,52 +171,47 @@
     </div>
   </aside>
 </section>
-<footer class="footer">
-  <div class="container">
-    <p>&copy; 2016 <a href="">ylsat.com</a> &nbsp; <a href="http://www.miitbeian.gov.cn/" target="_blank" rel="nofollow">豫ICP备20151109-1</a> &nbsp; <a href="sitemap.xml" target="_blank" class="sitemap">网站地图</a></p>
-  </div>
-  <div id="gotop"><a class="gotop"></a></div>
-</footer>
-<!--微信二维码模态框-->
-<div class="modal fade user-select" id="WeChat" tabindex="-1" role="dialog" aria-labelledby="WeChatModalLabel">
-  <div class="modal-dialog" role="document" style="margin-top:120px;width:280px;">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="WeChatModalLabel" style="cursor:default;">微信扫一扫</h4>
-      </div>
-      <div class="modal-body" style="text-align:center"> <img src="images/weixin.jpg" alt="" style="cursor:pointer"/> </div>
-    </div>
-  </div>
-</div>
-<!--该功能正在日以继夜的开发中-->
-<div class="modal fade user-select" id="areDeveloping" tabindex="-1" role="dialog" aria-labelledby="areDevelopingModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="areDevelopingModalLabel" style="cursor:default;">该功能正在日以继夜的开发中…</h4>
-      </div>
-      <div class="modal-body"> <img src="images/baoman/baoman_01.gif" alt="深思熟虑" />
-        <p style="padding:15px 15px 15px 100px; position:absolute; top:15px; cursor:default;">很抱歉，程序猿正在日以继夜的开发此功能，本程序将会在以后的版本中持续完善！</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">朕已阅</button>
-      </div>
-    </div>
-  </div>
-</div>
-<div id="rightClickMenu">
-  <ul class="list-group rightClickMenuList">
-    <li class="list-group-item disabled">欢迎访问异清轩博客</li>
-    <li class="list-group-item"><span>IP：</span>172.16.10.129</li>
-    <li class="list-group-item"><span>地址：</span>河南省郑州市</li>
-    <li class="list-group-item"><span>系统：</span>Windows10</li>
-    <li class="list-group-item"><span>浏览器：</span>Chrome47</li>
-  </ul>
-</div>
+<%@ include file="common/footer.jsp" %>
+
 <script src="js/bootstrap.min.js"></script> 
-<script src="js/jquery.ias.js"></script> 
+ <script src="js/jquery.ias.js"></script> 
+    <script type="text/javascript">
+  //无限滚动反翻页
+    var ias = jQuery.ias({
+    	history: false,
+    	container : '.content',
+    	item: '.excerpt',
+    	pagination: '.pagination',
+    	next: '.next-page a',
+    });
+
+    page = 1;
+    ias.on('load',function (event){
+    	event.ajaxOptions.data = {page: ++page};
+    });
+
+    /**
+     *渲染完成后的事件
+     */
+    ias.on('rendered',function(items){
+    	$('.excerpt .thumb').lazyload({
+    		placeholder: '/images/occupying.png',
+    		threshold: 400
+    	});
+    	$('.excerpt img').attr('draggable','false');
+    	$('.excerpt a').attr('draggable','false');
+    });
+
+    ias.extension(new IASSpinnerExtension({
+    	src:'/images/loading.png', //加载等待显示图片
+    }));
+
+    ias.extension(new IASSpinnerExtension({
+    	text:'查看更多', //鼠标点击加载提示的文字
+    	offset:2 //  到几页后，开始鼠标点击加载
+    }));
+    
+    </script>
 <script src="js/scripts.js"></script> 
 <script src="js/jquery.qqFace.js"></script> 
 <script type="text/javascript">
@@ -237,7 +219,7 @@ $(function(){
 	$('.emotion').qqFace({
 		id : 'facebox', 
 		assign:'comment-textarea', 
-		path:'/Home/images/arclist/'	//表情存放的路径
+		path:'/images/arclist/'	//表情存放的路径
 	});
  });   
 </script>

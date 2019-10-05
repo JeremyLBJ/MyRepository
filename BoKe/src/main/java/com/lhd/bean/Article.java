@@ -1,6 +1,7 @@
 package com.lhd.bean;
 
 import java.util.Date;
+import java.util.List;
 
 public class Article {
 	
@@ -14,6 +15,17 @@ public class Article {
 
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+	
+	//文章评论
+	private List<Comment> comments;
+
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
 	}
 
 	/**

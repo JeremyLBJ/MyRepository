@@ -40,7 +40,7 @@
 <div class="modal fade user-select" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <form action="/Admin/Index/login" method="post">
+      <form method="post">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h4 class="modal-title" id="loginModalLabel">登录</h4>

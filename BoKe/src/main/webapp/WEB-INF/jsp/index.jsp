@@ -140,5 +140,43 @@
   </aside>
     </section>
     <%@ include file="common/footer.jsp" %>
+    <script src="js/jquery.ias.js"></script> 
+    <script type="text/javascript">
+  //无限滚动反翻页
+    var ias = jQuery.ias({
+    	history: false,
+    	container : '.content',
+    	item: '.excerpt',
+    	pagination: '.pagination',
+    	next: '.next-page a',
+    });
+
+    var page = 1;
+    ias.on('load',function (event){
+    	event.ajaxOptions.data = {page: ++page};
+    });
+
+    /**
+     *渲染完成后的事件
+     */
+    ias.on('rendered',function(items){
+    	$('.excerpt .thumb').lazyload({
+    		placeholder: '/images/occupying.png',
+    		threshold: 400
+    	});
+    	$('.excerpt img').attr('draggable','false');
+    	$('.excerpt a').attr('draggable','false');
+    });
+
+    ias.extension(new IASSpinnerExtension({
+    	src:'/images/loading.png', //加载等待显示图片
+    }));
+
+    ias.extension(new IASSpinnerExtension({
+    	text:'查看更多', //鼠标点击加载提示的文字
+    	offset:2 //  到几页后，开始鼠标点击加载
+    }));
+    
+    </script>
 </body>
 </html>

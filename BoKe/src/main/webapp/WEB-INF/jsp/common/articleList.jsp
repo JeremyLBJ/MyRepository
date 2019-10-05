@@ -14,7 +14,8 @@
 	        </header>
 	        <p class="meta">
 	          <time class="time"><i class="glyphicon glyphicon-time"></i> ${a.createtime }</time>
-	          <span class="views"><i class="glyphicon glyphicon-eye-open"></i> 共${a.readcnt }人围观</span> <a class="comment" href="article.html#comment"><i class="glyphicon glyphicon-comment"></i> 0个不明物体</a></p>
+	          <span class="views"><i class="glyphicon glyphicon-eye-open"></i> 共${a.readcnt }人围观</span> <a class="comment" href="article.html#comment">
+	          <i class="glyphicon glyphicon-comment"></i> 0个不明物体</a></p>
 	        <div style="display: none;" id="d${a.id}">${a.content}</div>
 	        <p class="note" id="p${a.id}"></p>
 	        <script type="text/javascript">
@@ -30,7 +31,7 @@
           <li class="prev-page"></li>
           <li class="active"><span>1</span></li>
           <li><a href="?page=2">2</a></li>
-          <li class="next-page"><a href="?page=2">下一页</a></li>
+          <li class="next-page"><a href="#">下一页</a></li>
           <li><span>共 2 页</span></li>
         </ul>
       </nav>

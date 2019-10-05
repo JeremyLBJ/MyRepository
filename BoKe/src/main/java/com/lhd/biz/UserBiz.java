@@ -9,6 +9,7 @@ import com.lhd.dao.UserMapper;
 @Service
 public class UserBiz {
 	
+	
 	@Resource
 	private UserMapper um;
 	//登录
